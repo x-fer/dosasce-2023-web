@@ -1,0 +1,46 @@
+@import "../../styles/constants.scss";
+
+.at-button {
+  background-color: $primary-light-color;
+
+  font-weight: 500;
+  color: $primary-accent-color;
+  border: 2px solid $primary-accent-color;
+
+  padding: 8px 24px;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+
+button.at-button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  :active {
+    opacity: 90%;
+    color: $primary-dark-color;
+  }
+}
+
+a.at-button {
+  text-decoration: none;
+
+  display: block;
+  width: fit-content;
+
+  &:hover {
+    background-color: rgb(255, 240, 240);
+  }
+
+  &:active {
+    background-color: $primary-light-color;
+  }
+
+  transition: background-color 0.25s;
+}

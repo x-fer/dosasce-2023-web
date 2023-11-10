@@ -1,0 +1,22 @@
+@import "../../styles/constants.scss";
+
+.at-graph-animation {
+  aspect-ratio: 16 / 9;
+
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: 901px) {
+    min-height: 1000px;
+  }
+
+  @media (max-width: 900px) {
+    min-height: 3000px;
+  }
+
+  .at-particle {
+    position: absolute;
+    background-color: $primary-accent-color;
+    opacity: 8%;
+  }
+}

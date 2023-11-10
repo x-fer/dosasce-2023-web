@@ -1,0 +1,186 @@
+@import "../../styles/constants.scss";
+@import "../../styles/fonts.scss";
+
+.header {
+  --white: $primary-dark-color;
+  --black: $primary-light-color;
+  --gray: $primary-dark-color;
+
+  height: $header-height;
+  padding: 0px 320px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 99;
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  background-color: $primary-light-color;
+  box-shadow: 0px 2px 4px 0px #ddd;
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  /* Logo */
+  .logo {
+    display: inline-block;
+
+    // font-size: 60px;
+    // margin-left: 10px;
+
+    font-family: "Designer";
+    font-size: 32px;
+    // display: flex;
+
+    // translate: 0px 2px;
+
+    &-dark {
+      color: $primary-dark-color;
+    }
+
+    &-color {
+      color: $primary-accent-color;
+    }
+  }
+
+  /* Nav menu */
+  .nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: $header-height;
+    left: 0px;
+    background-color: $primary-light-color;
+    overflow: hidden;
+  }
+  .menu a {
+    display: block;
+    padding: 0px 0px;
+    color: $primary-dark-color;
+    transition: color 0.25s;
+
+    &:hover {
+      color: $primary-accent-color;
+    }
+  }
+
+  .nav {
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+  }
+
+  /* Menu Icon */
+  .hamb {
+    cursor: pointer;
+    float: right;
+    padding: 30px 20px;
+  } /* Style label tag */
+
+  .hamb-line {
+    background: $primary-dark-color;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 20px;
+  } /* Style span tag */
+
+  .hamb-line::before,
+  .hamb-line::after {
+    background: $primary-dark-color;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
+  .hamb-line::before {
+    top: 5px;
+  }
+  .hamb-line::after {
+    top: -5px;
+  }
+
+  .side-menu {
+    display: none;
+  } /* Hide checkbox */
+
+  /* Toggle menu icon */
+  .side-menu:checked ~ nav {
+    max-height: 100%;
+  }
+  .side-menu:checked ~ .hamb .hamb-line {
+    background: transparent;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+  .side-menu:checked ~ .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 0px 32px;
+
+    .nav {
+      ul {
+        padding-left: 32px;
+
+        li {
+          font-size: 20px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 901px) and (max-width: 1400px) {
+    padding: 0px 128px;
+
+    .nav {
+      ul {
+        padding-left: 128px;
+
+        li {
+          // font-size: 20px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1401px) and (max-width: 1500px) {
+    padding: 0px 240px;
+  }
+
+  /* Responsiveness */
+  @media (min-width: 1201px) {
+    .nav {
+      max-height: none;
+      top: 0;
+      position: relative;
+      float: right;
+      width: fit-content;
+      background-color: transparent;
+    }
+    .menu li {
+      float: left;
+      padding-left: 24px;
+    }
+
+    .hamb {
+      display: none;
+    }
+  }
+}

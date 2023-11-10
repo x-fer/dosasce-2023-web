@@ -1,0 +1,44 @@
+@import "../../styles/constants.scss";
+
+.at-radio-button {
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    padding: 8px 16px;
+    background-color: $primary-accent-color;
+    color: $primary-light-color;
+    font-weight: 500;
+    border: 2px solid $primary-accent-color;
+    border-right: none;
+
+    transition: background-color 0.25s;
+    &:hover,
+    &.active {
+      background-color: $primary-light-color;
+      color: $primary-accent-color;
+    }
+
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-right: 2px solid $primary-accent-color;
+    }
+
+    margin-right: 0px;
+
+    @media (max-width: 900px) {
+      font-size: 16px;
+      padding: 6px 12px;
+    }
+  }
+}

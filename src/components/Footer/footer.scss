@@ -1,0 +1,56 @@
+@import "../../styles/constants.scss";
+
+.at-footer {
+  box-sizing: border-box;
+
+  background-color: $primary-dark-color;
+
+  div,
+  a {
+    color: hsla(0, 0%, 100%, 0.7);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: hsla(0, 0%, 100%, 0.9);
+  }
+
+  a {
+    transition: text-decoration 2.5s;
+  }
+
+  width: 100%;
+
+  display: flex;
+
+  .social-links {
+    display: flex;
+    gap: 8px;
+
+    .social-icon {
+      width: 24px;
+      opacity: 70%;
+
+      transition: opacity 0.25s;
+
+      &:hover {
+        opacity: 90%;
+      }
+    }
+  }
+
+  @media screen and (min-width: 901px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+}
