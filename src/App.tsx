@@ -8,6 +8,8 @@ import Header from "./components/Header/Header";
 import HomeSlide from "./components/HomeSlide/HomeSlide";
 import PartnersSlide from "./components/PartnersSlide/PartnersSlide";
 import ScheduleSlide from "./components/ScheduleSlide/ScheduleSlide";
+import Scoreboard from "./components/Scoreboard/Scoreboard";
+import SnowContainer from "./components/Snow/SnowContainer";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Header />
       <main>
         <HomeSlide />
+        <SnowContainer />
+        <Scoreboard />
         <AboutSlide />
         <PartnersSlide />
         <ScheduleSlide />
