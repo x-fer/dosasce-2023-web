@@ -24,8 +24,8 @@
     list-style: none;
   }
 
-  background-color: $primary-light-color;
-  box-shadow: 0px 2px 4px 0px #ddd;
+  background-color: #f83e3e;
+  box-shadow: 0px 2px 4px 0px #f8baba;
   position: sticky;
   top: 0;
   width: 100%;
@@ -65,7 +65,7 @@
   .menu a {
     display: block;
     padding: 0px 0px;
-    color: $primary-dark-color;
+    color: $primary-light-color;
     transition: color 0.25s;
 
     &:hover {

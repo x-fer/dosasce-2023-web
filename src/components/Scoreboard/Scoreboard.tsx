@@ -70,14 +70,15 @@ const Scoreboard = () => {
     }, []);
 
     return(
-        <div className="at-scoreboard">
-            <div className="at-title">Rezultati</div>
+        <div className="at-slide at-scoreboard" id="scoreboard">
+            <div className="subtitle">Rezultati</div>
             <div className="at-scoreboard-data-wrapper">
                 <div className="at-scoreboard-data">
                     <div className="at-scoreboard-data-header">
                         <div className="at-scoreboard-data-header-name">Ime</div>
                         <div className="at-scoreboard-data-header-score">Rezultat</div>
                     </div>
+                    <br />
                     {scoreboardData.map((scoreboardData, idx) => (
                         <div className="at-scoreboard-data-row" key={scoreboardData.name + "-" + idx}>
                             <div className="at-scoreboard-data-row-name">{scoreboardData.name}</div>

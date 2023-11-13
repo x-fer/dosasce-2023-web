@@ -5,12 +5,19 @@
   flex-direction: row;
   align-items: center;
   min-height: $min-slide-height;
+  background-image: url("../../resources/backgrounds/hero.jpg");
+  background-size: cover;
 
   padding: 0px;
 
   scroll-margin-top: $header-height;
   background-color: transparent;
   overflow: clip;
+
+  .subtitle-shadow{
+    text-shadow: 3px 3px 4px #000000;
+    color: $primary-light-color;
+  }
 
   .at-graph-animation {
     position: absolute;

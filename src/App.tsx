@@ -9,16 +9,15 @@ import HomeSlide from "./components/HomeSlide/HomeSlide";
 import PartnersSlide from "./components/PartnersSlide/PartnersSlide";
 import ScheduleSlide from "./components/ScheduleSlide/ScheduleSlide";
 import Scoreboard from "./components/Scoreboard/Scoreboard";
-import SnowContainer from "./components/Snow/SnowContainer";
+import Snow from "./components/Snow/Snow";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main>
+      <main className="main">
         <HomeSlide />
-        <SnowContainer />
-        <Scoreboard />
+        <Snow />
         <AboutSlide />
         <PartnersSlide />
         <ScheduleSlide />

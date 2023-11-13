@@ -10,8 +10,8 @@ const Footer = () => {
           X.FER
         </a>
         ,{" "}
-        <a href="https://finance.hr" target="_blank" rel="noreferrer">
-          Financijski klub
+        <a href="http://www.eestec.hr/home" target="_blank" rel="noreferrer">
+          EESTEC LC Zagreb
         </a>{" "}
         | 2023
       </div>
@@ -25,7 +25,7 @@ const Footer = () => {
         </a>
       </div> */}
       <div className="social-links">
-        <a
+        {/* <a
           href="https://www.instagram.com/algotrade_hackathon/"
           target="_blank"
           rel="noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
             alt="Instagram link"
             src={require("../../resources/social-icons/icons8-instagram-50.png")}
           />
-        </a>
+        </a> */}
         {/* <a href="https://google.com" target="_blank" rel="noreferrer">
           <img
             className="social-icon"
