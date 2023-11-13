@@ -7,7 +7,7 @@ import { partnersData } from "./partners-data";
 const PartnersSlide = () => {
   return (
     <Slide className="at-partners-slide" id="partners">
-      <div className="at-title">Partneri</div>
+      <div className="at-title">Partner</div>
       <div className="at-partners-list">
         {partnersData.map((partner) => (
           <div className="at-partner" key={partner.website}>

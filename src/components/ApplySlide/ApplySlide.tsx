@@ -12,7 +12,7 @@ const ApplySlide = () => {
         // rel="noreferrer"
         className="apply-button disabled"
       >
-        Prijave su završile.
+        Prijavite se!
       </div>
     </Slide>
   );
