@@ -12,6 +12,9 @@ export default {
         "dark-red": "#8F000A",
         "dark-white": "#FFD6D9",
       },
+      backgroundImage: {
+        "hero-pattern": "url('@/assets/BackgroundIcons.png')",
+      },
     },
   },
   plugins: [],

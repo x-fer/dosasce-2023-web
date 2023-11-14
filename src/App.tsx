@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import ProblemRouter from "./components/ProblemRouter";
+
 import Home from "./screens/Home";
 import About from "./screens/About";
+import { Footer, Header, ProblemRouter } from "./components";
 
 function App() {
   return (
     <div className="app bg-white">
       <Header />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -16,6 +16,7 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
+
       <Footer />
     </div>
   );
