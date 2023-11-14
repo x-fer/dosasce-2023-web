@@ -1,5 +1,8 @@
 # dosasce++
 
+Za pokretanje projekta:  
+`npm run dev`
+
 ## Layout projekta: 
  - main page 
  - 3x page za zadatak
