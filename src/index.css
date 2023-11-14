@@ -8,3 +8,10 @@ body,
 .app {
  width: 100%;
 }
+
+@layer base{
+    @font-face {
+        font-family: "Monomaniac";
+        src: url('./fonts/Monomaniac\ One\ Regular\ HR.ttf');
+    }
+}

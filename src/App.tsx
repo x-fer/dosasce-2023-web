@@ -6,7 +6,7 @@ import { Footer, Header, ProblemRouter } from "./components";
 
 function App() {
   return (
-    <div className="app bg-white">
+    <div className="app font-monomaniac bg-white">
       <Header />
 
       <BrowserRouter>

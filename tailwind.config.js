@@ -16,6 +16,9 @@ export default {
         "hero-pattern": "url('@/assets/BackgroundIcons.png')",
       },
     },
+    fontFamily: {
+      monomaniac: ["Monomaniac", "monospace"],
+    },
   },
   plugins: [],
 };
