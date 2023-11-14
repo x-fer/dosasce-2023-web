@@ -17,7 +17,7 @@ export default {
       },
     },
     fontFamily: {
-      monomaniac: ["Monomaniac", "monospace"],
+      monomaniac: "Monomaniac One",
     },
   },
   plugins: [],
