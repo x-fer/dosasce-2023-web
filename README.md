@@ -3,6 +3,11 @@
 Za pokretanje projekta:  
 `npm run dev`
 
+Tehnologije:
+ - React
+ - Typescript
+ - Tailwind
+
 ## Layout projekta: 
  - main page 
  - 3x page za zadatak
