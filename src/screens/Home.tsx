@@ -4,13 +4,13 @@ import santa from './../assets/santa.svg'
 const Home = () => {
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-hero-pattern flex h-screen w-screen items-center justify-center">
-        <div className="flex flex-col lg:flex-row justify-start lg:items-center gap-8 lg:gap-36">
-          <div className="w-[350px] h-[255px] lg:w-[550px] lg:h-[400px] px-4 bg-blue rounded-3xl lg:rounded-[60px] flex justify-center items-center shadow-xl">
-            <img src={santa} className="w-full h-auto" alt="Slika djeda božičnjaka" />
+      <div className="flex h-screen w-screen items-center justify-center bg-hero-pattern">
+        <div className="flex flex-col justify-start gap-8 lg:flex-row lg:items-center lg:gap-36">
+          <div className="flex h-[255px] w-[350px] items-center justify-center rounded-3xl bg-blue px-4 shadow-xl lg:h-[400px] lg:w-[550px] lg:rounded-[60px]">
+            <img src={santa} className="h-auto w-full" alt="Slika djeda božičnjaka" />
           </div>
 
-          <div className="font-monomaniac flex flex-col text-red">
+          <div className="flex flex-col font-monomaniac text-red">
             <p className="text-2xl">Dobrodošli na</p>
 
             <p className="text-7xl">došašće++</p>

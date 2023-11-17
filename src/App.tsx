@@ -1,12 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Home from "./screens/Home";
-import About from "./screens/About";
-import { Footer, Header, ProblemRouter } from "./components";
+import Home from './screens/Home'
+import About from './screens/About'
+import { Footer, Header, ProblemRouter } from './components'
 
 function App() {
   return (
-    <div className="app font-monomaniac bg-white">
+    <div className="app bg-white font-monomaniac">
       <Header />
 
       <BrowserRouter>
@@ -19,7 +19,7 @@ function App() {
 
       <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
