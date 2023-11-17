@@ -6,12 +6,18 @@ html,
 body,
 #root,
 .app {
- width: 100%;
+  width: 100%;
 }
 
-@layer base{
-    @font-face {
-        font-family: "Monomaniac One";
-        src: url('./fonts/MonomaniacOne-Regular.ttf');
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Monomaniac One';
+    src: url('./fonts/MonomaniacOne-Regular.ttf');
+  }
 }
