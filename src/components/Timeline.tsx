@@ -37,7 +37,7 @@ const TimelineCard = (props: TimelineCardProps) => {
 const Timeline = () => {
   return (
     <>
-      <div className="bg-snow-pattern w-full">
+      <div className="w-full bg-snow-pattern">
         <div className="relative flex flex-col items-center px-4">
           <TimelineCard name="Zadatak 1" startDate=" Od 30.11." endDate="Do 6.12." image={Trees} left />
           <TimelineCard name="Zadatak 2" startDate="Od 7.12." endDate="Do 13.12." image={Mistletoe} />

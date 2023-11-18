@@ -1,5 +1,5 @@
 const ThirdProblem = () => {
-  return <div>ThirdProblem</div>;
-};
+  return <div className="h-full flex-grow">ThirdProblem</div>
+}
 
-export default ThirdProblem;
+export default ThirdProblem

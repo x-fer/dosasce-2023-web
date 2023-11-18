@@ -14,9 +14,31 @@ export default {
         'dark-white': '#FFD6D9',
       },
       backgroundImage: {
-        'hero-pattern': "url('@/assets/BackgroundIcons.png')",
-        'snow-pattern': "url('@/assets/BackgroundSnow.png')",
+        // 'hero-pattern': "url('@/assets/BackgroundIcons.png')",
+        // 'snow-pattern': "url('@/assets/BackgroundSnow.png')",
         'background-color': 'white',
+      },
+      animation: {
+        moveLeft: 'moveLeft 50s linear infinite',
+        moveRight: 'moveRight 50s linear infinite',
+      },
+      keyframes: {
+        moveLeft: {
+          '0%': {
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            transform: 'translateX(calc(-6*200px))',
+          },
+        },
+        moveRight: {
+          '0%': {
+            transform: 'translateX(calc(-6*200px))',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+          },
+        },
       },
     },
   },
