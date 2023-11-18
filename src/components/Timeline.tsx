@@ -19,7 +19,7 @@ const TimelineCard = (props: TimelineCardProps) => {
         <div className="absolute left-1/2 -ml-1 h-full w-2 bg-red" />
 
         <div className="absolute left-1/2 top-1/2 -ml-4 -mt-4 h-8 w-8 rounded-full bg-red shadow-xl">
-          <div className="rouded-full absolute left-1/2 top-1/2 -ml-2 -mt-2 h-4 w-4 rounded-full bg-white" />
+          <div className="absolute left-1/2 top-1/2 -ml-2 -mt-2 h-4 w-4 rounded-full bg-white" />
         </div>
       </div>
 
