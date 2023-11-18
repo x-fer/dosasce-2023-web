@@ -1,4 +1,4 @@
-import { Separator_1, Timeline } from '@/components'
+import { Separator_1, Separator_2, Timeline } from '@/components'
 import santa from './../assets/santa.svg'
 
 const Home = () => {
@@ -21,6 +21,8 @@ const Home = () => {
       <img src={Separator_1} />
 
       <Timeline />
+
+      <img src={Separator_2} />
     </div>
   )
 }

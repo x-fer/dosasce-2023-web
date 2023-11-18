@@ -1,9 +1,9 @@
-import { Mistletoe, Snowman, Trees } from '.'
+import { Mistletoe, Presents, Snowman, Trees } from '.'
 
 type TimelineCardProps = {
   name: string
   startDate: string
-  endDate: string
+  endDate?: string
   left?: true | false
   image?: string
 }
@@ -27,8 +27,8 @@ const TimelineCard = (props: TimelineCardProps) => {
 
       <div className="flex h-48 w-80 flex-col items-center justify-center rounded-3xl border-8 border-red bg-white p-4">
         <h1 className="mb-2 text-5xl">{props.name}</h1>
-        <p className="text-3xl">Od {props.startDate}</p>
-        <p className="text-3xl">Do {props.endDate}</p>
+        <p className="text-3xl">{props.startDate}</p>
+        <p className="text-3xl">{props.endDate}</p>
       </div>
     </div>
   )
@@ -39,9 +39,10 @@ const Timeline = () => {
     <>
       <div className="bg-snow-pattern w-full">
         <div className="relative flex flex-col items-center px-4">
-          <TimelineCard name="Zadatak 1" startDate="7.12." endDate="7.12." image={Trees} left />
-          <TimelineCard name="Zadatak 2" startDate="7.12." endDate="7.12." image={Mistletoe} />
-          <TimelineCard name="Zadatak 3" startDate="7.12." endDate="7.12." image={Snowman} left />
+          <TimelineCard name="Zadatak 1" startDate=" Od 30.11." endDate="Do 6.12." image={Trees} left />
+          <TimelineCard name="Zadatak 2" startDate="Od 7.12." endDate="Do 13.12." image={Mistletoe} />
+          <TimelineCard name="Zadatak 3" startDate="Od 14.12." endDate="Do 20.12." image={Snowman} left />
+          <TimelineCard name="Dodjela" startDate="21.12." image={Presents} />
         </div>
       </div>
     </>
