@@ -6,3 +6,8 @@ export { default as Timeline } from '@/components/Timeline'
 export { default as Separator_1 } from '@/assets/Separator_1.svg'
 export { default as Separator_2 } from '@/assets/Separator_2.svg'
 export { default as Separator_3 } from '@/assets/Separator_3.svg'
+
+export { default as Trees } from '@/assets/Trees.png'
+export { default as Mistletoe } from '@/assets/Mistletoe.png'
+export { default as Snowman } from '@/assets/Snowman.png'
+export { default as Presents } from '@/assets/Presents.png'

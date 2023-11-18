@@ -15,6 +15,7 @@ export default {
       },
       backgroundImage: {
         'hero-pattern': "url('@/assets/BackgroundIcons.png')",
+        'snow-pattern': "url('@/assets/BackgroundSnow.png')",
         'background-color': 'white',
       },
     },
