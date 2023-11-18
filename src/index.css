@@ -17,7 +17,7 @@ body,
 @layer base {
   @font-face {
     font-family: 'Monomaniac One';
-    src: url('./fonts/MonomaniacOne-Regular.ttf');
+    src: url('./fonts/Monomaniac One Regular HR.ttf');
   }
 
   html {
