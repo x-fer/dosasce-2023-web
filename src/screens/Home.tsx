@@ -1,4 +1,4 @@
-import { Separator_1 } from '@/components'
+import { Separator_1, Timeline } from '@/components'
 import santa from './../assets/santa.svg'
 
 const Home = () => {
@@ -10,14 +10,17 @@ const Home = () => {
             <img src={santa} className="h-auto w-full" alt="Slika djeda božičnjaka" />
           </div>
 
-          <div className="flex flex-col font-monomaniac text-red">
+          <div className="font-monomaniac flex flex-col text-red">
             <p className="text-2xl">Dobrodošli na</p>
 
             <p className="text-7xl">došašće++</p>
           </div>
         </div>
       </div>
+
       <img src={Separator_1} />
+
+      <Timeline />
     </div>
   )
 }
