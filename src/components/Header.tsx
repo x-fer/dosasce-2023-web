@@ -6,8 +6,10 @@ const Header = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50 flex w-screen justify-between bg-red p-5 text-xl text-white">
-      <div className="tracking-widest">došašće++</div>
+    <div className="sticky top-0 z-50 flex min-h-[80px] w-screen items-center justify-between bg-red px-8 text-white">
+      <a href="/" className="cursor-pointer select-none text-4xl tracking-widest">
+        došašće++
+      </a>
       <GoogleLogin onSuccess={onSuccess} shape="circle" />
     </div>
   )
