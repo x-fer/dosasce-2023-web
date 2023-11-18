@@ -6,9 +6,8 @@ import { Footer, Header, ProblemRouter } from './components'
 
 function App() {
   return (
-    <div className="app bg-white font-monomaniac">
+    <>
       <Header />
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -16,9 +15,8 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
-
       <Footer />
-    </div>
+    </>
   )
 }
 

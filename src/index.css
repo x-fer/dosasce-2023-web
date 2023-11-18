@@ -4,8 +4,7 @@
 
 html,
 body,
-#root,
-.app {
+#root {
   width: 100%;
 }
 
@@ -19,5 +18,9 @@ body,
   @font-face {
     font-family: 'Monomaniac One';
     src: url('./fonts/MonomaniacOne-Regular.ttf');
+  }
+
+  html {
+    font-family: 'Monomaniac One', sans-serif;
   }
 }

@@ -15,10 +15,8 @@ export default {
       },
       backgroundImage: {
         'hero-pattern': "url('@/assets/BackgroundIcons.png')",
+        'background-color': 'white',
       },
-    },
-    fontFamily: {
-      monomaniac: 'Monomaniac One',
     },
   },
   plugins: [],
