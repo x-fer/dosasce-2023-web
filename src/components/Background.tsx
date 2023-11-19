@@ -4,8 +4,8 @@ import BackgroundIconRow from './BackgroundIconRow'
 
 const Background = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="w-full flex-grow ">
-      <div className="fixed -z-20 flex h-full w-full flex-col">
+    <div className="w-full flex-grow">
+      <div className="fixed -z-20 flex h-full w-full flex-col p-0">
         <BackgroundIconRow animate="left" />
         <BackgroundIconRow animate="right" />
         <BackgroundIconRow animate="left" />
