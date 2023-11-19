@@ -2,10 +2,12 @@ import {
   Background,
   Footer,
   Informations,
+  Organisators,
   Partners,
   Separator_1,
   Separator_2,
   Separator_3,
+  Separator,
   Timeline,
 } from '@/components'
 import santa from './../assets/santa.svg'
@@ -16,7 +18,7 @@ const Home = () => {
       <Background>
         <div className="bg-hero-pattern flex h-screen w-screen items-center justify-center">
           <div className="flex flex-col justify-start rounded-3xl bg-white p-12 pb-10 lg:flex-row lg:items-center lg:gap-36 lg:rounded-[60px] lg:pr-10">
-            <div className="bg-santa-dark flex h-[255px] w-[350px] items-center justify-center rounded-3xl px-4 shadow-xl lg:h-[400px] lg:w-[550px] lg:rounded-[60px]">
+            <div className="flex h-[255px] w-[350px] items-center justify-center rounded-3xl bg-santa-dark px-4 shadow-xl lg:h-[400px] lg:w-[550px] lg:rounded-[60px]">
               <img src={santa} className="h-auto w-full select-none" alt="Slika djeda božičnjaka" />
             </div>
 
@@ -29,20 +31,25 @@ const Home = () => {
         </div>
       </Background>
 
-      <img src={Separator_1} />
+      <Separator />
 
       <Timeline />
 
-      <img src={Separator_2} />
+      <Separator />
 
       <Informations />
 
-      <img src={Separator_3} />
+      <Separator />
+
+      <Organisators />
 
       <Partners />
+
       <Footer />
     </main>
   )
 }
+
+// mozda dodati separator prije parnera, idk
 
 export default Home
