@@ -1,14 +1,13 @@
-import FerLogo from '../resources/partners/fer-logo.png'
+import { FerLogo } from '.'
 
 const Partners = () => {
   return (
-    <div className="w-full">
-      <div className="flex flex-col justify-center bg-snow-pattern">
-        <div className="font-monomaniac text-center text-6xl antialiased">
-          <h1>Partneri</h1>
-        </div>
-        <div className="mx-auto max-w-2xl overflow-hidden bg-cover">
-          <img src={FerLogo} className="w-full max-w-2xl bg-gray-900" />
+    <div className="w-full bg-white">
+      <div className="bg-snow-pattern flex flex-col items-center justify-center">
+        <h1 className="my-8 text-6xl">Partneri</h1>
+
+        <div className="overflow-hidden">
+          <img src={FerLogo} />
         </div>
       </div>
     </div>

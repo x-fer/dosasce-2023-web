@@ -1,8 +1,8 @@
 const About = () => {
   return (
-    <div className="w-full bg-snow-pattern">
-      <div className="mx-auto max-w-5xl p-3">
-        <p className="leading-8 tracking-wide">
+    <div className="flex w-full flex-col items-center justify-center bg-white pb-8">
+      <div className="w-3/4 p-3 text-xl">
+        <p className="py-8 leading-8 tracking-wide">
           <b>došašće++</b>je online božićno natjecanje inspirirano svima nam omiljenim Advent of Codeom. Natjecanje se
           sastoji od tri kola po tjedan dana, a svaki se tjedan rješava optimizacijski zadatak druge vrste. Možeš se
           prijaviti kao školarac, student prediplomskog ili student diplomskog studija te se natječeš u svojoj
@@ -17,8 +17,10 @@ const About = () => {
           čaroliji blagdanskog programiranja!
         </p>
 
-        <b>ORGANIZATORI</b>
-        <p className="leading-8 tracking-wide">
+        <p className="pt-8">
+          <b>ORGANIZATORI</b>
+        </p>
+        <p className="pb-8 leading-8 tracking-wide">
           <b>X.FER</b>
           je studentska udruga na Fakultetu elektrotehnike i računarstva nastala s ciljem provođenja vještine
           Natjecateljsko programiranje na FER-u. Polaznici vještine se upoznaju s primjenom algoritama u rješavanju

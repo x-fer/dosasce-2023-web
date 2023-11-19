@@ -12,10 +12,12 @@ export default {
         'light-blue': '#2CC2D9',
         'dark-red': '#8F000A',
         'dark-white': '#FFD6D9',
+        'santa-dark': '#152739',
+        'light-red': '#FBD3D9',
       },
       backgroundImage: {
         // 'hero-pattern': "url('@/assets/BackgroundIcons.png')",
-        // 'snow-pattern': "url('@/assets/BackgroundSnow.png')",
+        'snow-pattern': "url('@/assets/BackgroundSnow.png')",
         'background-color': 'white',
       },
       animation: {
