@@ -31,8 +31,8 @@ const TimelineCard = (props: TimelineCardProps) => {
 
       <div className="flex h-48 w-80 flex-col items-center justify-center rounded-3xl border-8 border-red bg-white p-4">
         <h1 className="mb-2 text-5xl">{props.name}</h1>
-        <p className="text-3xl">{props.startDate}</p>
-        <p className="text-3xl">{props.endDate}</p>
+        <p className="paragraph text-2xl">{props.startDate}</p>
+        <p className="paragraph text-2xl">{props.endDate}</p>
       </div>
     </div>
   )

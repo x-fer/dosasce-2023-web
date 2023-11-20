@@ -20,6 +20,14 @@ body,
   box-sizing: border-box;
 }
 
+.paragraph {
+  font-family: 'Albert Sans';
+}
+
+.monomaniac {
+  font-family: 'Monomaniac One';
+}
+
 @layer base {
   @font-face {
     font-family: 'Monomaniac One';
