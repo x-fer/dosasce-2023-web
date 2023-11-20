@@ -24,7 +24,7 @@ const Home = () => {
             <div className="font-monomaniac flex flex-col text-red">
               <p className="text-2xl">Dobrodošli na</p>
 
-              <p className="text-7xl">došašće++</p>
+              <p className="mt-[-12px] text-7xl">došašće++</p>
               <p className="text-xl">Božićno natjecanje: Kodirajte čaroliju!</p>
 
               {/* <button className="mt-[8px] w-max rounded-[8px] border-[2px] border-red px-[16px] pb-[2px] hover:opacity-75">
