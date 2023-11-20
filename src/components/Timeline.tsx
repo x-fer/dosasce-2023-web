@@ -10,7 +10,11 @@ type TimelineCardProps = {
 
 const TimelineCard = (props: TimelineCardProps) => {
   return (
-    <div className={`flex w-full items-center md:w-[768px] md:justify-end ${props.left ? 'md:flex-row-reverse' : ''} `}>
+    <div
+      className={`flex w-full items-center justify-center md:w-[768px] md:justify-end ${
+        props.left ? 'md:flex-row-reverse' : ''
+      } `}
+    >
       {props.image ? <img src={props.image} className="mx-14 hidden w-64 md:block" /> : <></>}
 
       <div className="relative h-64 w-8 shrink-0">
@@ -38,8 +42,8 @@ const Timeline = () => {
   return (
     <>
       <div className="w-full bg-white">
-        <div className="bg-snow-pattern w-full">
-          <div className="relative flex flex-col items-center px-4">
+        <div className="w-full bg-snow-pattern">
+          <div className="relative flex flex-col items-center justify-center px-4">
             <TimelineCard name="Zadatak 1" startDate=" Od 30.11." endDate="Do 6.12." image={Trees} left />
             <TimelineCard name="Zadatak 2" startDate="Od 7.12." endDate="Do 13.12." image={Mistletoe} />
             <TimelineCard name="Zadatak 3" startDate="Od 14.12." endDate="Do 20.12." image={Snowman} left />

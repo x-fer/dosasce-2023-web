@@ -1,13 +1,4 @@
-import {
-  Background,
-  Footer,
-  Informations,
-  Partners,
-  Separator_1,
-  Separator_2,
-  Separator_3,
-  Timeline,
-} from '@/components'
+import { Background, Footer, Informations, Organisators, Partners, Separator, Timeline } from '@/components'
 
 const Home = () => {
   return (
@@ -34,15 +25,26 @@ const Home = () => {
           </div>
         </div>
       </Background>
-      <img src={Separator_1} />
+
+      <Separator />
+
       <Timeline />
-      <img src={Separator_2} />
+
+      <Separator />
+
       <Informations />
-      <img src={Separator_3} />
+
+      <Separator />
+
+      <Organisators />
+
       <Partners />
+
       <Footer />
     </main>
   )
 }
+
+// mozda dodati separator prije parnera, idk
 
 export default Home
