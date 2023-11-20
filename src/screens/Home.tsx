@@ -1,15 +1,4 @@
-import {
-  Background,
-  Footer,
-  Informations,
-  Organisators,
-  Partners,
-  Separator_1,
-  Separator_2,
-  Separator_3,
-  Separator,
-  Timeline,
-} from '@/components'
+import { Background, Footer, Informations, Organisators, Partners, Separator, Timeline } from '@/components'
 import santa from './../assets/santa.svg'
 
 const Home = () => {
