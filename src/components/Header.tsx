@@ -9,7 +9,7 @@ const Header = () => {
 
     console.log(credential)
 
-    http.post('/auth/google-login', credentialResponse).then(res => {
+    http.post('/auth/google-login', credentialResponse).then(() => {
       localStorage.setItem('SavedLoginToken', 'Bearer ' + credential)
 
       http.interceptors.request.use(config => {
