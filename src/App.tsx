@@ -6,6 +6,12 @@ import ErrorPage from './screens/ErrorPage'
 import { Header, ProblemRouter } from './components'
 
 function App() {
+  const token = localStorage.getItem('SavedLoginToken') || ''
+
+  if (token.length !== 0) {
+    console.log('NAPOKON - GOSPODIN TOKEN RADI')
+  }
+
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
