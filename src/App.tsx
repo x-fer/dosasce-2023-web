@@ -8,7 +8,7 @@ import { Header, ProblemRouter } from './components'
 function App() {
   return (
     <>
-      <GoogleOAuthProvider clientId="891036883092-1ae2qsf49k29scimr8m3rekaf74ndbfj.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
         <Header />
         <BrowserRouter>
           <Routes>

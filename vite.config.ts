@@ -11,4 +11,5 @@ export default defineConfig({
       { find: '@icons', replacement: path.resolve(__dirname, 'src/assets/icons') },
     ],
   },
+  server: { port: 8080 },
 })
