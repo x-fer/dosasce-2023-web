@@ -19,6 +19,12 @@ const Background = ({ children }: { children: ReactNode }) => {
         <BackgroundIconRow animate="left" />
         <BackgroundIconRow animate="right" />
         <BackgroundIconRow animate="left" />
+        <BackgroundIconRow animate="right" />
+        <BackgroundIconRow animate="left" />
+        <BackgroundIconRow animate="right" />
+        <BackgroundIconRow animate="left" />
+        <BackgroundIconRow animate="right" />
+        <BackgroundIconRow animate="left" />
       </div>
       <>{children}</>
     </div>
