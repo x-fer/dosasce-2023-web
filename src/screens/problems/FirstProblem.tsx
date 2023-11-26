@@ -2,7 +2,7 @@ import { Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
 
 const FirstProblem = () => {
-  const sarme = <img src={Sarme} alt="Sarme" className="max-h-[400px] rounded-t-md" />
+  const sarme = <img src={Sarme} alt="Sarme" className=" w-full rounded-t-md" />
 
   return (
     <ProblemPage image={sarme}>
