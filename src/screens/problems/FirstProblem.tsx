@@ -1,8 +1,33 @@
 import { Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
+import { cn } from '@/utils/utils'
+import { useState } from 'react'
 
 const FirstProblem = () => {
   const sarme = <img src={Sarme} alt="Sarme" className=" w-full rounded-t-md" />
+
+  const [rjesenje, setRjesenje] = useState('')
+  const [bodovi, setBodovi] = useState(localStorage.getItem('prob1') || '')
+
+  const provjeriRjesenje = () => {
+    const base64 = btoa(rjesenje)
+    fetch(import.meta.env.VITE_API_ENDPOINT + '/submit', {
+      // sazanj koji je problem id
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ rjesenje: base64 }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'OK') {
+          localStorage.setItem('prob1', res.bodovi)
+          setBodovi(res.bodovi)
+        }
+      })
+  }
 
   return (
     <ProblemPage image={sarme}>
@@ -40,9 +65,24 @@ const FirstProblem = () => {
       <Title type="subtitle" className="mb-5 mt-5">
         Rješenje
       </Title>
-      <form>
-        <input id="rjesenje" className="rounded-md border-2 border-solid border-light-red px-1"></input>
-      </form>
+
+      <input
+        id="rjesenje"
+        className=" rounded-md border-2 border-solid border-light-red px-1"
+        onChange={e => setRjesenje(e.target.value)}
+      />
+      <button
+        type="button"
+        title="Provjeri svoje rješenje"
+        className={cn(
+          'ml-2 h-7  rounded-md border-2 border-solid border-red bg-red px-2 text-center text-white',
+          rjesenje.length === 0 && 'cursor-not-allowed border-red bg-white text-red'
+        )}
+        onClick={provjeriRjesenje}
+        disabled={rjesenje.length === 0}
+      >
+        Provjeri
+      </button>
     </ProblemPage>
   )
 }
