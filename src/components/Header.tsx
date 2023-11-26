@@ -17,7 +17,7 @@ const Header = () => {
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
-      <GoogleLogin onSuccess={onSuccess} shape="pill" />
+      <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
     </header>
   )
 }
