@@ -13,7 +13,7 @@ const FirstProblem = () => {
     const rjesenjeCode = getRjesenjeCode(rjesenje)
 
     const base64 = btoa(rjesenjeCode)
-    fetch(import.meta.env.VITE_API_ENDPOINT + '/251833970424025088', {
+    fetch(import.meta.env.VITE_API_ENDPOINT + 'api/submission/251833970424025088', {
       method: 'POST',
       headers: {
         Authorization: `${localStorage.getItem('SavedLoginToken')}`,
