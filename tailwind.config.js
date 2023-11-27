@@ -24,6 +24,9 @@ export default {
         moveLeft: 'moveLeft 50s linear infinite',
         moveRight: 'moveRight 50s linear infinite',
       },
+      transitionProperty: {
+        accordionItem: 'padding, color, max-height',
+      },
       keyframes: {
         moveLeft: {
           '0%': {
