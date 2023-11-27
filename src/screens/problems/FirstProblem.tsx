@@ -10,9 +10,17 @@ const FirstProblem = () => {
       <Title type="title">Sarme</Title>
       <p className="paragraph">
         Ivan je napokon dočekao Božićnu sarmu. Ove je godine nagovorio mamu da skuha baš puno sarmi. Nakon što su svi
-        otišli spavati on je otišao u kuhinju, uzeo šeflju i krenuo trpati sarme u svoj tanjur, no nakon nekog vremena
-        je shvatio kako ovim tempom nikad neće izgrabiti sve sarme. Naime, Ivan želi sve sarme prebaciti u svoj tanjur u
-        što manje grabljenja, no kako ne zna optimalan način da to napravi zatražio je Vas za pomoć.
+        otišli spavati on je otišao u kuhinju, uzeo{' '}
+        <a
+          href="https://www.klubputnika.org/zbirka/putoskop/3822-seflja-paljak-kaciol-grabljaca-kutlaca-ili-pak-zaimaca"
+          className="text-red underline"
+          target="_blank"
+        >
+          šeflju
+        </a>{' '}
+        i krenuo trpati sarme u svoj tanjur, no nakon nekog vremena je shvatio kako ovim tempom nikad neće izgrabiti sve
+        sarme. Naime, Ivan želi sve sarme prebaciti u svoj tanjur u što manje grabljenja, no kako ne zna optimalan način
+        da to napravi zatražio je Vas za pomoć.
       </p>
       <p className="paragraph">
         Formalnije, lonac u kojem se nalaze sarme može se prikazati kartezijevim koordinatnim sustavom, svaka sarma
@@ -22,8 +30,10 @@ const FirstProblem = () => {
       </p>
       <Title type="subtitle">Ulazni podaci</Title>
       <p className="paragraph">
-        U prvom redu nalaze N i R - broj sarmi u loncu (N ≤ 10^6) te radijus šeflje (R ≤ 10^9) U idućih N redaka nalazi
-        se po 6 brojeva, 3 vrha svake sarme (x1,y1,x2,y2,x3,y3 ≤ 10^9).
+        U prvom redu nalaze N i R - broj sarmi u loncu (N ≤ <var>10</var>
+        <sup>6</sup>) te radijus šeflje (R ≤ <var>10</var>
+        <sup>9</sup>) U idućih N redaka nalazi se po 6 brojeva, 3 vrha svake sarme (x1,y1,x2,y2,x3,y3 ≤ <var>10</var>
+        <sup>9</sup>).
       </p>
       <Title type="subtitle">Izlazni podaci</Title>
       <p className="paragraph">
