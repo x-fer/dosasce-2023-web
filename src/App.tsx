@@ -34,7 +34,7 @@ export const extractUser = async (token: string) => {
   return tokenData
 }
 
-async function App() {
+function App() {
   const [token, setToken] = useState(localStorage.getItem('SavedLoginToken') || '')
 
   if (token.length !== 0) {
