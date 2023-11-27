@@ -33,6 +33,19 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
 
         return config
       })
+
+      //auto join xfer contest when logged in
+      fetch(import.meta.env.VITE_API_ENDPOINT + '/api/contest/join', {
+        method: 'POST',
+        headers: {
+          Authorization: `${localStorage.getItem('SavedLoginToken')}`,
+          'X-Kontestis-Org-Id': '245568648297582592',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          join_code: '0cc6c8fe0a27befb',
+        }),
+      })
     })
   }
 
