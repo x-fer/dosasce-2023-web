@@ -1,7 +1,8 @@
 import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
+import { Dispatch, SetStateAction } from 'react'
 
-const Header = () => {
+const Header = ({ setToken }: { setToken: Dispatch<SetStateAction<string>> }) => {
   const onSuccess = (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse
 
@@ -10,7 +11,9 @@ const Header = () => {
     console.log(credential)
 
     http.post('/auth/google-login', credentialResponse).then(() => {
-      localStorage.setItem('SavedLoginToken', 'Bearer ' + credential)
+      const bearer = 'Bearer ' + credential
+      localStorage.setItem('SavedLoginToken', bearer)
+      setToken(bearer)
 
       http.interceptors.request.use(config => {
         if (credential.length > 0) config.headers.set('Authorization', `Bearer ${credential}`)
