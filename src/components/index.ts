@@ -7,6 +7,8 @@ export { default as Organisators } from '@/components/Organisators'
 export { default as Separator } from '@/components/Separator'
 export { default as Partners } from '@/components/Partners'
 export { default as Background } from '@/components/Background'
+export { default as Contact } from '@/components/Contact'
+export { default as Accordion } from '@/components/Accordion'
 
 export { default as Trees } from '@/assets/Trees.png'
 export { default as Mistletoe } from '@/assets/Mistletoe.png'
