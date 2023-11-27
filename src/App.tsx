@@ -40,7 +40,7 @@ function App() {
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
         <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn }}>
-          <Header setToken={setToken} />
+          <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           <BrowserRouter>
             <Routes>
               <Route path="*" element={<ErrorPage />} />

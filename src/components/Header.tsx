@@ -4,8 +4,19 @@ import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
 import UserDropdown from './UserDropdown'
 
-const Header = ({ setToken }: { setToken: Dispatch<SetStateAction<string>> }) => {
+type HeaderType = {
+  setToken: Dispatch<SetStateAction<string>>
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>
+}
+
+const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
   const { isLoggedIn } = useContext(UserContext)
+
+  const logOut = () => {
+    localStorage.removeItem('SavedLoginToken')
+    setToken('')
+    setIsLoggedIn(false)
+  }
 
   const onSuccess = (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse
@@ -30,7 +41,7 @@ const Header = ({ setToken }: { setToken: Dispatch<SetStateAction<string>> }) =>
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
-      {!isLoggedIn ? <GoogleLogin onSuccess={onSuccess} shape="pill" /> : <UserDropdown />}
+      {!isLoggedIn ? <GoogleLogin onSuccess={onSuccess} shape="pill" /> : <UserDropdown logOut={logOut} />}
     </header>
   )
 }
