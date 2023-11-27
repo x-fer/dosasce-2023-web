@@ -1,14 +1,16 @@
+import { UserContext } from '@/App'
 import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useContext } from 'react'
+import UserDropdown from './UserDropdown'
 
 const Header = ({ setToken }: { setToken: Dispatch<SetStateAction<string>> }) => {
+  const { isLoggedIn } = useContext(UserContext)
+
   const onSuccess = (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse
 
     if (!credential) return
-
-    console.log(credential)
 
     http.post('/auth/google-login', credentialResponse).then(() => {
       const bearer = 'Bearer ' + credential
@@ -28,7 +30,7 @@ const Header = ({ setToken }: { setToken: Dispatch<SetStateAction<string>> }) =>
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
-      <GoogleLogin onSuccess={onSuccess} shape="pill" />
+      {!isLoggedIn ? <GoogleLogin onSuccess={onSuccess} shape="pill" /> : <UserDropdown />}
     </header>
   )
 }
