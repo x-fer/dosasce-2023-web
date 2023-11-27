@@ -1,15 +1,39 @@
+import { UserContext } from '@/App'
 import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
+import { Dispatch, SetStateAction, useContext } from 'react'
+import UserDropdown from './UserDropdown'
 
-const Header = () => {
+type HeaderType = {
+  setToken: Dispatch<SetStateAction<string>>
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>
+}
+
+const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
+  const { isLoggedIn } = useContext(UserContext)
+
+  const logOut = () => {
+    localStorage.removeItem('SavedLoginToken')
+    setToken('')
+    setIsLoggedIn(false)
+  }
+
   const onSuccess = (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse
 
     if (!credential) return
 
-    console.log(credential)
+    http.post('/auth/google-login', credentialResponse).then(() => {
+      const bearer = 'Bearer ' + credential
+      localStorage.setItem('SavedLoginToken', bearer)
+      setToken(bearer)
 
-    http.post('/auth/google-login', credentialResponse).then(response => console.log(response))
+      http.interceptors.request.use(config => {
+        if (credential.length > 0) config.headers.set('Authorization', `Bearer ${credential}`)
+
+        return config
+      })
+    })
   }
 
   return (
@@ -17,7 +41,7 @@ const Header = () => {
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
-      <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
+      {!isLoggedIn ? <GoogleLogin onSuccess={onSuccess} shape="pill" /> : <UserDropdown logOut={logOut} />}
     </header>
   )
 }

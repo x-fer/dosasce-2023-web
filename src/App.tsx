@@ -4,21 +4,53 @@ import Home from './screens/Home'
 import About from './screens/About'
 import ErrorPage from './screens/ErrorPage'
 import { Header, ProblemRouter } from './components'
+import { createContext, useEffect, useState } from 'react'
+import { extractUser } from './api/token'
+
+type UserType = {
+  name: string
+  email: string
+  avatar: string
+}
+
+type UserContextType = {
+  user?: UserType
+  isLoggedIn: boolean
+}
+
+export const UserContext = createContext<UserContextType>({ isLoggedIn: false })
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem('SavedLoginToken') || '')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [user, setUser] = useState<UserType | undefined>(undefined)
+
+  useEffect(() => {
+    const pureToken = token.replace('Bearer ', '')
+
+    extractUser(pureToken).then(result => {
+      if (result !== null) {
+        setUser({ name: result.name, email: result.email, avatar: result.picture })
+        setIsLoggedIn(true)
+      }
+    })
+  }, [token])
+
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
-        <Header />
-        <BrowserRouter>
-          <Routes>
-            <Route path="*" element={<ErrorPage />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/problem/:problem_id" element={<ProblemRouter />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </BrowserRouter>
-      </GoogleOAuthProvider>
+        <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn }}>
+          <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
+          <BrowserRouter>
+            <Routes>
+              <Route path="*" element={<ErrorPage />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/problem/:problem_id" element={<ProblemRouter />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </GoogleOAuthProvider>{' '}
     </>
   )
 }
