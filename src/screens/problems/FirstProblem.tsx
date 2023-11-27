@@ -17,6 +17,7 @@ const FirstProblem = () => {
       method: 'POST',
       headers: {
         Authorization: `${localStorage.getItem('SavedLoginToken')}`,
+        'X-Kontestis-Org-Id': '245568648297582592',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
