@@ -1,7 +1,7 @@
 import { Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
 import { cn } from '@/utils/utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const FirstProblem = () => {
   const sarme = <img src={Sarme} alt="Sarme" className=" w-full rounded-t-md" />
@@ -10,24 +10,41 @@ const FirstProblem = () => {
   const [bodovi, setBodovi] = useState(localStorage.getItem('prob1') || '')
 
   const provjeriRjesenje = () => {
-    const base64 = btoa(rjesenje)
-    fetch(import.meta.env.VITE_API_ENDPOINT + '/submit', {
-      // sazanj koji je problem id
+    const rjesenjeCode = getRjesenjeCode(rjesenje)
+
+    const base64 = btoa(rjesenjeCode)
+    fetch(import.meta.env.VITE_API_ENDPOINT + '/251833970424025088', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `${localStorage.getItem('SavedLoginToken')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ rjesenje: base64 }),
+      body: JSON.stringify({
+        language: 'python',
+        code: base64,
+      }),
     })
       .then(res => res.json())
       .then(res => {
         if (res.status === 'OK') {
-          localStorage.setItem('prob1', res.bodovi)
-          setBodovi(res.bodovi)
+          localStorage.setItem('prob1', res)
+          setBodovi(res)
         }
       })
   }
+
+  const getRjesenjeCode = (rjesenje: string) => {
+    return 'print("' + rjesenje + '")'
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('prob1')) {
+      setBodovi(localStorage.getItem('prob1') || '0')
+    } else {
+      localStorage.setItem('prob1', '0')
+      setBodovi('0')
+    }
+  }, [])
 
   return (
     <ProblemPage image={sarme}>
@@ -62,9 +79,14 @@ const FirstProblem = () => {
         i-tog grabljenja na maksimalno 6 decimala.
       </p>
 
-      <Title type="subtitle" className="mb-5 mt-5">
-        Rješenje
-      </Title>
+      <div className="flex ">
+        <Title type="subtitle" className="mb-5 mt-5">
+          Rješenje
+        </Title>
+        <p className="mb-5 ml-2 mt-5 text-xl md:text-2xl lg:text-3xl">
+          (Bodovi: <span className="text-red">{bodovi}</span>)
+        </p>
+      </div>
 
       <input
         id="rjesenje"
