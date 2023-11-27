@@ -43,7 +43,7 @@ const SolutionBox = ({ problem }: { problem: string }) => {
         id="rjesenje"
         contentEditable
         required
-        className="h-[400px] max-w-[400px] resize-none rounded-md border-2 border-solid border-red p-1 md:w-[400px]"
+        className="paragraph h-[400px] max-w-[400px] resize-none rounded-md border-2 border-solid border-red p-1 md:w-[400px]"
         onChange={e => setRjesenje(e.target.value)}
       />
       <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
