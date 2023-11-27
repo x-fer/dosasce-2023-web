@@ -34,7 +34,7 @@ const FirstProblem = () => {
   }
 
   const getRjesenjeCode = (rjesenje: string) => {
-    return 'print("' + rjesenje + '")'
+    return `print('` + rjesenje + `')`
   }
 
   useEffect(() => {
