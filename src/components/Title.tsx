@@ -7,7 +7,9 @@ const Title = ({ type, children, className }: { type: titleType; children: React
     <p
       className={cn(
         className,
-        type === 'title' ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-xl md:text-2xl lg:text-3xl'
+        type === 'title'
+          ? 'mb-6 text-3xl md:mb-10 md:text-4xl lg:text-5xl'
+          : 'mb-4 mt-5 text-xl md:text-2xl lg:text-3xl'
       )}
     >
       {children}

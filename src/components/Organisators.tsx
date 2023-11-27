@@ -1,7 +1,7 @@
 const Organisators = () => {
   return (
-    <div className="flex w-full flex-col items-center justify-center bg-white pb-8">
-      <div className="w-3/4 p-3 text-xl">
+    <div className="flex w-full flex-col items-center justify-center bg-white">
+      <div className="w-full px-8 py-3 text-xl md:w-3/4 md:px-0">
         <h2 className="pb-5 pt-5 text-4xl font-extrabold leading-8 tracking-wide">ORGANIZATORI</h2>
         <p className="paragraph pb-5 leading-8 tracking-wide">
           <b className="font-black">X.FER</b> studentska je udruga na Fakultetu elektrotehnike i računarstva nastala s
