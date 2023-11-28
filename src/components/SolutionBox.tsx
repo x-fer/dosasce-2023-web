@@ -1,9 +1,11 @@
+import { getZadatakDescription } from '@/utils/dates'
 import { cn } from '@/utils/utils'
 import { useState } from 'react'
 
-const SolutionBox = ({ problem }: { problem: string }) => {
+const SolutionBox = ({ number }: { number: number }) => {
   const [rjesenje, setRjesenje] = useState('')
-  const [bodovi, setBodovi] = useState(localStorage.getItem(problem) || 'x')
+  const zad = getZadatakDescription(number)
+  const [bodovi, setBodovi] = useState(localStorage.getItem(zad) || 'x')
   const [isSending, setIsSending] = useState(false)
 
   const provjeriRjesenje = () => {
@@ -46,20 +48,30 @@ const SolutionBox = ({ problem }: { problem: string }) => {
         className="paragraph h-[400px] max-w-[400px] resize-none rounded-md border-2 border-solid border-red p-1 md:w-[400px]"
         onChange={e => setRjesenje(e.target.value)}
       />
-      <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
-        <button
-          type="button"
-          title="Provjeri svoje rješenje"
-          className={cn(
-            'h-10 w-28 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:w-32 md:text-2xl',
-            (rjesenje.length === 0 || isSending) && 'cursor-not-allowed border-red bg-white text-red'
-          )}
-          onClick={provjeriRjesenje}
-          disabled={rjesenje.length === 0 || isSending}
-        >
-          Provjeri
-        </button>
-        <div className="flex items-center text-xl">Bodovi: {bodovi}/100</div>
+      <div className="flex flex-col gap-2">
+        <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
+          <button
+            type="button"
+            title="Provjeri svoje rješenje"
+            className={cn(
+              'h-10 w-28 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:w-32 md:text-2xl',
+              (rjesenje.length === 0 || isSending) && 'cursor-not-allowed border-red bg-white text-red'
+            )}
+            onClick={provjeriRjesenje}
+            disabled={rjesenje.length === 0 || isSending}
+          >
+            Provjeri
+          </button>
+          <div className="flex items-center text-xl">Bodovi: {bodovi}/100</div>
+        </div>
+        <div>
+          <a
+            href={`/leaderboard/${number}`}
+            className="paragraph cursor-pointer text-sm font-semibold leading-7 text-red underline"
+          >
+            Pregledaj ljestvicu!
+          </a>
+        </div>
       </div>
     </div>
   )

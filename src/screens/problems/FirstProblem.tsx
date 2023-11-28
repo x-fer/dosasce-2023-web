@@ -50,7 +50,7 @@ const FirstProblem = () => {
 
           <Title type="subtitle">Rješenje</Title>
 
-          <SolutionBox problem="zad1" />
+          <SolutionBox number={1} />
         </ProblemPage>
       ) : (
         <ZadatakComing number={1} />

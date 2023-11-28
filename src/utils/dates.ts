@@ -41,3 +41,16 @@ export const useZadActive = (number: number): boolean => {
 
   return now.getTime() >= zad.startDate.getTime() && now.getTime() <= zad.endDate!.getTime()
 }
+
+export const getZadatakDescription = (number: number): string => {
+  switch (number) {
+    case 1:
+      return 'Zadatak 1'
+    case 2:
+      return 'Zadatak 2'
+    case 3:
+      return 'Zadatak 3'
+    default:
+      return 'Dodjela'
+  }
+}
