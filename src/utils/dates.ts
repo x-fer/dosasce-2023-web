@@ -1,4 +1,4 @@
-interface problemDate {
+export interface problemDate {
   startDate: Date
   endDate?: Date
 }
@@ -20,4 +20,24 @@ export const zad3: problemDate = {
 
 export const dodjela: problemDate = {
   startDate: new Date('2023-12-21'),
+}
+
+export const getZad = (number: number): problemDate => {
+  switch (number) {
+    case 1:
+      return zad1
+    case 2:
+      return zad2
+    case 3:
+      return zad3
+    default:
+      return dodjela
+  }
+}
+
+export const useZadActive = (number: number): boolean => {
+  const now = new Date()
+  const zad = getZad(number)
+
+  return now.getTime() >= zad.startDate.getTime() && now.getTime() <= zad.endDate!.getTime()
 }
