@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import Home from './screens/Home'
-import About from './screens/About'
 import ErrorPage from './screens/ErrorPage'
 import { Header, ProblemRouter } from './components'
 import { createContext, useEffect, useState } from 'react'
 import { extractUser } from './api/token'
 import LeaderBoardRouter from './screens/leaderboard/LeaderBoardRouter'
 import Testcase from './screens/Testcase'
+import Uzrast from './screens/Uzrast'
+import About from './components/Informations'
 
 type UserType = {
   name: string
@@ -42,8 +43,8 @@ function App() {
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
         <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn }}>
-          <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
           <BrowserRouter>
+            <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
             <Routes>
               <Route path="*" element={<ErrorPage />} />
               <Route path="/" element={<Home />} />
@@ -52,10 +53,11 @@ function App() {
               <Route path="/about" element={<About />} />
 
               <Route path="/testcase" element={<Testcase />} />
+              <Route path="/uzrast" element={<Uzrast />} />
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>
-      </GoogleOAuthProvider>{' '}
+      </GoogleOAuthProvider>
     </>
   )
 }

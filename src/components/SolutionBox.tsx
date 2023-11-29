@@ -9,6 +9,8 @@ const SolutionBox = ({ number }: { number: number }) => {
   const [isSending, setIsSending] = useState(false)
 
   const provjeriRjesenje = () => {
+    alert('Rješenje poslano! Ivan ti šalje <3')
+
     setIsSending(true)
     const rjesenjeCode = getRjesenjeCode(rjesenje)
 
@@ -40,13 +42,21 @@ const SolutionBox = ({ number }: { number: number }) => {
     return `print('` + rjesenje + `')`
   }
   return (
-    <div className="flex flex-col gap-3 md:flex-row md:gap-2">
+    <div className="w-[100%]">
       <textarea
         id="rjesenje"
         contentEditable
         required
-        className="paragraph h-[400px] max-w-[400px] resize-none rounded-md border-2 border-solid border-red p-1 md:w-[400px]"
-        onChange={e => setRjesenje(e.target.value)}
+        className="paragraph h-[400px] w-full max-w-full resize-none rounded-md border-2 border-solid border-red p-1"
+        onChange={e => {
+          const lines = e.target.value.split('\n')
+          if (lines.length > 2 * 1e6) {
+            alert('Unos prevelik, možeš bolje siguno :D')
+            e.target.value = ''
+          } else {
+            setRjesenje(e.target.value)
+          }
+        }}
       />
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
@@ -54,22 +64,22 @@ const SolutionBox = ({ number }: { number: number }) => {
             type="button"
             title="Provjeri svoje rješenje"
             className={cn(
-              'h-10 w-28 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:w-32 md:text-2xl',
+              'h-10 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
               (rjesenje.length === 0 || isSending) && 'cursor-not-allowed border-red bg-white text-red'
             )}
             onClick={provjeriRjesenje}
             disabled={rjesenje.length === 0 || isSending}
           >
-            Provjeri
+            Pošalji rješenje
           </button>
           <div className="flex items-center text-xl">Bodovi: {bodovi}/100</div>
         </div>
         <div>
           <a
             href={`/leaderboard/${number}`}
-            className="paragraph cursor-pointer text-sm font-semibold leading-7 text-red underline"
+            className="paragraph text-md cursor-pointer font-semibold leading-7 text-red underline"
           >
-            Rang ljestvica
+            Rang lista!
           </a>
         </div>
       </div>

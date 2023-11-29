@@ -15,6 +15,7 @@ export { default as Mistletoe } from '@/assets/Mistletoe.png'
 export { default as Snowman } from '@/assets/Snowman.png'
 export { default as Presents } from '@/assets/Presents.png'
 export { default as Sarme } from '@/assets/images/problem1/sarme.jpg'
+export { default as GeoSarme } from '@/assets/images/problem1/geogebra_sarme.png'
 
 export { default as FerLogo } from '@/assets/FerLogo.png'
 export { default as XFERLogo } from '@/assets/XFERLogo.png'
