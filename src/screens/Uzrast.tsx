@@ -9,7 +9,7 @@ import ErrorPage from './ErrorPage'
 const Uzrast = () => {
   const [uzrast, setUzrast] = useState<string>()
   const { isLoggedIn, user } = useContext(UserContext)
-  const [showUzrast, setShowUzrast] = useState<boolean>(true)
+  const [showUzrast, setShowUzrast] = useState<boolean>(false)
   const navigate = useNavigate()
 
   const handleClick = () => {
