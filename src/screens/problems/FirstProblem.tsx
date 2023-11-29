@@ -1,4 +1,4 @@
-import { Sarme, Title } from '@/components'
+import { GeoSarme, Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
 import SolutionBox from '@/components/SolutionBox'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
@@ -6,7 +6,11 @@ import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
 
 const FirstProblem = () => {
-  const sarme = <img src={Sarme} alt="Sarme" className=" w-full rounded-t-md" />
+  const sarme = (
+    <div className="h-72 rounded-t-md">
+      <img src={Sarme} alt="Sarme" className="h-full max-h-full w-full max-w-full object-cover" />
+    </div>
+  )
 
   // const isZadActive = useZadActive(1)
   const isZadActive = true
@@ -38,7 +42,6 @@ const FirstProblem = () => {
           </p>
           <div className="flex items-center gap-4">
             <Title type="subtitle">Ulazni podaci</Title>
-            <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" />
           </div>
 
           <p className="paragraph">
@@ -53,6 +56,8 @@ const FirstProblem = () => {
             <sub>i2</sub> ≤ <var>10</var>
             <sup>9</sup>).
           </p>
+          <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" />
+
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
             U prvom se redu nalazi K - ukupan broj grabljenja sarmi.
@@ -61,20 +66,16 @@ const FirstProblem = () => {
             <sub>i</sub>, koordinate središta šeflje i-tog grabljenja zaokružene na maksimalno 6 decimala.
           </p>
 
-          <Title type="subtitle">Primjer</Title>
-          <Title type="subtitle2">Ulaz</Title>
-          <pre className="paragraph w-max bg-light-red">
-            {`2 2
-1 0 2 2
-3 3 4 4`}
-          </pre>
-
-          <Title type="subtitle2">Izlaz</Title>
-          <pre className="paragraph paragraph w-max bg-light-red px-4">
-            {`1
-1.5 3`}
-          </pre>
-
+          <div className="w-full">
+            <Title type="subtitle">Primjer</Title>
+            <Title type="subtitle2">Ulaz</Title>
+            <pre className="paragraph w-[100%] bg-light-red p-2">{`2 2\n1 0 2 2\n3 3 4 4`}</pre>
+            <Title type="subtitle2">Izlaz</Title>
+            <pre className="paragraph paragraph w-[100%] bg-light-red p-2">{`1\n1.5 3`}</pre>
+          </div>
+          <div className="mt-16 flex justify-center">
+            <img src={GeoSarme} alt="Geogebra_Sarme" className="max-h-72" />
+          </div>
           <Title type="subtitle">Rješenje</Title>
 
           <SolutionBox number={1} />
