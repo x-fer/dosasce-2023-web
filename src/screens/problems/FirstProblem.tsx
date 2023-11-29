@@ -48,12 +48,6 @@ const FirstProblem = () => {
             <sub>i2</sub> ≤ <var>10</var>
             <sup>9</sup>).
           </p>
-          <Title type="subtitle">Primjer ulaza</Title>
-          <pre className="paragraph w-max bg-light-red">
-            {`2 2
-1 0 2 2
-3 3 4 4`}
-          </pre>
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
             U prvom se redu nalazi K - ukupan broj grabljenja sarmi.
@@ -62,8 +56,16 @@ const FirstProblem = () => {
             <sub>i</sub>, koordinate središta šeflje i-tog grabljenja zaokružene na maksimalno 6 decimala.
           </p>
 
-          <Title type="subtitle">Primjer izlaza</Title>
-          <pre className="paragraph paragraph w-max bg-light-red">
+          <Title type="subtitle">Primjer</Title>
+          <Title type="subtitle2">Ulaz</Title>
+          <pre className="paragraph w-max bg-light-red">
+            {`2 2
+1 0 2 2
+3 3 4 4`}
+          </pre>
+
+          <Title type="subtitle2">Izlaz</Title>
+          <pre className="paragraph paragraph w-max bg-light-red px-4">
             {`1
 1.5 3`}
           </pre>
