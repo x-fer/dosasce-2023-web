@@ -1,6 +1,7 @@
 import { Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
 import SolutionBox from '@/components/SolutionBox'
+import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
 
@@ -35,7 +36,11 @@ const FirstProblem = () => {
             grabljenju Ivan postavlja šeflju na neke <b>realne</b> koordinate te grabi sve sarme koje šeflja dotiče
             svojom površinom. Vaš cilj je naći minimalan broj grabljenja takav da sve sarme završe u Ivanovom tanjuru.
           </p>
-          <Title type="subtitle">Ulazni podaci</Title>
+          <div className="flex items-center gap-4">
+            <Title type="subtitle">Ulazni podaci</Title>
+            <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" />
+          </div>
+
           <p className="paragraph">
             U prvom se redu nalaze N i R - broj sarmi u loncu (N ≤ <var>10</var>
             <sup>6</sup>) te radijus šeflje (R ≤ <var>10</var>
