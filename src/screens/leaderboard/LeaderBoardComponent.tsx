@@ -1,11 +1,36 @@
-import { useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from 'react'
 import ProblemPage from '@/components/ProblemPage'
 
-import { leaderboardData } from './leaderboard_data'
 import RadioButton from '@/components/RadioButton'
+import { getLeaderboard } from '@/api/repository'
 
 const LeaderBoardComponent = () => {
   const [activeLeaderboard, setactiveLeaderboard] = useState<number>(0)
+  const [leaderboardData, setLeaderboardData] = useState<any>()
+
+  useEffect(() => {
+    async function fetchData() {
+      getLeaderboard().then(res => {
+        res.json().then(data => {
+          const leaderboardData = JSON.parse(data?.data).json
+          console.log(leaderboardData)
+          setLeaderboardData(
+            leaderboardData.map((el: any) => {
+              return {
+                nickname: el.full_name,
+                points: Object.entries(el.score).reduce((acc, [, value]) => {
+                  return acc + (value as number)
+                }, 0),
+              }
+            })
+          )
+        })
+      })
+    }
+
+    fetchData()
+  }, [])
 
   const radioButtonData = [
     {
@@ -31,15 +56,16 @@ const LeaderBoardComponent = () => {
         <RadioButton data={radioButtonData} activeElement={activeLeaderboard} onChange={setactiveLeaderboard} />
 
         <div className="bg-slate-200 p-5">
-          {leaderboardData[activeLeaderboard]
-            .sort((a, b) => b.points - a.points)
-            .map((event, idx) => (
-              <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
-                <div className="mr-3 inline">{idx + 1}</div>
-                <div className="inline">{event.nickname}</div>
-                <div className="float-right inline ">{event.points} </div>
-              </div>
-            ))}
+          {leaderboardData?.length &&
+            leaderboardData[activeLeaderboard]
+              .sort((a: any, b: any) => b.points - a.points)
+              .map((event: any, idx: any) => (
+                <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
+                  <div className="mr-3 inline">{idx + 1}</div>
+                  <div className="inline">{event.nickname}</div>
+                  <div className="float-right inline ">{event.points} </div>
+                </div>
+              ))}
         </div>
       </div>
     </ProblemPage>
