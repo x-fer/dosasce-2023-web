@@ -69,7 +69,7 @@ const SolutionBox = ({ number }: { number: number }) => {
             href={`/leaderboard/${number}`}
             className="paragraph cursor-pointer text-sm font-semibold leading-7 text-red underline"
           >
-            Pregledaj ljestvicu!
+            Rang ljestvica
           </a>
         </div>
       </div>
