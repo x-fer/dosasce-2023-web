@@ -40,7 +40,7 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
       checkUserCategory(user!.email)
         .then(res => res.json())
         .then(data => {
-          if (data.category) {
+          if (data.email) {
             setIsLoggedIn(true)
             navigate('/uzrast')
           }
