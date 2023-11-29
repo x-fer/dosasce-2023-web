@@ -1,4 +1,4 @@
-import { submitUserCategory } from '@/api/repository'
+import { addToContest, submitUserCategory } from '@/api/repository'
 import ProblemPage from '@/components/ProblemPage'
 import { useContext, useState } from 'react'
 import { UserContext } from '@/App'
@@ -17,7 +17,7 @@ const Uzrast = () => {
       .then(res => res.json())
       .then(data => {
         if (data.category) {
-          navigate('/')
+          addToContest().then(() => navigate('/'))
         }
       })
   }
