@@ -10,7 +10,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   const zad = getZadatakDescription(number)
   const [bodovi, setBodovi] = useState(localStorage.getItem(zad) || 'x')
   const [isSending, setIsSending] = useState(false)
-  const { user } = useContext(UserContext)
+  const { user, isLoggedIn } = useContext(UserContext)
 
   const getCategory = () => {
     const category = checkUserCategory(user!.email)
@@ -46,6 +46,8 @@ const SolutionBox = ({ number }: { number: number }) => {
       })
   }
 
+  console.log('LOGIN', isLoggedIn)
+
   return (
     <div className="w-[100%]">
       <textarea
@@ -70,10 +72,10 @@ const SolutionBox = ({ number }: { number: number }) => {
             title="Provjeri svoje rješenje"
             className={cn(
               'h-10 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
-              (rjesenje.length === 0 || isSending) && 'cursor-not-allowed border-red bg-white text-red'
+              (rjesenje.length === 0 || isSending || !isLoggedIn) && 'cursor-not-allowed border-red bg-white text-red'
             )}
             onClick={provjeriRjesenje}
-            disabled={rjesenje.length === 0 || isSending}
+            disabled={rjesenje.length === 0 || isSending || !isLoggedIn}
           >
             Pošalji rješenje
           </button>

@@ -3,7 +3,6 @@ import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
 import UserDropdown from './UserDropdown'
-import { checkUserCategory } from '@/api/repository'
 import { useNavigate } from 'react-router-dom'
 
 type HeaderType = {
@@ -37,14 +36,9 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
         return config
       })
 
-      checkUserCategory(user!.email)
-        .then(res => res.json())
-        .then(data => {
-          if (data.email) {
-            setIsLoggedIn(true)
-            navigate('/uzrast')
-          }
-        })
+      if (!user!.hasSetCategory) {
+        navigate('/uzrast')
+      }
     })
   }
 

@@ -9,11 +9,14 @@ import LeaderBoardRouter from './screens/leaderboard/LeaderBoardRouter'
 import Testcase from './screens/Testcase'
 import Uzrast from './screens/Uzrast'
 import About from './components/Informations'
+import { checkUserCategory } from './api/repository'
 
 type UserType = {
   name: string
   email: string
   avatar: string
+  hasSetCategory: boolean
+  category?: string
 }
 
 type UserContextType = {
@@ -21,7 +24,10 @@ type UserContextType = {
   isLoggedIn: boolean
 }
 
-export const UserContext = createContext<UserContextType>({ isLoggedIn: false })
+export const UserContext = createContext<UserContextType>({
+  isLoggedIn: false,
+  user: undefined,
+})
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('SavedLoginToken') || '')
@@ -33,7 +39,21 @@ function App() {
 
     extractUser(pureToken).then(result => {
       if (result !== null) {
-        setUser({ name: result.name, email: result.email, avatar: result.picture })
+        checkUserCategory(result.email)
+          .then(res => res.json())
+          .then(data => {
+            if (data.category) {
+              setUser({
+                name: result.name,
+                email: result.email,
+                avatar: result.picture,
+                hasSetCategory: true,
+                category: data.category,
+              })
+            } else {
+              setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
+            }
+          })
         setIsLoggedIn(true)
       }
     })
