@@ -3,6 +3,8 @@ import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
 import UserDropdown from './UserDropdown'
+import { checkUserCategory } from '@/api/repository'
+import { useNavigate } from 'react-router-dom'
 
 type HeaderType = {
   setToken: Dispatch<SetStateAction<string>>
@@ -10,7 +12,8 @@ type HeaderType = {
 }
 
 const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
-  const { isLoggedIn } = useContext(UserContext)
+  const { isLoggedIn, user } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const logOut = () => {
     localStorage.removeItem('SavedLoginToken')
@@ -34,18 +37,15 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
         return config
       })
 
-      //auto join xfer contest when logged in
-      fetch(import.meta.env.VITE_API_ENDPOINT + '/api/contest/join', {
-        method: 'POST',
-        headers: {
-          Authorization: `${localStorage.getItem('SavedLoginToken')}`,
-          'X-Kontestis-Org-Id': '245568648297582592',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          join_code: '0cc6c8fe0a27befb',
-        }),
-      })
+      checkUserCategory(user!.email)
+        .then(res => res.json())
+        .then(data => {
+          if (data.category) {
+            setIsLoggedIn(true)
+          } else {
+            navigate('/uzrast')
+          }
+        })
     })
   }
 
@@ -54,7 +54,12 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
-      {!isLoggedIn ? <GoogleLogin onSuccess={onSuccess} shape="pill" /> : <UserDropdown logOut={logOut} />}
+
+      {!isLoggedIn ? (
+        <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
+      ) : (
+        <UserDropdown logOut={logOut} />
+      )}
     </header>
   )
 }
