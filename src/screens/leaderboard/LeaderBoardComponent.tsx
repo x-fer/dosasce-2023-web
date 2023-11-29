@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ProblemPage from '@/components/ProblemPage'
 
 import { leaderboardData } from './leaderboard_data'

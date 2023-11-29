@@ -33,10 +33,6 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
 
         return config
       })
-
-      // if (!user!.hasSetCategory) {
-      //   navigate('/uzrast')
-      // }
     })
   }
 
