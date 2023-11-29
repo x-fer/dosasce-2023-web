@@ -46,7 +46,7 @@ const FirstProblem = () => {
 
           <p className="paragraph">
             U prvom se redu nalaze N i R - broj sarmi u loncu (N ≤ <var>10</var>
-            <sup>6</sup>) te radijus šeflje (R ≤ <var>10</var>
+            <sup>5</sup>) te radijus šeflje (R ≤ <var>10</var>
             <sup>9</sup>).
             <br />U idućih N redaka nalaze se po 4 broja, donji lijevi i gornji desni kut i-te sarme (pravokutnika) (
             <var>X</var>
