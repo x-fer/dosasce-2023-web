@@ -1,12 +1,12 @@
 export const XFER_KONTESTIS_ORG_ID = '245568648297582592'
 
-export const CONTEST_ID = '252873507598241792'
+export const CONTEST_ID = '252933837913329664'
 export const PROBLEMS_ID: Record<number, Record<number, string>> = {
   1: {
     //redni broj zadatka
-    1: '252873735726436352', // srednja
-    2: '252873958762745856', // preddiplom
-    3: '252874041906434048', // diplom
+    1: '252935072326356992', // srednja
+    2: '252935072326356992', // preddiplom
+    3: '252935072326356992', // diplom
   },
   2: {},
   3: {},

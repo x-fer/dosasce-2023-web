@@ -3,7 +3,6 @@ import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
 import UserDropdown from './UserDropdown'
-import { useNavigate } from 'react-router-dom'
 
 type HeaderType = {
   setToken: Dispatch<SetStateAction<string>>
@@ -11,8 +10,7 @@ type HeaderType = {
 }
 
 const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
-  const { isLoggedIn, user } = useContext(UserContext)
-  const navigate = useNavigate()
+  const { isLoggedIn } = useContext(UserContext)
 
   const logOut = () => {
     localStorage.removeItem('SavedLoginToken')
@@ -35,10 +33,6 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
 
         return config
       })
-
-      if (!user!.hasSetCategory) {
-        navigate('/uzrast')
-      }
     })
   }
 

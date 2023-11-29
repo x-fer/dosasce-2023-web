@@ -17,7 +17,7 @@ const RadioButton = ({
           className={`m-0 inline-block border-2 border-red p-4 hover:bg-blue md:text-lg ${
             activeElement === entry.id ? 'bg-blue text-white' : 'bg-red text-white'
           }`}
-          onClick={e => onChange(entry.id)}
+          onClick={() => onChange(entry.id)}
         >
           {entry.title}
         </button>
