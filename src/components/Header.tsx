@@ -42,7 +42,6 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
         .then(data => {
           if (data.category) {
             setIsLoggedIn(true)
-          } else {
             navigate('/uzrast')
           }
         })
