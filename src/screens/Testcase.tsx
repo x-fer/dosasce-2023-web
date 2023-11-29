@@ -1,6 +1,6 @@
-import { http } from '@/api/http'
-import raw from '../../public/files/test123.txt'
+import raw from '../../public/files/saved_1e5.txt'
 import { useState } from 'react'
+import { JSON_HEADER } from '@/api/api'
 
 const Testcase = () => {
   const [formUrl, setFormUrl] = useState('')
@@ -10,17 +10,15 @@ const Testcase = () => {
 
     const ids = formUrl.split('/')
 
-    const credential = localStorage.getItem('SavedLoginToken') || ''
-
     fetch(raw)
       .then(r => r.text())
       .then(text => {
-        http.patch(`/problem/${ids[0]}/cluster/${ids[1]}/testcase/${ids[2]}`, { input: text }).then(() => {
-          http.interceptors.request.use(config => {
-            if (credential.length > 0) config.headers.set('Authorization', `${credential}`)
-
-            return config
-          })
+        fetch(`https://api.kontestis.ac/api/problem/${ids[0]}/cluster/${ids[1]}/testcase/${ids[2]}`, {
+          method: 'PATCH',
+          headers: JSON_HEADER,
+          body: JSON.stringify({
+            input: text,
+          }),
         })
       })
   }
