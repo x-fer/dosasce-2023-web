@@ -21,7 +21,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   }
 
   const getRjesenjeCode = (rjesenje: string) => {
-    return `print('` + rjesenje + `')`
+    return rjesenje
   }
 
   const provjeriRjesenje = async () => {

@@ -33,7 +33,7 @@ export const submitSolution = (problemId: string, code: string) => {
     method: 'POST',
     headers: JSON_HEADER,
     body: JSON.stringify({
-      language: 'python',
+      language: 'output-only',
       code: code,
     }),
   })
