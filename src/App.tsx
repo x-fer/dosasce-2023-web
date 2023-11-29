@@ -52,6 +52,7 @@ function App() {
               })
             } else {
               setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
+              window.location.href = '/uzrast'
             }
           })
         setIsLoggedIn(true)
