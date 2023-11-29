@@ -25,10 +25,10 @@ const Uzrast = () => {
   }
 
   useEffect(() => {
-    if (isLoggedIn && !user?.hasSetCategory) {
+    if (isLoggedIn && user?.hasSetCategory) {
       setShowUzrast(true)
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn, user?.hasSetCategory])
 
   return (
     <>
