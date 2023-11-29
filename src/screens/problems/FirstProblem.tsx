@@ -2,12 +2,13 @@ import { Sarme, Title } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
 import SolutionBox from '@/components/SolutionBox'
 import ZadatakComing from '@/components/ZadatakComing'
-import { useZadActive } from '@/utils/dates'
+// import { useZadActive } from '@/utils/dates'
 
 const FirstProblem = () => {
   const sarme = <img src={Sarme} alt="Sarme" className=" w-full rounded-t-md" />
 
-  const isZadActive = useZadActive(1)
+  // const isZadActive = useZadActive(1)
+  const isZadActive = true
 
   return (
     <>
