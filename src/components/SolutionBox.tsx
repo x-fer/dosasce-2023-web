@@ -1,32 +1,40 @@
+import { UserContext } from '@/App'
+import { checkUserCategory, submitSolution } from '@/api/repository'
 import { getZadatakDescription } from '@/utils/dates'
+import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 const SolutionBox = ({ number }: { number: number }) => {
   const [rjesenje, setRjesenje] = useState('')
   const zad = getZadatakDescription(number)
   const [bodovi, setBodovi] = useState(localStorage.getItem(zad) || 'x')
   const [isSending, setIsSending] = useState(false)
+  const { user } = useContext(UserContext)
 
-  const provjeriRjesenje = () => {
+  const getCategory = () => {
+    const category = checkUserCategory(user!.email)
+      .then(res => res.json())
+      .then(data => data.category)
+
+    return category
+  }
+
+  const getRjesenjeCode = (rjesenje: string) => {
+    return `print('` + rjesenje + `')`
+  }
+
+  const provjeriRjesenje = async () => {
     alert('Rješenje poslano! Ivan ti šalje <3')
 
     setIsSending(true)
     const rjesenjeCode = getRjesenjeCode(rjesenje)
 
     const base64 = btoa(rjesenjeCode)
-    fetch(import.meta.env.VITE_API_ENDPOINT + '/api/submission/251833970424025088', {
-      method: 'POST',
-      headers: {
-        Authorization: `${localStorage.getItem('SavedLoginToken')}`,
-        'X-Kontestis-Org-Id': '245568648297582592',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        language: 'python',
-        code: base64,
-      }),
-    })
+    const category = await getCategory()
+    const problemID = getProblemID(category, 1)
+
+    submitSolution(problemID, base64)
       .then(res => res.json())
       .then(res => {
         if (res.status === 'OK') {
@@ -38,9 +46,6 @@ const SolutionBox = ({ number }: { number: number }) => {
       })
   }
 
-  const getRjesenjeCode = (rjesenje: string) => {
-    return `print('` + rjesenje + `')`
-  }
   return (
     <div className="w-[100%]">
       <textarea

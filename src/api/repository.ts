@@ -28,14 +28,13 @@ export const submitUserCategory = (email: string, category: string) => {
   })
 }
 
-// export const submitSolution = () = {
-//   return fetch(R.submitSolution(), {
-//     method: 'POST',
-//     headers: JSON_HEADER,
-//     body: JSON.stringify({
-//       problem_id: '252873735726436352',
-//       language: 'python3',
-//       source: 'print("Hello World")',
-//     }),
-//   })
-// }
+export const submitSolution = (problemId: string, code: string) => {
+  return fetch(R.submissionOfSolution(problemId), {
+    method: 'POST',
+    headers: JSON_HEADER,
+    body: JSON.stringify({
+      language: 'python',
+      code: code,
+    }),
+  })
+}

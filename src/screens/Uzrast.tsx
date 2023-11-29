@@ -3,12 +3,7 @@ import ProblemPage from '@/components/ProblemPage'
 import { useContext, useState } from 'react'
 import { UserContext } from '@/App'
 import { useNavigate } from 'react-router-dom'
-
-const uzrasti = [
-  { id: 'ucenik', title: 'Učenik' },
-  { id: 'preddiplomski', title: 'Predddiplomski studij' },
-  { id: 'diplomski', title: 'Diplomski studij' },
-]
+import { uzrasti } from '@/utils/kontestis'
 
 const Uzrast = () => {
   const [uzrast, setUzrast] = useState<string>()
