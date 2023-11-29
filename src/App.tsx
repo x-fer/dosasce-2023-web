@@ -7,6 +7,7 @@ import { Header, ProblemRouter } from './components'
 import { createContext, useEffect, useState } from 'react'
 import { extractUser } from './api/token'
 import LeaderBoardRouter from './screens/leaderboard/LeaderBoardRouter'
+import Testcase from './screens/Testcase'
 
 type UserType = {
   name: string
@@ -49,6 +50,8 @@ function App() {
               <Route path="/problem/:problem_id" element={<ProblemRouter />} />
               <Route path="/leaderboard/:leaderboard_id" element={<LeaderBoardRouter />} />
               <Route path="/about" element={<About />} />
+
+              <Route path="/testcase" element={<Testcase />} />
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>
