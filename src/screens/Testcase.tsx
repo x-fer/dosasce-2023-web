@@ -10,10 +10,18 @@ const Testcase = () => {
 
     const ids = formUrl.split('/')
 
+    const credential = localStorage.getItem('SavedLoginToken') || ''
+
     fetch(raw)
       .then(r => r.text())
       .then(text => {
-        http.patch(`/problem/${ids[0]}/cluster/${ids[1]}/testcase/${ids[2]}`, { input: text }).then(() => {})
+        http.patch(`/problem/${ids[0]}/cluster/${ids[1]}/testcase/${ids[2]}`, { input: text }).then(() => {
+          http.interceptors.request.use(config => {
+            if (credential.length > 0) config.headers.set('Authorization', `${credential}`)
+
+            return config
+          })
+        })
       })
   }
 
