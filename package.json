@@ -13,7 +13,6 @@
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
-    "mathjax-react": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
