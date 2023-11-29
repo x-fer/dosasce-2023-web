@@ -9,6 +9,8 @@ const SolutionBox = ({ number }: { number: number }) => {
   const [isSending, setIsSending] = useState(false)
 
   const provjeriRjesenje = () => {
+    alert('Rješenje poslano! Ivan ti šalje <3')
+
     setIsSending(true)
     const rjesenjeCode = getRjesenjeCode(rjesenje)
 
@@ -46,7 +48,15 @@ const SolutionBox = ({ number }: { number: number }) => {
         contentEditable
         required
         className="paragraph h-[400px] w-full max-w-full resize-none rounded-md border-2 border-solid border-red p-1"
-        onChange={e => setRjesenje(e.target.value)}
+        onChange={e => {
+          const lines = e.target.value.split('\n')
+          if (lines.length > 2 * 1e6) {
+            alert('Unos prevelik, možeš bolje siguno :D')
+            e.target.value = ''
+          } else {
+            setRjesenje(e.target.value)
+          }
+        }}
       />
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
