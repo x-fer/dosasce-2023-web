@@ -32,7 +32,7 @@ const Uzrast = () => {
 
             <div>
               <label className="paragraph text-lg text-gray-600 md:text-xl">
-                Molimo Vas da odaberte svoj uzrast kako biste se mogli natjecati.
+                Molimo Vas da odaberete svoj uzrast kako biste se mogli natjecati.
                 <br />
                 Prilikom dodjela nagrada provjerit ćemo ispravnost ovih informacija.
                 <br />
