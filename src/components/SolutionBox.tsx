@@ -10,10 +10,17 @@ const SolutionBox = ({ number }: { number: number }) => {
   const zad = getZadatakDescription(number)
   const [bodovi, setBodovi] = useState(localStorage.getItem(zad) || 'x')
   const [isSending, setIsSending] = useState(false)
+  const [isOutputValid, setIsOutputValid] = useState(false)
   const { user, isLoggedIn } = useContext(UserContext)
 
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const [infoMessage, setInfoMessage] = useState('')
+
+  const hasMaxDecimals = (number: Number, maxDecimals: Number) => {
+    const regex = new RegExp(`^-?\\d+(\\.\\d{1,${maxDecimals}})?$`)
+    return regex.test(number.toString())
+  }
 
   const getCategory = () => {
     if (!user?.email) return null
@@ -27,6 +34,41 @@ const SolutionBox = ({ number }: { number: number }) => {
 
   const getRjesenjeCode = (rjesenje: string) => {
     return rjesenje
+  }
+
+  const validateOutput = (rjesenje: string) => {
+    const lines = rjesenje.trim().split('\n')
+
+    if (lines[0].trim().split(' ').length != 1) return false
+
+    const fk = parseFloat(lines[0])
+    if (!Number.isInteger(fk)) return false
+
+    const k = Math.floor(fk)
+
+    if (isNaN(k) || k <= 0 || k > 1e5) return false
+
+    if (lines.length !== k + 1) {
+      return false
+    }
+
+    for (let i = 1; i <= k; i++) {
+      const [x, y] = lines[i].trim().split(' ').map(Number)
+      if (
+        isNaN(x) ||
+        isNaN(y) ||
+        x < 0 ||
+        x > 1e9 ||
+        y < 0 ||
+        y > 1e9 ||
+        !hasMaxDecimals(x, 6) ||
+        !hasMaxDecimals(y, 6)
+      ) {
+        return false
+      }
+    }
+
+    return true
   }
 
   const provjeriRjesenje = async () => {
@@ -77,6 +119,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   return (
     <div className="w-[100%]">
       <div className="relative">
+        <div className="text-red">{infoMessage}</div>
         <textarea
           id="rjesenje"
           contentEditable
@@ -89,6 +132,13 @@ const SolutionBox = ({ number }: { number: number }) => {
               e.target.value = ''
             } else {
               setRjesenje(e.target.value)
+              if (validateOutput(e.target.value)) {
+                setIsOutputValid(true)
+                setInfoMessage('')
+              } else {
+                setIsOutputValid(false)
+                setInfoMessage('Format outputa nije zadovoljen, pogledajte uputstva za izlazne podatke')
+              }
             }
           }}
         />
@@ -107,10 +157,11 @@ const SolutionBox = ({ number }: { number: number }) => {
             title="Provjeri svoje rješenje"
             className={cn(
               'h-10 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
-              (rjesenje.length === 0 || isSending || !isLoggedIn) && 'cursor-not-allowed border-red bg-white text-red'
+              (rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid) &&
+                'cursor-not-allowed border-red bg-white text-red'
             )}
             onClick={provjeriRjesenje}
-            disabled={rjesenje.length === 0 || isSending || !isLoggedIn}
+            disabled={rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid}
           >
             Pošalji rješenje
           </button>
