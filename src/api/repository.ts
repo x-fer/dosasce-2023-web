@@ -12,14 +12,8 @@ export const addToContest = () => {
   })
 }
 
-export const checkUserCategory = (email: string) => {
-  return fetch(R.userCategoryEmail(email), {
-    method: 'GET',
-  })
-}
-
-export const checkUserCategories = (emails: string[]) => {
-  return fetch(R.userCategories(emails), {
+export const checkUserCategories = (emails?: string[]) => {
+  return fetch(R.userCategories(emails ?? ['none']), {
     method: 'GET',
   })
 }

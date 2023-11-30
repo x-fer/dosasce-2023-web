@@ -9,7 +9,7 @@ import LeaderBoardRouter from './screens/leaderboard/LeaderBoardRouter'
 import Testcase from './screens/Testcase'
 import Uzrast from './screens/Uzrast'
 import About from './components/Informations'
-import { checkUserCategory } from './api/repository'
+import { checkUserCategories } from './api/repository'
 
 type UserType = {
   name: string
@@ -22,50 +22,58 @@ type UserType = {
 type UserContextType = {
   user?: UserType
   isLoggedIn: boolean
+  categoryData?: Record<string, string> // Data for *ALL* users
 }
 
 export const UserContext = createContext<UserContextType>({
   isLoggedIn: false,
   user: undefined,
+  categoryData: undefined,
 })
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('SavedLoginToken') || '')
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState<UserType | undefined>(undefined)
+  const [categoryData, setCategoryData] = useState<Record<string, string> | undefined>(undefined)
 
   useEffect(() => {
     const pureToken = token.replace('Bearer ', '')
 
     if (!isLoggedIn) {
-      extractUser(pureToken).then(result => {
-        if (result !== null) {
-          checkUserCategory(result.email)
-            .then(res => res.json())
-            .then(data => {
-              if (data.category) {
+      checkUserCategories(['none'])
+        .then(res => res.json())
+        .then(userCategoryData => {
+          // console.log('userCategoryData: ', userCategoryData)
+          setCategoryData(userCategoryData)
+
+          extractUser(pureToken).then(result => {
+            if (result !== null) {
+              const userCategory = userCategoryData[result.email]
+
+              if (userCategory) {
                 setUser({
                   name: result.name,
                   email: result.email,
                   avatar: result.picture,
                   hasSetCategory: true,
-                  category: data.category,
+                  category: userCategory,
                 })
               } else {
                 setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
                 if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
               }
               setIsLoggedIn(true)
-            })
-        }
-      })
+            }
+          })
+        })
     }
   }, [token])
 
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
-        <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn }}>
+        <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn, categoryData: categoryData }}>
           <BrowserRouter>
             <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
             <Routes>
