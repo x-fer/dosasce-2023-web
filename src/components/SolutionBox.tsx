@@ -46,25 +46,32 @@ const SolutionBox = ({ number }: { number: number }) => {
       })
   }
 
-  console.log('LOGIN', isLoggedIn)
-
   return (
     <div className="w-[100%]">
-      <textarea
-        id="rjesenje"
-        contentEditable
-        required
-        className="paragraph h-[400px] w-full max-w-full resize-none rounded-md border-2 border-solid border-red p-1"
-        onChange={e => {
-          const lines = e.target.value.split('\n')
-          if (lines.length > 2 * 1e6) {
-            alert('Unos prevelik, možeš bolje siguno :D')
-            e.target.value = ''
-          } else {
-            setRjesenje(e.target.value)
-          }
-        }}
-      />
+      <div className="relative">
+        <textarea
+          id="rjesenje"
+          contentEditable
+          required
+          className="paragraph relative h-[400px] w-full max-w-full resize-none rounded-md border-2 border-solid border-red p-1"
+          onChange={e => {
+            const lines = e.target.value.split('\n')
+            if (lines.length > 2 * 1e6) {
+              alert('Unos prevelik, možeš bolje sigurno :D')
+              e.target.value = ''
+            } else {
+              setRjesenje(e.target.value)
+            }
+          }}
+        />
+        {isSending && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="z-30 inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-red border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        )}
+      </div>
       <div className="flex flex-col gap-2">
         <div className="flex flex-row gap-2 text-start md:flex-col md:gap-3">
           <button
