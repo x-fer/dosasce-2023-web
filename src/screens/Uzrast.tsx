@@ -1,6 +1,6 @@
 import { addToContest, submitUserCategory } from '@/api/repository'
 import ProblemPage from '@/components/ProblemPage'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { UserContext } from '@/App'
 import { useNavigate } from 'react-router-dom'
 import { uzrasti } from '@/utils/kontestis'
@@ -9,7 +9,6 @@ import ErrorPage from './ErrorPage'
 const Uzrast = () => {
   const [uzrast, setUzrast] = useState<string>()
   const { isLoggedIn, user } = useContext(UserContext)
-  const [showUzrast, setShowUzrast] = useState<boolean>(false)
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -24,16 +23,9 @@ const Uzrast = () => {
       })
   }
 
-  useEffect(() => {
-    if (isLoggedIn && !user?.hasSetCategory) {
-      console.log('show uzrast')
-      setShowUzrast(true)
-    }
-  }, [isLoggedIn, user?.hasSetCategory])
-
   return (
     <>
-      {showUzrast ? (
+      {isLoggedIn && !user?.hasSetCategory ? (
         <ProblemPage>
           <div className="flex-grow sm:flex-col sm:items-center sm:justify-center md:p-10">
             <h1 className="mb-6 text-4xl md:mb-10 md:text-7xl">Uzrast natjecatelja</h1>

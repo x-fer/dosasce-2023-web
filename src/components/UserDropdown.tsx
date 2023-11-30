@@ -15,7 +15,7 @@ const UserDropdown = ({ logOut }: { logOut: () => void }) => {
       </button>
       {isOpen && (
         <div
-          className="absolute right-0 top-14 flex h-14 w-32 items-center justify-center rounded-bl-xl bg-red text-white hover:underline"
+          className="absolute right-0 top-14 flex h-14 w-32 cursor-pointer items-center justify-center rounded-bl-xl bg-red text-white hover:underline"
           onClick={logOut}
         >
           Log out
