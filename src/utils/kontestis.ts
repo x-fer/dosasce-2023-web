@@ -1,9 +1,8 @@
 export const XFER_KONTESTIS_ORG_ID = '245568648297582592'
 
-export const CONTEST_ID = '252933837913329664'
 export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
   1: {
-    id: '252933837913329664',
+    id: '252933837913329664', //contest id
     1: '252935072326356992', // srednja
     2: '252935072326356992', // preddiplom
     3: '252935072326356992', // diplom
