@@ -70,6 +70,11 @@ const FirstProblem = () => {
             <sup>9</sup>), koordinate središta šeflje i-tog grabljenja zaokružene na maksimalno 6 decimala.
           </p>
 
+          <p className="paragraph">
+            Broj bodova računa se kao <var>10</var>
+            <sup>5</sup>-K. Ukoliko rješenje daje WA (niste ugrabili sve sarme), dobivate 0 bodova.
+          </p>
+
           <div className="w-full">
             <Title type="subtitle">Primjer</Title>
             <Title type="subtitle2">Ulaz</Title>

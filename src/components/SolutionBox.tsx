@@ -5,11 +5,6 @@ import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
 import { useContext, useState } from 'react'
 
-/*
-TODO: u linijama 160 i 164 vraiti usklicnik ispred isLogged
-(ovo sam napravila da mogu testirat validator lokalno)
-*/
-
 const SolutionBox = ({ number }: { number: number }) => {
   const [rjesenje, setRjesenje] = useState('')
   const zad = getZadatakDescription(number)
@@ -124,7 +119,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   return (
     <div className="w-[100%]">
       <div className="relative">
-        <div className="text-red">VAŽNO! Evaluacija rješenja trenutno nije dostupna. {infoMessage}</div>
+        <div className="text-red">{infoMessage}</div>
         <textarea
           id="rjesenje"
           contentEditable
@@ -162,11 +157,11 @@ const SolutionBox = ({ number }: { number: number }) => {
             title="Provjeri svoje rješenje"
             className={cn(
               'h-10 rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
-              (rjesenje.length === 0 || isSending || isLoggedIn || !isOutputValid) &&
+              (rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid) &&
                 'cursor-not-allowed border-red bg-white text-red'
             )}
             onClick={provjeriRjesenje}
-            disabled={rjesenje.length === 0 || isSending || isLoggedIn || !isOutputValid}
+            disabled={rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid}
           >
             Pošalji rješenje
           </button>

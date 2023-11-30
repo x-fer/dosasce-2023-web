@@ -2,6 +2,7 @@ import { UserContext } from '@/App'
 import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
+import { Trophy } from 'lucide-react'
 import UserDropdown from './UserDropdown'
 
 type HeaderType = {
@@ -42,11 +43,19 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
         došašće++
       </a>
 
-      {!isLoggedIn ? (
-        <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
-      ) : (
-        <UserDropdown logOut={logOut} />
-      )}
+      <div>
+        <a href="/leaderboard/1" className="mr-7 inline-block cursor-pointer select-none align-top text-2xl underline">
+          <Trophy size={24} strokeWidth={3} className="inline-block" />
+          <p className="ml-1 hidden underline sm:inline-block">rang-lista</p>
+        </a>
+        <div className="inline-block">
+          {!isLoggedIn ? (
+            <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
+          ) : (
+            <UserDropdown logOut={logOut} />
+          )}
+        </div>
+      </div>
     </header>
   )
 }

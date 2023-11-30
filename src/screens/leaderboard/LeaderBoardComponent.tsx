@@ -92,7 +92,6 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
             if (radioButton.key === 'all') return true
             else return userCategoryData[leaderboardRow.email] === radioButton.key
           })
-          .sort((a: any, b: any) => b.points - a.points)
           .map((el: any) => ({
             ...el,
             points: el.points[problemId],
@@ -114,13 +113,15 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
           ) : (
             (leaderboardWithCategories?.length &&
               leaderboardWithCategories[activeLeaderboard]?.length &&
-              leaderboardWithCategories[activeLeaderboard].map((event: any, idx: any) => (
-                <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
-                  <div className="mr-3 inline">{idx + 1}</div>
-                  <div className="inline">{event.nickname}</div>
-                  <div className="float-right inline ">{event.points} </div>
-                </div>
-              ))) || <div className="text-left">Nema podataka</div>
+              leaderboardWithCategories[activeLeaderboard]
+                .sort((a: any, b: any) => b.points - a.points)
+                .map((event: any, idx: any) => (
+                  <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
+                    <div className="mr-3 inline">{idx + 1}</div>
+                    <div className="inline">{event.nickname}</div>
+                    <div className="float-right inline ">{event.points} </div>
+                  </div>
+                ))) || <div className="text-left">Nema podataka</div>
           )}
         </div>
       </div>
