@@ -45,8 +45,8 @@ export const submitSolution = (problemId: string, code: string) => {
   })
 }
 
-export const getLeaderboard = () => {
-  return fetch(R.leaderboard(getContestID(1)), {
+export const getLeaderboard = (problemNumber: number) => {
+  return fetch(R.leaderboard(getContestID(problemNumber)), {
     method: 'GET',
     headers: JSON_HEADER,
   })

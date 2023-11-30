@@ -5,8 +5,9 @@ import ProblemPage from '@/components/ProblemPage'
 
 import RadioButton from '@/components/RadioButton'
 import { checkUserCategories, getLeaderboard } from '@/api/repository'
+import { getProblemID } from '@/utils/kontestis'
 
-const LeaderBoardComponent = () => {
+const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
   const [activeLeaderboard, setactiveLeaderboard] = useState<number>(0)
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -41,20 +42,27 @@ const LeaderBoardComponent = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const leaderboardResponse = await getLeaderboard()
+      const leaderboardResponse = await getLeaderboard(problemNumber)
       const leaderboardJson = await leaderboardResponse.json()
       const leaderboardData = JSON.parse(leaderboardJson?.data).json
 
       setLeaderboardData(
-        leaderboardData.map((el: any) => {
-          return {
-            nickname: el.full_name,
-            email: el.email,
-            points: Object.entries(el.score).reduce((acc, [, value]) => {
-              return acc + (value as number)
-            }, 0),
-          }
-        })
+        leaderboardData
+          .filter((el: any) => {
+            return Object.keys(el.score ?? {}).length > 0
+          })
+          .map((el: any) => {
+            return {
+              nickname: el.full_name,
+              email: el.email,
+              points: {
+                ...el.score,
+                total: Object.entries(el.score).reduce((acc, [, value]) => {
+                  return acc + (value as number)
+                }, 0),
+              },
+            }
+          })
       )
 
       const userCategoriesResponse = await checkUserCategories(leaderboardData.map((el: any) => el.email))
@@ -76,12 +84,19 @@ const LeaderBoardComponent = () => {
   useEffect(() => {
     if (!leaderboardWithCategories && userCategoryData && leaderboardData) {
       const newLeaderboardWithCategories = radioButtonData.map(radioButton => {
+        let problemId = 'total'
+        if (radioButton.key !== 'all') problemId = getProblemID(radioButton.key, problemNumber)
+
         return leaderboardData
-          .filter((leaderboarRow: any) => {
+          .filter((leaderboardRow: any) => {
             if (radioButton.key === 'all') return true
-            else return userCategoryData[leaderboarRow.email] === radioButton.key
+            else return userCategoryData[leaderboardRow.email] === radioButton.key
           })
           .sort((a: any, b: any) => b.points - a.points)
+          .map((el: any) => ({
+            ...el,
+            points: el.points[problemId],
+          }))
       })
 
       setLeaderboardWithCategories(newLeaderboardWithCategories)

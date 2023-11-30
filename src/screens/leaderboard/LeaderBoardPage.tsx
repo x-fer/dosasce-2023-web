@@ -5,7 +5,7 @@ import LeaderBoardComponent from './LeaderBoardComponent'
 const LeaderBoardPage = ({ number }: { number: number }) => {
   const isActive = useZadActive(number)
 
-  return <>{isActive ? <LeaderBoardComponent /> : <LeaderBoardComing number={number} />}</>
+  return <>{isActive ? <LeaderBoardComponent problemNumber={number} /> : <LeaderBoardComing number={number} />}</>
 }
 
 export default LeaderBoardPage
