@@ -15,7 +15,7 @@ export const INVITE_CODE = '06a0b145745891e8'
 
 export const uzrasti = [
   { id: 'ucenik', title: 'Učenik', number: 1 },
-  { id: 'preddiplomski', title: 'Predddiplomski studij', number: 2 },
+  { id: 'preddiplomski', title: 'Preddiplomski studij', number: 2 },
   { id: 'diplomski', title: 'Diplomski studij', number: 3 },
 ]
 
