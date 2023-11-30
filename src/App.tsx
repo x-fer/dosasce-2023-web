@@ -37,8 +37,8 @@ function App() {
   useEffect(() => {
     const pureToken = token.replace('Bearer ', '')
 
-    extractUser(pureToken).then(result => {
-      if (!isLoggedIn) {
+    if (!isLoggedIn) {
+      extractUser(pureToken).then(result => {
         if (result !== null) {
           checkUserCategory(result.email)
             .then(res => res.json())
@@ -53,13 +53,13 @@ function App() {
                 })
               } else {
                 setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
-                window.location.href = '/uzrast'
+                if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
               }
+              setIsLoggedIn(true)
             })
-          setIsLoggedIn(true)
         }
-      }
-    })
+      })
+    }
   }, [token])
 
   return (
