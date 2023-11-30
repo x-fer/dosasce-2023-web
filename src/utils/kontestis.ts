@@ -1,9 +1,8 @@
 export const XFER_KONTESTIS_ORG_ID = '245568648297582592'
 
-export const CONTEST_ID = '252933837913329664'
-export const PROBLEMS_ID: Record<number, Record<number, string>> = {
+export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
   1: {
-    //redni broj zadatka
+    id: '252933837913329664', //contest id
     1: '252935072326356992', // srednja
     2: '252935072326356992', // preddiplom
     3: '252935072326356992', // diplom
@@ -24,4 +23,8 @@ export const getProblemID = (category: string, redniBrojZadatka: number) => {
   const categoryNumber = uzrasti.find(uzrast => uzrast.title === category)!.number
 
   return PROBLEMS_ID[redniBrojZadatka][categoryNumber]
+}
+
+export const getContestID = (brojZadatka: number) => {
+  return PROBLEMS_ID[brojZadatka].id
 }
