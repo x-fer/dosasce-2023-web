@@ -1,11 +1,13 @@
 import { UserContext } from '@/App'
-import { checkUserCategory, submitSolution } from '@/api/repository'
+import { submitSolution } from '@/api/repository'
 import { getZadatakDescription } from '@/utils/dates'
 import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
 import { useContext, useState } from 'react'
 
 const SolutionBox = ({ number }: { number: number }) => {
+  const { categoryData } = useContext(UserContext)
+
   const [rjesenje, setRjesenje] = useState('')
   const zad = getZadatakDescription(number)
   const [bodovi, setBodovi] = useState(localStorage.getItem(zad) || 'x')
@@ -17,7 +19,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   const [errorMessage, setErrorMessage] = useState('')
   const [infoMessage, setInfoMessage] = useState('')
 
-  const hasMaxDecimals = (number: Number, maxDecimals: Number) => {
+  const hasMaxDecimals = (number: number, maxDecimals: number) => {
     const regex = new RegExp(`^-?\\d+(\\.\\d{1,${maxDecimals}})?$`)
     return regex.test(number.toString())
   }
@@ -25,11 +27,7 @@ const SolutionBox = ({ number }: { number: number }) => {
   const getCategory = () => {
     if (!user?.email) return null
 
-    const category = checkUserCategory(user!.email)
-      .then(res => res.json())
-      .then(data => data.category)
-
-    return category
+    return categoryData?.[user?.email]
   }
 
   const getRjesenjeCode = (rjesenje: string) => {
@@ -77,7 +75,7 @@ const SolutionBox = ({ number }: { number: number }) => {
 
     const base64 = btoa(rjesenjeCode)
     const category = await getCategory()
-    const problemID = getProblemID(category, 1)
+    const problemID = getProblemID(category as string, 1)
 
     if (!base64 || !category || !problemID) {
       setMessage('')
