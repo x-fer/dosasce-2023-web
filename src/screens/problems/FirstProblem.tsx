@@ -45,11 +45,11 @@ const FirstProblem = () => {
           </div>
 
           <p className="paragraph">
-            U prvom se redu nalaze N i R - broj sarmi u loncu (N ≤ <var>10</var>
-            <sup>5</sup>) te radijus šeflje (R ≤ <var>10</var>
+            U prvom se redu nalaze N i R - broj sarmi u loncu (1 ≤ N ≤ <var>10</var>
+            <sup>5</sup>) te radijus šeflje (1 ≤ R ≤ <var>10</var>
             <sup>9</sup>).
-            <br />U idućih N redaka nalaze se po 4 broja, donji lijevi i gornji desni kut i-te sarme (pravokutnika) (
-            <var>X</var>
+            <br />U idućih N redaka nalaze se po 4 broja, donji lijevi i gornji desni kut i-te sarme (pravokutnika) ( 1
+            ≤ <var>X</var>
             <sub>i1</sub>, <var>Y</var>
             <sub>i1</sub>, <var>X</var>
             <sub>i2</sub>, <var>Y</var>
@@ -60,10 +60,14 @@ const FirstProblem = () => {
 
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
-            U prvom se redu nalazi K - ukupan broj grabljenja sarmi.
+            U prvom se redu nalazi K (1 ≤ K ≤ <var>10</var>
+            <sup>5</sup>) - ukupan broj grabljenja sarmi.
             <br />U idućih K redaka nalaze se po dva realna broja <var>X</var>
             <sub>i</sub> i <var>Y</var>
-            <sub>i</sub>, koordinate središta šeflje i-tog grabljenja zaokružene na maksimalno 6 decimala.
+            <sub>i</sub> ( 1 ≤ <var>X</var>
+            <sub>i</sub>, <var>Y</var>
+            <sub>i</sub> ≤ <var>10</var>
+            <sup>9</sup>), koordinate središta šeflje i-tog grabljenja zaokružene na maksimalno 6 decimala.
           </p>
 
           <div className="w-full">
