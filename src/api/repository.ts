@@ -1,6 +1,6 @@
 import * as R from './routes'
 import { JSON_HEADER } from './api'
-import { CONTEST_ID, INVITE_CODE } from '@/utils/kontestis'
+import { INVITE_CODE, getContestID } from '@/utils/kontestis'
 
 export const addToContest = () => {
   return fetch(R.joinContest(), {
@@ -40,7 +40,7 @@ export const submitSolution = (problemId: string, code: string) => {
 }
 
 export const getLeaderboard = () => {
-  return fetch(R.leaderboard(CONTEST_ID), {
+  return fetch(R.leaderboard(getContestID(1)), {
     method: 'GET',
     headers: JSON_HEADER,
   })
