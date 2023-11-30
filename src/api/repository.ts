@@ -18,6 +18,12 @@ export const checkUserCategory = (email: string) => {
   })
 }
 
+export const checkUserCategories = (emails: string[]) => {
+  return fetch(R.userCategories(emails), {
+    method: 'GET',
+  })
+}
+
 export const submitUserCategory = (email: string, category: string) => {
   return fetch(R.userCategory(), {
     method: 'POST',
