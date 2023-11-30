@@ -38,24 +38,26 @@ function App() {
     const pureToken = token.replace('Bearer ', '')
 
     extractUser(pureToken).then(result => {
-      if (result !== null) {
-        checkUserCategory(result.email)
-          .then(res => res.json())
-          .then(data => {
-            if (data.category) {
-              setUser({
-                name: result.name,
-                email: result.email,
-                avatar: result.picture,
-                hasSetCategory: true,
-                category: data.category,
-              })
-            } else {
-              setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
-              window.location.href = '/uzrast'
-            }
-          })
-        setIsLoggedIn(true)
+      if (!isLoggedIn) {
+        if (result !== null) {
+          checkUserCategory(result.email)
+            .then(res => res.json())
+            .then(data => {
+              if (data.category) {
+                setUser({
+                  name: result.name,
+                  email: result.email,
+                  avatar: result.picture,
+                  hasSetCategory: true,
+                  category: data.category,
+                })
+              } else {
+                setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
+                window.location.href = '/uzrast'
+              }
+            })
+          setIsLoggedIn(true)
+        }
       }
     })
   }, [token])
