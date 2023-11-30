@@ -12,7 +12,12 @@ const SolutionBox = ({ number }: { number: number }) => {
   const [isSending, setIsSending] = useState(false)
   const { user, isLoggedIn } = useContext(UserContext)
 
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+
   const getCategory = () => {
+    if (!user?.email) return null
+
     const category = checkUserCategory(user!.email)
       .then(res => res.json())
       .then(data => data.category)
@@ -25,8 +30,6 @@ const SolutionBox = ({ number }: { number: number }) => {
   }
 
   const provjeriRjesenje = async () => {
-    alert('Rješenje poslano! Ivan ti šalje <3')
-
     setIsSending(true)
     const rjesenjeCode = getRjesenjeCode(rjesenje)
 
@@ -34,16 +37,41 @@ const SolutionBox = ({ number }: { number: number }) => {
     const category = await getCategory()
     const problemID = getProblemID(category, 1)
 
-    submitSolution(problemID, base64)
-      .then(res => res.json())
-      .then(res => {
-        if (res.status === 'OK') {
-          setBodovi('0')
-        }
-      })
-      .finally(() => {
-        setIsSending(false)
-      })
+    if (!base64 || !category || !problemID) {
+      setMessage('')
+      setErrorMessage(
+        'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+      )
+      setIsSending(false)
+    } else {
+      setMessage('Rješenje se učitava...')
+      setErrorMessage('')
+
+      submitSolution(problemID, base64)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          if (res.status === 'OK' || res.status === 200 || res.status === 201) {
+            setBodovi('0')
+            setMessage('Rješenje poslano, pogledaj stanje na rang listi! Ivan ti šalje <3')
+          } else {
+            setMessage('')
+            setErrorMessage(
+              'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+            )
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          setMessage('')
+          setErrorMessage(
+            'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+          )
+        })
+        .finally(() => {
+          setIsSending(false)
+        })
+    }
   }
 
   return (
@@ -86,7 +114,9 @@ const SolutionBox = ({ number }: { number: number }) => {
           >
             Pošalji rješenje
           </button>
-          <div className="flex items-center text-xl">Bodovi: {bodovi}/100</div>
+          <div className="flex hidden items-center text-xl">Bodovi: {bodovi}/100</div>
+          <div className="flex items-center text-xl">{message}</div>
+          <div className="flex items-center text-xl text-red">{errorMessage}</div>
         </div>
         <div>
           <a
