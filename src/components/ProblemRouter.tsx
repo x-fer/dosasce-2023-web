@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import { FirstProblem, SecondProblem, ThirdProblem } from '@/screens/problems'
+import ErrorPage from '@/screens/ErrorPage'
 
 const ProblemRouter = () => {
   const { problem_id } = useParams()
@@ -12,6 +13,8 @@ const ProblemRouter = () => {
       return <SecondProblem />
     case '3':
       return <ThirdProblem />
+    default:
+      return <ErrorPage />
   }
 }
 export default ProblemRouter

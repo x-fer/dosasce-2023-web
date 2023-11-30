@@ -8,8 +8,7 @@ const Contact = () => {
     },
     {
       title: 'Kako se prijaviti?',
-      content:
-        'Prijave će se otvoriti nekoliko dana prije početka natjecanja, ali pridružiti se možete bilo kada za vrijeme cijelog trajanja natjecanja. Prijavljujete se putem svog Google računa ispunjavanjem obrasca na stranici.',
+      content: 'Prijaviti se možete korištenjem Google računa bilo kada za vrijeme cijelog trajanja natjecanja.',
     },
     {
       title: 'Koji se programski jezici/tehnologije mogu koristiti na natjecanju?',

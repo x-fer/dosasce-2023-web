@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Icon } from './Icon'
-import classNames from 'classnames'
+import { cn } from '@/utils/utils'
 
 type direction = 'left' | 'right'
 
@@ -11,10 +11,7 @@ const BackgroundIconRow: FC<Props> = ({ animate }) => {
   return (
     <div className="flex h-[100px] w-full">
       <div
-        className={classNames(
-          animate === 'left' ? 'animate-moveLeft' : 'animate-moveRight',
-          'flex  w-full whitespace-nowrap'
-        )}
+        className={cn(animate === 'left' ? 'animate-moveLeft' : 'animate-moveRight', 'flex  w-full whitespace-nowrap')}
       >
         <Icon icon="christmas-tree" className="block bg-light-red" size={'100px'} />
         <Icon icon="christmas-ball" className="bg-light-red" size={'100px'} />

@@ -1,14 +1,22 @@
+import { cn } from '@/utils/utils'
 import { Mistletoe, Presents, Snowman, Trees } from '.'
+import { useNavigate } from 'react-router-dom'
+import { zad1, zad2, zad3, dodjela } from '@/utils/dates'
 
 type TimelineCardProps = {
   name: string
-  startDate: string
-  endDate?: string
+  startDate: Date
+  endDate?: Date
   left?: true | false
   image?: string
+  number?: number
 }
 
 const TimelineCard = (props: TimelineCardProps) => {
+  const isLive = props.startDate && props.endDate && new Date() >= props.startDate && new Date() <= props.endDate
+
+  const navigate = useNavigate()
+
   return (
     <div
       className={`flex w-full items-center justify-center md:w-[768px] md:justify-end ${
@@ -29,10 +37,32 @@ const TimelineCard = (props: TimelineCardProps) => {
 
       <div className="h-2 w-12 bg-red" />
 
-      <div className="flex h-48 w-80 flex-col items-center justify-center rounded-3xl border-8 border-red bg-white p-4">
+      <div
+        className={cn(
+          'flex h-48 w-80 flex-col items-center justify-center rounded-3xl border-8 border-red bg-white p-4',
+          isLive && 'cursor-pointer'
+        )}
+        onClick={isLive ? () => navigate(`/problem/${props.number}`) : undefined}
+      >
         <h1 className="mb-2 text-5xl">{props.name}</h1>
-        <p className="paragraph text-2xl">{props.startDate}</p>
-        <p className="paragraph text-2xl">{props.endDate}</p>
+
+        {isLive ? (
+          <p className="paragraph flex items-center text-2xl text-red underline">
+            Otvoren do {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'long' })}!
+          </p>
+        ) : (
+          <>
+            <p className="paragraph text-2xl">
+              {props.endDate ? 'od ' : ''}
+              {props.startDate.toLocaleDateString('hr', { day: 'numeric', month: 'numeric' })}
+            </p>
+
+            <p className="paragraph text-2xl">
+              {props.endDate ? 'do ' : ''}
+              {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'numeric' })}
+            </p>
+          </>
+        )}
       </div>
     </div>
   )
@@ -44,10 +74,30 @@ const Timeline = () => {
       <div className="w-full bg-white">
         <div className="w-full bg-snow-pattern">
           <div className="relative flex flex-col items-center justify-center px-4">
-            <TimelineCard name="Zadatak 1" startDate=" Od 30.11." endDate="Do 6.12." image={Trees} left />
-            <TimelineCard name="Zadatak 2" startDate="Od 7.12." endDate="Do 13.12." image={Mistletoe} />
-            <TimelineCard name="Zadatak 3" startDate="Od 14.12." endDate="Do 20.12." image={Snowman} left />
-            <TimelineCard name="Dodjela" startDate="21.12." image={Presents} />
+            <TimelineCard
+              name="Zadatak 1"
+              number={1}
+              startDate={zad1.startDate}
+              endDate={zad1.endDate}
+              image={Trees}
+              left
+            />
+            <TimelineCard
+              name="Zadatak 2"
+              number={2}
+              startDate={zad2.startDate}
+              endDate={zad2.endDate}
+              image={Mistletoe}
+            />
+            <TimelineCard
+              name="Zadatak 3"
+              number={3}
+              startDate={zad3.startDate}
+              endDate={zad3.endDate}
+              image={Snowman}
+              left
+            />
+            <TimelineCard name="Dodjela" startDate={dodjela.startDate} image={Presents} />
           </div>
         </div>
       </div>

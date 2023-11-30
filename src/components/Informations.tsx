@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center bg-white pb-8">
-      <div className="w-3/4 p-3 text-xl">
+      <div className="w-full px-8 py-3 text-xl md:w-3/4 md:px-0">
         <p className="paragraph pb-5 pt-5 leading-8 tracking-wide">
           <b className="monomaniac text-2xl tracking-wide">došašće++</b> je online božićno natjecanje inspirirano svima
           nam omiljenim Advent of Codeom. Natjecanje se sastoji od tri kola po tjedan dana, a svaki se tjedan rješava
