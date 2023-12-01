@@ -1,14 +1,14 @@
 import { addToContest, submitUserCategory } from '@/api/repository'
 import ProblemPage from '@/components/ProblemPage'
 import { useContext, useState } from 'react'
-import { UserContext } from '@/App'
+import { UserContext, UserType } from '@/App'
 import { useNavigate } from 'react-router-dom'
 import { uzrasti } from '@/utils/kontestis'
 import ErrorPage from './ErrorPage'
 
 const Uzrast = () => {
   const [uzrast, setUzrast] = useState<string>()
-  const { isLoggedIn, user } = useContext(UserContext)
+  const { isLoggedIn, user, setUser, categoryData, setCategoryData } = useContext(UserContext)
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -18,6 +18,8 @@ const Uzrast = () => {
       .then(res => res.json())
       .then(data => {
         if (data.category) {
+          if (setUser) setUser({ ...user, category: data.category as string, hasSetCategory: true } as UserType)
+          if (setCategoryData) setCategoryData({ ...categoryData, [user!.email]: data.category })
           addToContest().then(() => navigate('/'))
         }
       })

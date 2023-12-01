@@ -11,7 +11,7 @@ import Uzrast from './screens/Uzrast'
 import About from './components/Informations'
 import { checkUserCategories } from './api/repository'
 
-type UserType = {
+export type UserType = {
   name: string
   email: string
   avatar: string
@@ -23,12 +23,20 @@ type UserContextType = {
   user?: UserType
   isLoggedIn: boolean
   categoryData?: Record<string, string> // Data for *ALL* users
+
+  setUser?: (user: UserType) => void
+  setIsLoggedIn: (isLoggedIn: boolean) => void
+  setCategoryData?: (categoryData: Record<string, string>) => void
 }
 
 export const UserContext = createContext<UserContextType>({
-  isLoggedIn: false,
   user: undefined,
+  isLoggedIn: false,
   categoryData: undefined,
+
+  setUser: () => {},
+  setIsLoggedIn: () => {},
+  setCategoryData: () => {},
 })
 
 function App() {
@@ -40,6 +48,19 @@ function App() {
   useEffect(() => {
     console.log('token: ', token)
   }, [token])
+
+  useEffect(() => {
+    console.log('user: ', user)
+
+    if (!categoryData?.[user?.email || '']) {
+      checkUserCategories(['none'])
+        .then(res => res.json())
+        .then(userCategoryData => {
+          console.log('checkUserCategories response: ', userCategoryData)
+          setCategoryData(userCategoryData)
+        })
+    }
+  }, [user])
 
   useEffect(() => {
     const pureToken = token.replace('Bearer ', '')
@@ -84,7 +105,7 @@ function App() {
   return (
     <>
       <GoogleOAuthProvider clientId={import.meta.env.VITE_OAUTH_CLIENT_ID}>
-        <UserContext.Provider value={{ user: user, isLoggedIn: isLoggedIn, categoryData: categoryData }}>
+        <UserContext.Provider value={{ user, isLoggedIn, categoryData, setUser, setIsLoggedIn, setCategoryData }}>
           <BrowserRouter>
             <Header setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
             <Routes>
