@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 } from 'uuid'
 
 export interface Env {
@@ -6,6 +7,10 @@ export interface Env {
 }
 
 export const onRequestPost = async context => {
+  const logMessage: any = {
+    serviceName: 'userCategory.onRequestPost',
+  }
+
   const body = await context.request.json()
   const { email, category } = body
 
@@ -14,6 +19,7 @@ export const onRequestPost = async context => {
 
   const currentStateId = await context.env.USER_CATEGORY.get('current_state')
   // console.log('currentStateId: ', currentStateId)
+  logMessage.currentStateId = currentStateId
 
   let currentData = null
   let existingCategory = null
@@ -25,6 +31,8 @@ export const onRequestPost = async context => {
   if (currentData) existingCategory = currentData[email]
 
   // console.log('currentData: ', currentData)
+  logMessage.currentData = currentData
+  logMessage.existingCategory = existingCategory
 
   if (existingCategory) {
     return Response.json({ error: 'user already exists' }, { status: 400 })
@@ -38,7 +46,12 @@ export const onRequestPost = async context => {
 
     await context.env.USER_CATEGORY.put('current_state', stateId)
     await context.env.USER_CATEGORY.put(stateId, JSON.stringify(newState))
+
+    logMessage.newStateId = stateId
+    logMessage.newState = newState
   }
+
+  console.log(logMessage)
 
   const res = {
     email,

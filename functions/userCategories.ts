@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 } from 'uuid'
 
 export interface Env {
@@ -6,18 +7,22 @@ export interface Env {
 }
 
 export const onRequestGet = async context => {
+  let logMessage: any = {
+    serviceName: 'userCategories.onRequestGet',
+  }
+
   const params = new URLSearchParams(context.request.url.split('?')[1])
   const emails = params.get('emails').split(',')
 
+  logMessage.emails = emails
+
   const stateId = await context.env.USER_CATEGORY.get('current_state')
-  // console.log('stateId: ', stateId)
 
   if (stateId) {
     const categoryDataString = await context.env.USER_CATEGORY.get(stateId)
 
     const categoryData = JSON.parse(categoryDataString)
 
-    // console.log('categoryData: ', categoryData)
     const res =
       emails[0] === 'none'
         ? categoryData
@@ -28,7 +33,14 @@ export const onRequestGet = async context => {
             }
           })
 
-    // console.log('userCategories API: ', res)
+    logMessage = {
+      ...logMessage,
+      stateId,
+      categoryData,
+      res,
+    }
+    console.log(logMessage)
+
     return Response.json(res)
   } else {
     const allEmails = await context.env.USER_CATEGORY_OLD.list()
@@ -44,7 +56,6 @@ export const onRequestGet = async context => {
 
     const newStateId = v4()
 
-    // console.log(newStateId)
     await context.env.USER_CATEGORY.put('current_state', newStateId)
     await context.env.USER_CATEGORY.put(newStateId, JSON.stringify(categoryData))
 
@@ -58,9 +69,14 @@ export const onRequestGet = async context => {
             }
           })
 
-    // console.log('categoryData: ', categoryData)
-    // console.log('userCategories API, allEmails: ', allEmails)
-    // console.log('userCategories API: ', res)
+    logMessage = {
+      ...logMessage,
+      stateId: newStateId,
+      categoryData,
+      allEmails,
+      res,
+    }
+    console.log(logMessage)
     return Response.json(res)
   }
 }
