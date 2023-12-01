@@ -57,7 +57,7 @@ const FirstProblem = () => {
             <sub>i2</sub> ≤ <var>10</var>
             <sup>9</sup>).
           </p>
-          <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" />
+          <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" title="Preuzmi ulazne podatke" />
 
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
@@ -87,7 +87,16 @@ const FirstProblem = () => {
           <div className="mt-16 flex justify-center">
             <img src={GeoSarme} alt="Geogebra_Sarme" className="max-h-72" />
           </div>
+
           <Title type="subtitle">Rješenje</Title>
+
+          <p className="inline-block pb-2 text-xl">
+            Možete probati i ručno testirati rješenja{' '}
+            <a href="/files/inputs/1/checker.zip" className="text-red underline" download={true}>
+              ovdje
+            </a>{' '}
+            (unutra su i upute - README.md).
+          </p>
 
           <SolutionBox number={1} />
         </ProblemPage>
