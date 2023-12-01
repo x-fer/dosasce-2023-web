@@ -77,10 +77,22 @@ const SolutionBox = ({ number }: { number: number }) => {
     const category = await getCategory()
     const problemID = getProblemID(category as string, 1)
 
-    if (!base64 || !category || !problemID) {
+    if (!base64) {
       setMessage('')
       setErrorMessage(
-        'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+        'Greška prilikom slanja rješenja (base64), molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+      )
+      setIsSending(false)
+    } else if (!category) {
+      setMessage('')
+      setErrorMessage(
+        'Greška prilikom slanja rješenja (category), molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+      )
+      setIsSending(false)
+    } else if (!problemID) {
+      setMessage('')
+      setErrorMessage(
+        'Greška prilikom slanja rješenja (problemID), molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
       )
       setIsSending(false)
     } else {
@@ -97,7 +109,9 @@ const SolutionBox = ({ number }: { number: number }) => {
           } else {
             setMessage('')
             setErrorMessage(
-              'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
+              `Greška prilikom slanja rješenja (${String(
+                res.status
+              )}), molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr`
             )
           }
         })
