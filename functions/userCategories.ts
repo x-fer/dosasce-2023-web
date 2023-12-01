@@ -2,6 +2,7 @@ import { v4 } from 'uuid'
 
 export interface Env {
   USER_CATEGORY: KVNamespace
+  USER_CATEGORY_OLD: KVNamespace
 }
 
 export const onRequestGet = async context => {
@@ -16,6 +17,7 @@ export const onRequestGet = async context => {
 
     const categoryData = JSON.parse(categoryDataString)
 
+    // console.log('categoryData: ', categoryData)
     const res =
       emails[0] === 'none'
         ? categoryData
@@ -32,18 +34,17 @@ export const onRequestGet = async context => {
     const allEmails = await context.env.USER_CATEGORY_OLD.list()
     // console.log('allEmails: ', allEmails)
 
-    // const categoryData = await Promise.all(allEmails.keys.map(key => context.env.USER_CATEGORY_OLD.get(key)))
-    const categoryData = allEmails.keys.map(async email => {
-      const category = await context.env.USER_CATEGORY_OLD.get(email)
+    const categoryData = {}
+    for (const email of allEmails.keys) {
+      const category = await context.env.USER_CATEGORY_OLD.get(email.name)
+      // console.log('loop: ', email.name, category)
 
-      return {
-        email,
-        category,
-      }
-    })
+      categoryData[email.name] = category
+    }
 
     const newStateId = v4()
 
+    // console.log(newStateId)
     await context.env.USER_CATEGORY.put('current_state', newStateId)
     await context.env.USER_CATEGORY.put(newStateId, JSON.stringify(categoryData))
 
@@ -57,6 +58,7 @@ export const onRequestGet = async context => {
             }
           })
 
+    // console.log('categoryData: ', categoryData)
     // console.log('userCategories API, allEmails: ', allEmails)
     // console.log('userCategories API: ', res)
     return Response.json(res)

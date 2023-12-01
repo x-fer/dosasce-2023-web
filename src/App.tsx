@@ -38,37 +38,43 @@ function App() {
   const [categoryData, setCategoryData] = useState<Record<string, string> | undefined>(undefined)
 
   useEffect(() => {
-    const pureToken = token.replace('Bearer ', '')
-
-    if (!isLoggedIn) {
+    console.log('calling category data useeffect')
+    if (!categoryData) {
       checkUserCategories(['none'])
         .then(res => res.json())
         .then(userCategoryData => {
-          // console.log('userCategoryData: ', userCategoryData)
           setCategoryData(userCategoryData)
-
-          extractUser(pureToken).then(result => {
-            if (result !== null) {
-              const userCategory = userCategoryData[result.email]
-
-              if (userCategory) {
-                setUser({
-                  name: result.name,
-                  email: result.email,
-                  avatar: result.picture,
-                  hasSetCategory: true,
-                  category: userCategory,
-                })
-              } else {
-                setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
-                if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
-              }
-              setIsLoggedIn(true)
-            }
-          })
+          console.log(userCategoryData)
         })
     }
-  }, [token])
+  }, [categoryData])
+
+  useEffect(() => {
+    console.log("calling user's data useeffect")
+    const pureToken = token.replace('Bearer ', '')
+
+    if (!isLoggedIn) {
+      extractUser(pureToken).then(result => {
+        if (result !== null) {
+          const userCategory = categoryData?.[result.email]
+
+          if (userCategory) {
+            setUser({
+              name: result.name,
+              email: result.email,
+              avatar: result.picture,
+              hasSetCategory: true,
+              category: userCategory,
+            })
+          } else {
+            setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
+            if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
+          }
+          setIsLoggedIn(true)
+        }
+      })
+    }
+  }, [token, categoryData])
 
   return (
     <>
