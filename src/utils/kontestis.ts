@@ -11,7 +11,7 @@ export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
   3: {},
 }
 
-export const INVITE_CODE = '06a0b145745891e8'
+export const INVITE_CODE = '01b0bd17df48c577'
 
 export const uzrasti = [
   { id: 'ucenik', title: 'Učenik', number: 1 },
