@@ -55,9 +55,9 @@ const SolutionBox = ({ number }: { number: number }) => {
       if (
         isNaN(x) ||
         isNaN(y) ||
-        x < 0 ||
+        x < -1e9 ||
         x > 1e9 ||
-        y < 0 ||
+        y < -1e9 ||
         y > 1e9 ||
         !hasMaxDecimals(x, 6) ||
         !hasMaxDecimals(y, 6)
