@@ -38,34 +38,45 @@ function App() {
   const [categoryData, setCategoryData] = useState<Record<string, string> | undefined>(undefined)
 
   useEffect(() => {
+    console.log('token: ', token)
+  }, [token])
+
+  useEffect(() => {
     const pureToken = token.replace('Bearer ', '')
 
     if (!isLoggedIn) {
       checkUserCategories(['none'])
         .then(res => res.json())
         .then(userCategoryData => {
-          // console.log('userCategoryData: ', userCategoryData)
+          console.log('checkUserCategories response: ', userCategoryData)
           setCategoryData(userCategoryData)
 
-          extractUser(pureToken).then(result => {
-            if (result !== null) {
-              const userCategory = userCategoryData[result.email]
+          extractUser(pureToken)
+            .then(result => {
+              if (result !== null) {
+                const userCategory = userCategoryData[result.email]
 
-              if (userCategory) {
-                setUser({
-                  name: result.name,
-                  email: result.email,
-                  avatar: result.picture,
-                  hasSetCategory: true,
-                  category: userCategory,
-                })
-              } else {
-                setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
-                if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
+                if (userCategory) {
+                  setUser({
+                    name: result.name,
+                    email: result.email,
+                    avatar: result.picture,
+                    hasSetCategory: true,
+                    category: userCategory,
+                  })
+                } else {
+                  setUser({ name: result.name, email: result.email, avatar: result.picture, hasSetCategory: false })
+                  if (window.location.pathname !== '/uzrast') window.location.href = '/uzrast'
+                }
+                setIsLoggedIn(true)
               }
-              setIsLoggedIn(true)
-            }
-          })
+            })
+            .catch(err => {
+              console.log('extractUser error: ', err)
+            })
+        })
+        .catch(err => {
+          console.log('checkUserCategories error: ', err)
         })
     }
   }, [token])

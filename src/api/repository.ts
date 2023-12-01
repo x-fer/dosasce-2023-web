@@ -29,6 +29,7 @@ export const submitUserCategory = (email: string, category: string) => {
 }
 
 export const submitSolution = (problemId: string, code: string) => {
+  console.log('submitSolution', problemId, code.substring(0, 100))
   return fetch(R.submissionOfSolution(problemId), {
     method: 'POST',
     headers: JSON_HEADER,
