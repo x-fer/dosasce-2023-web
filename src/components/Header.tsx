@@ -38,23 +38,24 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex min-h-[60px] w-full items-center justify-between bg-red px-8 text-white shadow-2xl">
+    <header className="sticky top-0 z-50 flex min-h-[60px] w-full items-center justify-between bg-red px-4 text-white shadow-2xl sm:px-6 md:px-8">
       <a href="/" className="cursor-pointer select-none text-2xl">
         došašće++
       </a>
 
-      <div>
-        <a href="/leaderboard/1" className="mr-7 inline-block cursor-pointer select-none align-top text-2xl underline">
-          <Trophy size={24} strokeWidth={3} className="inline-block" />
-          <p className="ml-1 hidden underline sm:inline-block">rang-lista</p>
+      <div className="flex gap-4 sm:gap-6">
+        <a href="/leaderboard/1" className="cursor-pointer select-none underline">
+          <div className="flex h-full items-center gap-1 text-2xl">
+            <Trophy size={24} strokeWidth={3} />
+            <p className="mb-1 hidden underline sm:block">rang-lista</p>
+          </div>
         </a>
-        <div className="inline-block">
-          {!isLoggedIn ? (
-            <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
-          ) : (
-            <UserDropdown logOut={logOut} />
-          )}
-        </div>
+
+        {!isLoggedIn ? (
+          <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
+        ) : (
+          <UserDropdown logOut={logOut} />
+        )}
       </div>
     </header>
   )
