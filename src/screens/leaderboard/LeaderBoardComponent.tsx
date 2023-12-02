@@ -17,6 +17,21 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
 
   const [leaderboardWithCategories, setLeaderboardWithCategories] = useState<any>()
 
+  const LEADERBOARD_BLACKLIST = [
+    'ivan.vlahov@gmail.com',
+    'ivvlspirit@gmail.com',
+    'majamilas2@gmail.com',
+    'kruno.tomicic@gmail.com',
+    'krunoslav.tomicic@gmail.com',
+    'dominik.kanjuh@gmail.com',
+    'dominik.kanjuh@sofascore.com',
+    'milanvrankic@gmail.com',
+    'nitko12@hotmail.com',
+    'zvonimir.haramustek@finance.hr',
+    'zvonimir.haramustek@stemgames.hr',
+    'zvonimir3000@gmail.com',
+  ]
+
   const radioButtonData = [
     {
       id: 0,
@@ -50,6 +65,9 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
         leaderboardData
           .filter((el: any) => {
             return Object.keys(el.score ?? {}).length > 0
+          })
+          .filter((el: any) => {
+            return !LEADERBOARD_BLACKLIST.includes(el.email)
           })
           .map((el: any) => {
             return {
