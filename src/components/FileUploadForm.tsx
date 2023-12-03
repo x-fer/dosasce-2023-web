@@ -1,21 +1,13 @@
 import { cn } from '@/utils/utils'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 // TODO: ovo je dosl copy-paste chatGPT, nek netko tko zna sredi funkcije kako treba
 
 const FileUploadForm = () => {
   const [selectedOption, setSelectedOption] = useState('')
-  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
 
-  const handleOptionChange = (e: any) => {
-    setSelectedOption(e.target.value)
-  }
-
-  const handleFileChange = (e: any) => {
-    setSelectedFile(e.target.files[0])
-  }
-
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     // Handle form submission logic here
     console.log('Odaberi programski jezik:', selectedOption)
@@ -31,18 +23,20 @@ const FileUploadForm = () => {
         <select
           className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
           id="option"
-          onChange={handleOptionChange}
+          onChange={e => {
+            setSelectedOption(e.target.value)
+          }}
         >
           <option value="" disabled selected>
             Programski jezik
           </option>
-          <option value="option2">C</option>
-          <option value="option1">C++</option>
-          <option value="option2">Java</option>
-          <option value="option2">Python</option>
-          <option value="option2">Go</option>
-          <option value="option2">Rust</option>
-          <option value="option2">ESL</option>
+          <option value="c">C</option>
+          <option value="c++">C++</option>
+          <option value="java">Java</option>
+          <option value="python">Python</option>
+          <option value="go">Go</option>
+          <option value="rust">Rust</option>
+          <option value="esl">ESL</option>
         </select>
       </div>
 
@@ -54,7 +48,9 @@ const FileUploadForm = () => {
           className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
           type="file"
           id="file"
-          onChange={handleFileChange}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSelectedFile(e.target.files?.[0] as File)
+          }}
         />
       </div>
 
