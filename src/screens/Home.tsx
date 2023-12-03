@@ -24,6 +24,13 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <div className="float-center block bg-red p-5 text-center text-white">
+          <p className="text-xl">Predavanje: Kako pristupiti optimizacijskim problemima?</p>
+          <p>PONEDJELJAK 4. prosinca, 20.00h (FER, A111)</p>
+          <p>
+            <em>Zvonimir Haramustek</em>
+          </p>
+        </div>
       </Background>
 
       <Separator />
