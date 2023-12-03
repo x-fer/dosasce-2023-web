@@ -55,7 +55,7 @@ const SecondProblem = () => {
             </a>{' '}
             formule. Pretpostavite da se ostatak teksta pisama ponaša jednako vašem uzorku.
           </p>
-          <UlazniPodatciButtons filePath="/files/inputs/1/ulaz.txt" title="Preuzmi ulazne podatke" />
+          <UlazniPodatciButtons filePath="/files/inputs/2/ulaz.txt" title="Preuzmi ulazne podatke" />
 
           <Title type="subtitle">Primjer programa</Title>
           <p className="paragraph">Moguće je koristiti jezike: C++, Java, Python, C...</p>
