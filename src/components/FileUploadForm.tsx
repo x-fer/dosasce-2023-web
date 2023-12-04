@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 
 export type PossibleOptions = 'c' | 'c++' | 'java' | 'python' | 'go' | 'rust' | 'esl'
 
-const POSSIBLE_OPTIONS: Array<string> = ['txt', 'c', 'c++', 'java', 'python', 'go', 'rust', 'esl']
+const POSSIBLE_OPTIONS: Array<string> = ['txt', 'c', 'cpp', 'java', 'py', 'go', 'rs', 'esl']
 
 const FileUploadForm = () => {
   const [selectedOption, setSelectedOption] = useState<PossibleOptions>()
