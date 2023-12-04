@@ -4,12 +4,49 @@ import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
 import { useContext, useEffect, useState } from 'react'
 
-export type PossibleOptions = 'c' | 'c++' | 'java' | 'python' | 'go' | 'rust' | 'esl'
+const nameExtensionDictionary = {
+  c: {
+    name: 'C',
+    extension: 'c',
+    kontestis: 'c',
+  },
+  cpp: {
+    name: 'C++',
+    extension: 'cpp',
+    kontestis: 'cpp',
+  },
+  java: {
+    name: 'Java',
+    extension: 'java',
+    kontestis: 'java',
+  },
+  python: {
+    name: 'Python',
+    extension: 'py',
+    kontestis: 'python',
+  },
+  go: {
+    name: 'Go',
+    extension: 'go',
+    kontestis: 'go',
+  },
+  rust: {
+    name: 'Rust',
+    extension: 'rs',
+    kontestis: 'rust',
+  },
+  esl: {
+    name: 'ESL',
+    extension: 'esl',
+    kontestis: 'esl',
+  },
+}
 
-const POSSIBLE_OPTIONS: Array<string> = ['txt', 'c', 'cpp', 'java', 'py', 'go', 'rs', 'esl']
+type possibleProgrammingLanguages = keyof typeof nameExtensionDictionary
+//type possibleExtensions = (typeof nameExtensionDictionary)[possibleProgrammingLanguages]['extension'] | 'txt'
 
 const FileUploadForm = () => {
-  const [selectedOption, setSelectedOption] = useState<PossibleOptions>()
+  const [selectedOption, setSelectedOption] = useState<possibleProgrammingLanguages>()
   const [selectedFile, setSelectedFile] = useState<File | undefined>(undefined)
   const [base64File, setBase64File] = useState<string | ArrayBuffer | null>('')
   const [isSending, setIsSending] = useState(false)
@@ -50,16 +87,22 @@ const FileUploadForm = () => {
   }
 
   useEffect(() => {
+    setError('')
+
     if (
       selectedOption !== undefined &&
       selectedFile !== undefined &&
       selectedFile?.name.split('.')[1] !== 'txt' &&
-      selectedOption !== selectedFile?.name.split('.')[1]
+      nameExtensionDictionary[selectedOption].extension !== selectedFile?.name.split('.')[1]
     ) {
       setError('Odabrani programski jezik ne odgovara odabranoj datoteci.')
     }
 
-    if (selectedFile && !POSSIBLE_OPTIONS.includes(selectedFile!.name.split('.')[1])) {
+    if (
+      selectedFile &&
+      selectedFile?.name.split('.')[1] !== 'txt' &&
+      !Object.values(nameExtensionDictionary).some(lang => lang.extension === selectedFile?.name.split('.')[1])
+    ) {
       setError(
         'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .txt, .c, .cpp, .java, .py, .go ili .rs datoteku.'
       )
@@ -77,19 +120,17 @@ const FileUploadForm = () => {
             className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
             id="option"
             onChange={e => {
-              setSelectedOption(e.target.value as PossibleOptions)
+              setSelectedOption(e.target.value as possibleProgrammingLanguages)
             }}
           >
             <option value="" disabled selected>
               Programski jezik
             </option>
-            <option value="c">C</option>
-            <option value="c++">C++</option>
-            <option value="java">Java</option>
-            <option value="python">Python</option>
-            <option value="go">Go</option>
-            <option value="rust">Rust</option>
-            <option value="esl">ESL</option>
+            {Object.values(nameExtensionDictionary).map(lang => (
+              <option value={lang.kontestis} key={lang.extension}>
+                {lang.name}
+              </option>
+            ))}
           </select>
         </div>
 

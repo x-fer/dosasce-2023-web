@@ -1,7 +1,6 @@
 import * as R from './routes'
 import { JSON_HEADER } from './api'
 import { INVITE_CODE, getContestID, getInviteCode } from '@/utils/kontestis'
-import { PossibleOptions } from '@/components/FileUploadForm'
 
 export const addToContest = () => {
   return fetch(R.joinContest(), {
@@ -61,7 +60,7 @@ export const submitSolution = (problemId: string, code: string) => {
 
 export type possibleProgrammingLanguages = 'python' | 'c' | 'cpp' | 'go' | 'rust' | 'java' | 'esl'
 
-export const submitSolution2 = (problemId: string, code: string, language: PossibleOptions) => {
+export const submitSolution2 = (problemId: string, code: string, language: string) => {
   return fetch(R.submissionOfSolution(problemId), {
     method: 'POST',
     headers: JSON_HEADER,
