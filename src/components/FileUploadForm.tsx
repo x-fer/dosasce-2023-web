@@ -54,7 +54,7 @@ const FileUploadForm = () => {
       setError('Odabrani programski jezik ne odgovara odabranoj datoteci.')
     }
 
-    if (!POSSIBLE_OPTIONS.includes(selectedFile!.name.split('.')[1])) {
+    if (selectedFile && !POSSIBLE_OPTIONS.includes(selectedFile!.name.split('.')[1])) {
       setError(
         'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .c, .cpp, .java, .py, .go ili .rs datoteku.'
       )
@@ -62,51 +62,53 @@ const FileUploadForm = () => {
   }, [selectedOption, selectedFile])
 
   return (
-    <form className="max-w-md" onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label className="mb-2 block text-sm" htmlFor="option">
-          Odaberi programski jezik
-        </label>
-        <select
-          className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
-          id="option"
-          onChange={e => {
-            setSelectedOption(e.target.value as PossibleOptions)
-          }}
-        >
-          <option value="" disabled selected>
-            Programski jezik
-          </option>
-          <option value="c">C</option>
-          <option value="c++">C++</option>
-          <option value="java">Java</option>
-          <option value="python">Python</option>
-          <option value="go">Go</option>
-          <option value="rust">Rust</option>
-          <option value="esl">ESL</option>
-        </select>
+    <form className="w-full" onSubmit={handleSubmit}>
+      <div className="max-w-sm">
+        <div className="mb-4">
+          <label className="mb-2 block text-sm" htmlFor="option">
+            Odaberi programski jezik
+          </label>
+          <select
+            className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
+            id="option"
+            onChange={e => {
+              setSelectedOption(e.target.value as PossibleOptions)
+            }}
+          >
+            <option value="" disabled selected>
+              Programski jezik
+            </option>
+            <option value="c">C</option>
+            <option value="c++">C++</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="go">Go</option>
+            <option value="rust">Rust</option>
+            <option value="esl">ESL</option>
+          </select>
+        </div>
+
+        <div className="mb-4">
+          <label className="mb-2 block text-sm" htmlFor="file">
+            Učitaj datoteku
+          </label>
+          <input
+            className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
+            type="file"
+            id="file"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setSelectedFile(e.target.files?.[0] as File)
+            }}
+          />
+        </div>
       </div>
 
-      <div className="mb-4">
-        <label className="mb-2 block text-sm" htmlFor="file">
-          Učitaj datoteku
-        </label>
-        <input
-          className="focus:border-blue-500 w-full rounded border p-2 focus:outline-none"
-          type="file"
-          id="file"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setSelectedFile(e.target.files?.[0] as File)
-          }}
-        />
-      </div>
-
-      <div className="flex flex-row gap-2  md:flex-col md:gap-3">
+      <div className="flex w-full flex-col  gap-2 md:flex-row md:gap-3">
         <button
           type="submit"
           title="Provjeri svoje rješenje"
           className={cn(
-            'h-10 min-w-[140px] rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
+            'h-10 min-w-[180px] rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
             'disabled:cursor-not-allowed disabled:bg-white disabled:text-red'
           )}
           onClick={() => handleSubmit()}
