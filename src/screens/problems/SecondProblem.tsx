@@ -77,31 +77,6 @@ const SecondProblem = () => {
             Ispišite tekst nakon komprimiranja / dekomprimiranja (ovisno o tipu rada). <strong>Broj bodova</strong>{' '}
             odgovara veličini komprimirane datoteke u bajtovima, što manje to bolje :D
           </p>
-          {/*
-          <Title type="subtitle">Primjer</Title>
-          <Title type="subtitle2">Ulaz</Title>
-          <p className="paragraph mb-2">
-            U slučaju programa koji se prevode (pošaljite izvorni kod koji će biti preveden prilikom provjere)
-          </p>
-          <pre className="paragraph w-[100%] bg-light-red p-2">{`$  ./<vas_file> -m compress < input.txt > vas_output.txt`}</pre>
-          <pre className="paragraph w-[100%] bg-light-red p-2">{`$  ./<vas_file> -m decompress < vas_output.txt > output.txt`}</pre>
-          <p className="paragraph my-2">U slučaju programa koji se interpretiraju (npr. Python)</p>
-          <pre className="paragraph w-[100%] bg-light-red p-2">{`$  python3 <vas_file> -m compress < input.txt > vas_output.txt`}</pre>
-          <pre className="paragraph w-[100%] bg-light-red p-2">{`$  python3 <vas_file> -m decompress < vas_output.txt > output.txt`}</pre>
-          <p className="paragraph mt-2">
-            Nakon čega će se provjeriti je li input.txt jednak output.txt i ako je dobit ćete odgovarajući izlaz koji
-            predstavlja vaše bodove, u protivnom vraća se greška.
-          </p>
-          <Title type="subtitle2">Izlaz</Title>
-          <pre className="paragraph paragraph w-[100%] bg-light-red p-2">{`$  Rezultat je 141116`}</pre>
-          <p className="paragraph mt-4">
-            <b>Napomena:</b> Način u kojem će vaše rješenje raditi predaje se u obliku argumenata pri pokratanju
-            programa. Evaluator će za komprimiranje dodati argumente -m compress, a za dekomprimiranje argumente -m
-            decompress. Izlaz programa u načinu za komprimiranje se ubacuje u gzip te konačan broj bodova odgovara
-            duljini zippane datoteke. Naravno uvjet je da sav tekst komprimiran sa u “compress” načinu rada mora biti
-            moguće raspakirati u izvorni tekst sa “decompress” načinom rada u{' '}
-            <b>protivnom rješenje ovog zadatka nije valjano.</b>
-          </p>*/}
           <p className="paragraph mt-4">
             <b>Napomena:</b> Izlaz programa u načinu za komprimiranje se ubacuje u <strong>gzip</strong> te konačan broj
             bodova odgovara duljini zippane datoteke. Naravno, uvjet je da je tekst komprimiran u “compress” načinu rada

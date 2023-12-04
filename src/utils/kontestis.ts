@@ -7,11 +7,18 @@ export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
     2: '252956838595661824', // preddiplom
     3: '252957225096581120', // diplom
   },
-  2: {},
+  2: {
+    id: '252957479010744064', //promjenite kad kruno napravi
+    1: '252957789049323264',
+    2: '252958138046029312',
+    3: '252958511882985472',
+  },
   3: {},
 }
 
 export const INVITE_CODE = '01b0bd17df48c577'
+export const INVITE_CODE_2 = 'a83b3d4ee960be9e'
+export const INVITE_CODE_3 = 'Nes u buducnosti'
 
 export const uzrasti = [
   { id: 'ucenik', title: 'Učenik', number: 1 },
@@ -27,4 +34,10 @@ export const getProblemID = (category: string, redniBrojZadatka: number) => {
 
 export const getContestID = (brojZadatka: number) => {
   return PROBLEMS_ID[brojZadatka].id
+}
+
+export const getInviteCode = (brojZadatka: number) => {
+  if (brojZadatka === 1) return INVITE_CODE
+  else if (brojZadatka === 2) return INVITE_CODE_2
+  else return INVITE_CODE_3
 }
