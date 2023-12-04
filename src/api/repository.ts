@@ -41,6 +41,8 @@ export const submitSolution = (problemId: string, code: string) => {
   })
 }
 
+export type possibleProgrammingLanguages = 'python' | 'c' | 'cpp' | 'go' | 'rust' | 'java' | 'esl'
+
 export const submitSolution2 = (problemId: string, code: string, language: PossibleOptions) => {
   return fetch(R.submissionOfSolution(problemId), {
     method: 'POST',
