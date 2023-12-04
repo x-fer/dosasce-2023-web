@@ -1,4 +1,4 @@
-import raw from '../../public/files/saved_1e5.txt'
+import raw from '../assets/saved_1e5.txt'
 import { useState } from 'react'
 import { JSON_HEADER } from '@/api/api'
 
