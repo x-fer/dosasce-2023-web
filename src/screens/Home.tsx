@@ -17,20 +17,17 @@ const Home = () => {
 
               <p className="mt-[-12px] text-7xl">došašće++</p>
               <p className="text-xl">Božićno natjecanje: Kodirajte čaroliju!</p>
-
-              {/* <button className="mt-[8px] w-max rounded-[8px] border-[2px] border-red px-[16px] pb-[2px] hover:opacity-75">
-                Call to action!
-              </button> */}
             </div>
           </div>
         </div>
-        <div className="float-center block bg-red p-5 text-center text-white">
+
+        {/* <div className="flex flex-col items-center justify-center bg-red p-5 text-center text-white">
           <p className="text-xl">Predavanje: Kako pristupiti optimizacijskim problemima?</p>
           <p>PONEDJELJAK 4. prosinca, 20.00h (FER, A111)</p>
           <p>
             <em>Zvonimir Haramustek</em>
           </p>
-        </div>
+        </div> */}
       </Background>
 
       <Separator />
