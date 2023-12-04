@@ -1,6 +1,6 @@
 import * as R from './routes'
 import { JSON_HEADER } from './api'
-import { INVITE_CODE, getContestID } from '@/utils/kontestis'
+import { INVITE_CODE, getContestID, getInviteCode } from '@/utils/kontestis'
 import { PossibleOptions } from '@/components/FileUploadForm'
 
 export const addToContest = () => {
@@ -11,6 +11,24 @@ export const addToContest = () => {
       join_code: INVITE_CODE,
     }),
   })
+}
+
+export const addToContestSpecific = (number: number) => {
+  const inv_code = getInviteCode(number)
+
+  return fetch(R.joinContest(), {
+    method: 'POST',
+    headers: JSON_HEADER,
+    body: JSON.stringify({
+      join_code: inv_code,
+    }),
+  })
+}
+
+export const addToAllContests = () => {
+  for (let i = 1; i <= 2; i++) {
+    addToContestSpecific(i)
+  }
 }
 
 export const checkUserCategories = (emails?: string[]) => {

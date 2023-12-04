@@ -4,6 +4,7 @@ import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
 import { Trophy } from 'lucide-react'
 import UserDropdown from './UserDropdown'
+import { addToAllContests } from '@/api/repository'
 
 type HeaderType = {
   setToken: Dispatch<SetStateAction<string>>
@@ -24,17 +25,20 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
 
     if (!credential) return
 
-    http.post('/auth/google-login', credentialResponse).then(() => {
-      const bearer = 'Bearer ' + credential
-      localStorage.setItem('SavedLoginToken', bearer)
-      setToken(bearer)
+    http
+      .post('/auth/google-login', credentialResponse)
+      .then(() => {
+        const bearer = 'Bearer ' + credential
+        localStorage.setItem('SavedLoginToken', bearer)
+        setToken(bearer)
 
-      http.interceptors.request.use(config => {
-        if (credential.length > 0) config.headers.set('Authorization', `Bearer ${credential}`)
+        http.interceptors.request.use(config => {
+          if (credential.length > 0) config.headers.set('Authorization', `Bearer ${credential}`)
 
-        return config
+          return config
+        })
       })
-    })
+      .then(() => addToAllContests())
   }
 
   return (
