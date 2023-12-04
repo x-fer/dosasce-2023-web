@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 
 export type PossibleOptions = 'c' | 'c++' | 'java' | 'python' | 'go' | 'rust' | 'esl'
 
-const POSSIBLE_OPTIONS: Array<string> = ['c', 'c++', 'java', 'python', 'go', 'rust', 'esl']
+const POSSIBLE_OPTIONS: Array<string> = ['txt', 'c', 'c++', 'java', 'python', 'go', 'rust', 'esl']
 
 const FileUploadForm = () => {
   const [selectedOption, setSelectedOption] = useState<PossibleOptions>()
@@ -50,13 +50,17 @@ const FileUploadForm = () => {
   }
 
   useEffect(() => {
-    if (selectedOption !== undefined && selectedOption !== selectedFile?.name.split('.')[1]) {
+    if (
+      selectedOption !== undefined &&
+      selectedFile?.name.split('.')[1] !== 'txt' &&
+      selectedOption !== selectedFile?.name.split('.')[1]
+    ) {
       setError('Odabrani programski jezik ne odgovara odabranoj datoteci.')
     }
 
     if (selectedFile && !POSSIBLE_OPTIONS.includes(selectedFile!.name.split('.')[1])) {
       setError(
-        'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .c, .cpp, .java, .py, .go ili .rs datoteku.'
+        'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .txt, .c, .cpp, .java, .py, .go ili .rs datoteku.'
       )
     }
   }, [selectedOption, selectedFile])

@@ -8,10 +8,10 @@ export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
     3: '252957225096581120', // diplom
   },
   2: {
-    id: '252957479010744064', //promjenite kad kruno napravi
-    1: '252957789049323264',
-    2: '252958138046029312',
-    3: '252958511882985472',
+    id: '254301326991691776', //contest id za zad 2 -testing
+    1: '254571878574723072', //srednja
+    2: '254301769113276416', //preddiplom
+    3: '254571747733409792', //diplom
   },
   3: {},
 }
