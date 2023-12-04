@@ -52,6 +52,7 @@ const FileUploadForm = () => {
   useEffect(() => {
     if (
       selectedOption !== undefined &&
+      selectedFile !== undefined &&
       selectedFile?.name.split('.')[1] !== 'txt' &&
       selectedOption !== selectedFile?.name.split('.')[1]
     ) {
