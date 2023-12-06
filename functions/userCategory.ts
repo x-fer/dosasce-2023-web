@@ -37,7 +37,7 @@ export const onRequestPost = async context => {
   if (existingCategory) {
     return Response.json({ error: 'user already exists' }, { status: 400 })
   } else {
-    const stateId = v4()
+    const stateId = new Date().toISOString() + v4()
     // console.log('newStateId: ', stateId)
 
     const newState = { ...currentData, [email]: category }
