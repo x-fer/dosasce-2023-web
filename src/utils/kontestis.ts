@@ -8,16 +8,16 @@ export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
     3: '252957225096581120', // diplom
   },
   2: {
-    id: '254301326991691776', //contest id za zad 2 -testing
-    1: '254571878574723072', //srednja
-    2: '254301769113276416', //preddiplom
-    3: '254571747733409792', //diplom
+    id: '255391604506890240', //contest id za zad 2 -testing
+    1: '255392774310858752', //srednja
+    2: '255393177287004160', //preddiplom
+    3: '255393435983286272', //diplom
   },
   3: {},
 }
 
 export const INVITE_CODE = '01b0bd17df48c577'
-export const INVITE_CODE_2 = 'a83b3d4ee960be9e'
+export const INVITE_CODE_2 = '3f6afeedcd189046'
 export const INVITE_CODE_3 = 'Nes u buducnosti'
 
 export const uzrasti = [

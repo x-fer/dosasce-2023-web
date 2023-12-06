@@ -5,12 +5,12 @@ export interface problemDate {
 
 export const zad1: problemDate = {
   startDate: new Date('2023-11-29T23:00:00Z'),
-  endDate: new Date('2023-12-06T23:00:00Z'),
+  endDate: new Date('2023-12-20T23:00:00Z'),
 }
 
 export const zad2: problemDate = {
   startDate: new Date('2023-12-06T23:00:00Z'),
-  endDate: new Date('2023-12-13T23:00:00Z'),
+  endDate: new Date('2023-12-20T23:00:00Z'),
 }
 
 export const zad3: problemDate = {

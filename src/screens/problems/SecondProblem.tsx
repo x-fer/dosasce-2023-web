@@ -76,7 +76,8 @@ const SecondProblem = () => {
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
             Ispišite base64 kodirani tekst nakon komprimiranja / dekomprimiranja (ovisno o tipu rada).{' '}
-            <strong>Broj bodova</strong> odgovara veličini komprimirane datoteke u bajtovima, što manje to bolje :D
+            <strong>Broj bodova je veći </strong> što je kompresija bolja odnosno komprimirani{' '}
+            <strong>tekst manji</strong> :D
           </p>
           <p className="paragraph mt-4">
             <b>Napomena:</b> Izlaz programa u načinu za komprimiranje se ubacuje u <strong>gzip</strong> te konačan broj
