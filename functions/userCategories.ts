@@ -54,7 +54,7 @@ export const onRequestGet = async context => {
       categoryData[email.name] = category
     }
 
-    const newStateId = v4()
+    const newStateId = new Date().toISOString() + v4()
 
     await context.env.USER_CATEGORY.put('current_state', newStateId)
     await context.env.USER_CATEGORY.put(newStateId, JSON.stringify(categoryData))
