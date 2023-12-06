@@ -21,10 +21,10 @@ const SecondProblem = () => {
           </p>
           <br />
           <p className="paragraph">
-            Kako bi ga naučila pameti, Marinka je odlučila sva pisma koja Djed dobije šifrirati pa nek se on muči s
-            dešifriranjem. Opće je poznato da je na Sjevernom Polu internet katastrofalan pa Marinka želi da pisma budu
-            što kraća moguća kako bi ipak malo ranije pobjegla doma s posla. Programiranje joj nikad nije najbolje išlo
-            pa moli vas za pomoć.
+            Kako bi ga naučila pameti, Marinka je odlučila sva pisma koja Djed dobije šifrirati i nakon toga base64
+            kodirati pa nek se on muči s dešifriranjem. Opće je poznato da je na Sjevernom Polu internet katastrofalan
+            pa Marinka želi da pisma budu što kraća moguća kako bi ipak malo ranije pobjegla doma s posla. Programiranje
+            joj nikad nije najbolje išlo pa moli vas za pomoć.
           </p>
           <br />
           <p className="paragraph">
@@ -44,8 +44,8 @@ const SecondProblem = () => {
           </ul>
           <br />
           <p className="paragraph">
-            Na raspolaganju Vam je <strong>10% teksta</strong> svih pisama koja su ove godine napisana Djedu iz kojeg
-            pokušajte izvući statistiku. Iz nekog Vama, a i nama nepoznatog razloga, pisma sadrže{' '}
+            Na raspolaganju Vam je <strong>manji dio teksta</strong> svih pisama koja su ove godine napisana Djedu iz
+            kojeg pokušajte izvući statistiku. Iz nekog Vama, a i nama nepoznatog razloga, pisma sadrže{' '}
             <a
               href="https://www.geeksforgeeks.org/maths-commands-in-latex/"
               className="text-red underline"
@@ -60,7 +60,7 @@ const SecondProblem = () => {
           <Title type="subtitle">Primjer programa</Title>
           <p className="paragraph">Moguće je koristiti jezike: C++, Java, Python, C...</p>
           <pre className="paragraph w-[100%] bg-light-red p-2">
-            {`cin << modRada\ncin << tekst\nif (modRada == "compress")
+            {`cin >> modRada\ncin >> tekst\nif (modRada == "compress")
         ... komprimiraj teksta
         cout << komprimiraniTekst\nelse
         ... dekomprimiraj tekst
@@ -70,12 +70,13 @@ const SecondProblem = () => {
           <Title type="subtitle">Ulazni podaci</Title>
           <p className="paragraph">
             U prvom se redu nalazi mod rada - "compress" ili "decompress". <br />
-            Nakon toga se nalazi tekst pisama koji trebate komprimirati / dekomprimirati (veličina teksta nije poznata).
+            Nakon toga se nalazi base64 kodirani tekst pisama koji trebate komprimirati / dekomprimirati (veličina
+            teksta nije poznata).
           </p>
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
-            Ispišite tekst nakon komprimiranja / dekomprimiranja (ovisno o tipu rada). <strong>Broj bodova</strong>{' '}
-            odgovara veličini komprimirane datoteke u bajtovima, što manje to bolje :D
+            Ispišite base64 kodirani tekst nakon komprimiranja / dekomprimiranja (ovisno o tipu rada).{' '}
+            <strong>Broj bodova</strong> odgovara veličini komprimirane datoteke u bajtovima, što manje to bolje :D
           </p>
           <p className="paragraph mt-4">
             <b>Napomena:</b> Izlaz programa u načinu za komprimiranje se ubacuje u <strong>gzip</strong> te konačan broj
