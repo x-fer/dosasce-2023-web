@@ -71,7 +71,9 @@ const FileUploadForm = () => {
     }
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+
     setIsSending(true)
 
     await getBase64File(selectedFile!, (result: string | ArrayBuffer | null) => setBase64File(result))
@@ -157,7 +159,7 @@ const FileUploadForm = () => {
             'h-10 min-w-[180px] rounded-md border-2 border-solid border-red bg-red px-2 text-center text-lg text-white md:h-12 md:text-2xl',
             'disabled:cursor-not-allowed disabled:bg-white disabled:text-red'
           )}
-          onClick={() => handleSubmit()}
+          onClick={event => handleSubmit(event)}
           disabled={!selectedOption || !selectedFile || isSending || !isLoggedIn || error.length > 0}
         >
           Pošalji rješenje
