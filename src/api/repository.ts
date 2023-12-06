@@ -25,8 +25,16 @@ export const addToContestSpecific = (number: number) => {
 }
 
 export const addToAllContests = () => {
-  for (let i = 1; i <= 2; i++) {
-    addToContestSpecific(i)
+  try {
+    addToContestSpecific(1)
+  } catch (e) {
+    console.log('Fail add to contest 1')
+  }
+
+  try {
+    addToContestSpecific(2)
+  } catch (e) {
+    console.log('Fail add to contest 2')
   }
 }
 
