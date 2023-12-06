@@ -1,4 +1,4 @@
-import { Title } from '@/components'
+import { Title, Pisma } from '@/components'
 import FileUploadForm from '@/components/FileUploadForm'
 import ProblemPage from '@/components/ProblemPage'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
@@ -7,13 +7,19 @@ import ZadatakComing from '@/components/ZadatakComing'
 
 const SecondProblem = () => {
   // const isZadActive = useZadActive(2)
+  const pisma = (
+    <div className="h-72 rounded-t-md">
+      <img src={Pisma} alt="Pisma" className="h-full max-h-full w-full max-w-full rounded-t-md object-cover" />
+    </div>
+  )
+
   const isZadActive = true
 
   return (
     <>
       {isZadActive ? (
-        <ProblemPage>
-          <Title type="title">2. Zadatak</Title>
+        <ProblemPage image={pisma}>
+          <Title type="title">Božićna pisma</Title>
           <p className="paragraph">
             Ivanova mama Marinka već je godinama zaposlena kod Djeda Božićnjaka. Kako je ove godine odlučila napraviti
             gomilu sarmi, nadala se da će moći od Djeda dobiti par slobodnih dana oko Božića, ali Djed nije imao
