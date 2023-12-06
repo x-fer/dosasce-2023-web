@@ -4,7 +4,7 @@ import LeaderBoardComponent from './LeaderBoardComponent'
 
 const LeaderBoardPage = ({ number }: { number: number }) => {
   let isActive = useZadActive(number)
-  if (number == 0) {
+  if (number == 2) {
     isActive = true
   }
 
