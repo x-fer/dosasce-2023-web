@@ -76,8 +76,8 @@ const FileUploadForm = () => {
 
     await getBase64File(selectedFile!, (result: string | ArrayBuffer | null) => setBase64File(result))
 
-    const category = getCategory()
-    const problemID = getProblemID(category as string, 2)
+    const category = await getCategory()
+    const problemID = await getProblemID(category as string, 2)
 
     submitSolution2(problemID, base64File! as string, selectedOption!)
       .then(res => res.json())

@@ -8,7 +8,7 @@ import ZadatakComing from '@/components/ZadatakComing'
 const FirstProblem = () => {
   const sarme = (
     <div className="h-72 rounded-t-md">
-      <img src={Sarme} alt="Sarme" className="h-full max-h-full w-full max-w-full object-cover" />
+      <img src={Sarme} alt="Sarme" className="h-full max-h-full w-full max-w-full rounded-t-md object-cover" />
     </div>
   )
 
