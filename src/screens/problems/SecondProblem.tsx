@@ -21,10 +21,13 @@ const SecondProblem = () => {
           </p>
           <br />
           <p className="paragraph">
-            Kako bi ga naučila pameti, Marinka je odlučila sva pisma koja Djed dobije šifrirati i nakon toga base64
-            kodirati pa nek se on muči s dešifriranjem. Opće je poznato da je na Sjevernom Polu internet katastrofalan
-            pa Marinka želi da pisma budu što kraća moguća kako bi ipak malo ranije pobjegla doma s posla. Programiranje
-            joj nikad nije najbolje išlo pa moli vas za pomoć.
+            Kako bi ga naučila pameti, Marinka je odlučila sva pisma koja Djed dobije šifrirati i nakon toga{' '}
+            <a href="https://docs.python.org/3/library/base64.html" className="text-red underline" target="_blank">
+              base64
+            </a>{' '}
+            (vidi primjer koda ispod) kodirati pa nek se on muči s dešifriranjem. Opće je poznato da je na Sjevernom
+            Polu internet katastrofalan pa Marinka želi da pisma budu što kraća moguća kako bi ipak malo ranije pobjegla
+            doma s posla. Programiranje joj nikad nije najbolje išlo pa moli vas za pomoć.
           </p>
           <br />
           <p className="paragraph">
@@ -60,11 +63,15 @@ const SecondProblem = () => {
           <Title type="subtitle">Primjer programa</Title>
           <p className="paragraph">Moguće je koristiti jezike: C++, Java, Python, C...</p>
           <pre className="paragraph w-[100%] bg-light-red p-2">
-            {`cin >> modRada\ncin >> tekst\nif (modRada == "compress")
-        ... komprimiraj teksta
-        cout << komprimiraniTekst\nelse
-        ... dekomprimiraj tekst
-        cout << dekomprimiraniTekst`}
+            {`import base64\nmode = input()\nif mode == "compress":
+            data = input()
+            data = base64.b64decode(data.encode()).decode()  # ovo prevodi ulaz u Latex oblik
+            # kompresiranje data
+            print(base64.b64encode(data.encode()).decode(), flush=True)\nelif mode == "decompress":
+            data = input()
+            data = base64.b64decode(data.encode()).decode()
+            # dekompresiranje data
+            print(data, flush=True)`}
           </pre>
 
           <Title type="subtitle">Ulazni podaci</Title>
@@ -80,14 +87,25 @@ const SecondProblem = () => {
             <strong>tekst manji</strong> :D
           </p>
           <p className="paragraph mt-4">
-            <b>Napomena:</b> Izlaz programa u načinu za komprimiranje se ubacuje u <strong>gzip</strong> te konačan broj
-            bodova odgovara duljini zippane datoteke. Naravno, uvjet je da je tekst komprimiran u “compress” načinu rada
-            moguće raspakirati u izvorni tekst s “decompress” načinom rada.{' '}
+            <b>Napomena:</b>{' '}
+            <span className="text-red">
+              NIJE dozvoljeno korištenje nikakvih libraryja za kompresiju (npr. <b>gzip</b>).
+            </span>{' '}
+            Konačan broj bodova odgovara duljini datoteke u bajtovima. Naravno, uvjet je da je tekst komprimiran u
+            “compress” načinu rada moguće raspakirati u izvorni tekst s “decompress” načinom rada.{' '}
             <b>U protivnom rješenje ovog zadatka nije valjano.</b>
           </p>
 
           <Title type="subtitle">Rješenje</Title>
           <FileUploadForm />
+          <div>
+            <a
+              href={`/leaderboard/2`}
+              className="paragraph text-md cursor-pointer font-semibold leading-7 text-red underline"
+            >
+              Rang lista!
+            </a>
+          </div>
         </ProblemPage>
       ) : (
         <ZadatakComing number={2} />
