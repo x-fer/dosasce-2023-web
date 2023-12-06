@@ -71,18 +71,19 @@ const SecondProblem = () => {
             data = input()
             data = base64.b64decode(data.encode()).decode()
             # dekompresiranje data
-            print(data, flush=True)`}
+            print(base64.b64encode(data.encode()).decode(), flush=True)\n\n# OBAVEZNO DODATI OVO NA KRAJ:\nwhile True:
+            input()`}
           </pre>
 
           <Title type="subtitle">Ulazni podaci</Title>
           <p className="paragraph">
             U prvom se redu nalazi mod rada - "compress" ili "decompress". <br />
-            Nakon toga se nalazi base64 kodirani tekst pisama koji trebate komprimirati / dekomprimirati (veličina
-            teksta nije poznata).
+            Nakon toga se nalazi <b>base64 kodirani tekst</b> pisama koji trebate komprimirati / dekomprimirati
+            (veličina teksta nije poznata).
           </p>
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
-            Ispišite base64 kodirani tekst nakon komprimiranja / dekomprimiranja (ovisno o tipu rada).{' '}
+            Ispišite <b>base64 kodirani tekst</b> nakon komprimiranja / dekomprimiranja (ovisno o tipu rada).{' '}
             <strong>Broj bodova je veći </strong> što je kompresija bolja odnosno komprimirani{' '}
             <strong>tekst manji</strong> :D
           </p>
