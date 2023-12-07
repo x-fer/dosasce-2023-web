@@ -2,9 +2,10 @@ import { UserContext } from '@/App'
 import { http } from '@/api/http'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 import { Dispatch, SetStateAction, useContext } from 'react'
-import { Trophy } from 'lucide-react'
+
 import UserDropdown from './UserDropdown'
 import { addToAllContests } from '@/api/repository'
+import LeaderboardDropdownIcon from '@/screens/leaderboard/LeaderboardDropdownIcon'
 
 type HeaderType = {
   setToken: Dispatch<SetStateAction<string>>
@@ -48,12 +49,7 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
       </a>
 
       <div className="flex gap-4 sm:gap-6">
-        <a href="/leaderboard/1" className="cursor-pointer select-none underline">
-          <div className="flex h-full items-center gap-1 text-2xl">
-            <Trophy size={24} strokeWidth={3} />
-            <p className="mb-1 hidden underline sm:block">rang-lista</p>
-          </div>
-        </a>
+        <LeaderboardDropdownIcon />
 
         {!isLoggedIn ? (
           <GoogleLogin onSuccess={onSuccess} shape="pill" text="signin" />
