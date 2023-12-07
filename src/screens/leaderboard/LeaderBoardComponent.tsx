@@ -24,7 +24,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
     'kruno.tomicic@gmail.com',
     'krunoslav.tomicic@gmail.com',
     'dominik.kanjuh@gmail.com',
-    'dominik.kanjuh@sofascore.com',
+    'dominik.kanjuh@kset.org',
     'milanvrankic@gmail.com',
     'nitko12@hotmail.com',
     'zvonimir.haramustek@finance.hr',
