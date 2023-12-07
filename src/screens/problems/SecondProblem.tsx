@@ -68,7 +68,7 @@ const SecondProblem = () => {
 
           <Title type="subtitle">Primjer programa</Title>
           <p className="paragraph">Moguće je koristiti jezike: C++, Java, Python, C...</p>
-          <pre className="paragraph w-[100%] bg-light-red p-2">
+          <pre className="paragraph  w-[100%] whitespace-pre-wrap bg-light-red p-2">
             {`import base64\nmode = input()\nif mode == "compress":
             data = input()
             data = base64.b64decode(data.encode()).decode()  # ovo prevodi ulaz u Latex oblik
