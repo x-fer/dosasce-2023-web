@@ -1,7 +1,7 @@
 import { cn } from '@/utils/utils'
 import { Mistletoe, Presents, Snowman, Trees } from '.'
 import { useNavigate } from 'react-router-dom'
-import { zad1, zad2, zad3, dodjela } from '@/utils/dates'
+import { zad1, zad2, zad3, dodjela, useZadActive } from '@/utils/dates'
 
 type TimelineCardProps = {
   name: string
@@ -13,8 +13,8 @@ type TimelineCardProps = {
 }
 
 const TimelineCard = (props: TimelineCardProps) => {
-  const isLive = props.startDate && props.endDate && new Date() >= props.startDate && new Date() <= props.endDate
-
+  // const isLive = props.startDate && props.endDate && new Date() >= props.startDate && new Date() <= props.endDate
+  const isLive = useZadActive(props.number ?? 0)
   const navigate = useNavigate()
 
   return (
