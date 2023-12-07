@@ -71,45 +71,71 @@ const FileUploadForm = () => {
     }
   }
 
-  const handleSubmit = async (event: React.FormEvent) => {
+  // const handleSubmit = async (event: React.FormEvent) => {
+  //   event.preventDefault()
+
+  //   setIsSending(true)
+
+  //   await getBase64File(selectedFile!, (result: string | ArrayBuffer | null) => setBase64File(result))
+
+  //   const category = getCategory()
+  //   const problemID = getProblemID(category as string, 2)
+
+  //   submitSolution2(problemID, base64File! as string, selectedOption!)
+  //     .then(res => res.json())
+  //     .finally(() => {
+  //       setIsSending(false)
+  //     })
+  // }
+
+  useEffect(() => {
+    if (selectedOption && selectedFile) {
+      setError('')
+
+      if (
+        selectedOption !== undefined &&
+        selectedFile !== undefined &&
+        selectedFile?.name.split('.')[1] !== 'txt' &&
+        nameExtensionDictionary[selectedOption].extension !== selectedFile?.name.split('.')[1]
+      ) {
+        setError('Odabrani programski jezik ne odgovara odabranoj datoteci.')
+      }
+
+      if (
+        selectedFile &&
+        selectedFile?.name.split('.')[1] !== 'txt' &&
+        !Object.values(nameExtensionDictionary).some(lang => lang.extension === selectedFile?.name.split('.')[1])
+      ) {
+        setError(
+          'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .txt, .c, .cpp, .java, .py, .go ili .rs datoteku.'
+        )
+      }
+    }
+  }, [selectedOption, selectedFile])
+
+  useEffect(() => {
+    if (isSending && base64File && selectedOption && selectedFile) {
+      const category = getCategory()
+      const problemID = getProblemID(category as string, 2)
+
+      submitSolution2(problemID, base64File as string, selectedOption)
+        .then(res => res.json())
+        .finally(() => {
+          setIsSending(false)
+        })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSending, base64File, selectedOption, selectedFile])
+
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
 
     setIsSending(true)
 
-    await getBase64File(selectedFile!, (result: string | ArrayBuffer | null) => setBase64File(result))
-
-    const category = getCategory()
-    const problemID = getProblemID(category as string, 2)
-
-    submitSolution2(problemID, base64File! as string, selectedOption!)
-      .then(res => res.json())
-      .finally(() => {
-        setIsSending(false)
-      })
+    getBase64File(selectedFile!, (result: string | ArrayBuffer | null) => {
+      setBase64File(result)
+    })
   }
-
-  useEffect(() => {
-    setError('')
-
-    if (
-      selectedOption !== undefined &&
-      selectedFile !== undefined &&
-      selectedFile?.name.split('.')[1] !== 'txt' &&
-      nameExtensionDictionary[selectedOption].extension !== selectedFile?.name.split('.')[1]
-    ) {
-      setError('Odabrani programski jezik ne odgovara odabranoj datoteci.')
-    }
-
-    if (
-      selectedFile &&
-      selectedFile?.name.split('.')[1] !== 'txt' &&
-      !Object.values(nameExtensionDictionary).some(lang => lang.extension === selectedFile?.name.split('.')[1])
-    ) {
-      setError(
-        'Odabrana datoteka nije ispravnog formata. Molim vas da odaberete .txt, .c, .cpp, .java, .py, .go ili .rs datoteku.'
-      )
-    }
-  }, [selectedOption, selectedFile])
 
   return (
     <form className="w-full" onSubmit={handleSubmit}>
