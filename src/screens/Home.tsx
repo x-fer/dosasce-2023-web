@@ -22,7 +22,7 @@ const Home = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center bg-red p-5 pt-9 text-center text-white">
-          <p className="text-xl md:text-3xl">Predavanje: Kako pristupiti optimizacijskim problemima?</p>
+          <p className="text-xl md:text-3xl">Predavanje: Algoritmi kompresije</p>
           <br />
           <p className="paragraph text-lg md:text-xl">Ponedjeljak 11. prosinca, 18:00h (FER, A202)</p>
           <p className="text-md md:text-lg">
