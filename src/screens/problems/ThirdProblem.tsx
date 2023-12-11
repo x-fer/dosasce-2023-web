@@ -1,5 +1,6 @@
-import { Title } from '@/components'
+import { Title, VilenjaciGraf } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
+import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
 
@@ -11,13 +12,80 @@ const ThirdProblem = () => {
     <>
       {isZadActive ? (
         <ProblemPage>
-          <Title type="title">2. Zadatak</Title>
+          <Title type="title">Vilenjaci</Title>
           <p className="paragraph">
-            Ivanova mama Marinka već je godinama zaposlena kod Djeda Božićnjaka. Kako je ove godine odlučila napraviti
-            gomilu sarmi, nadala se da će moći od Djeda dobiti par slobodnih dana oko Božića, ali Djed nije imao
-            razumijevanja. Navodno je bitnija sreća neke tamo djece nego njezinog Ivana.
+            Svake godine uoči Božića vilenjaci u velikoj tvornici na Sjevernom polu moraju poklone s brojnih proizvodnih
+            traka pakirati i stavljati na hrpe. Ove godine većina ih pomaže Djedu Božićnjaku oko LaTeX funkcija pa oni
+            koji su ostali moraju raditi naporno, ali i pametno.
           </p>
           <br />
+          <p className="paragraph">
+            Svaka proizvodna traka kroz dan proizvodi poklone različitim tempom koji je opisan polinomom 4. stupnja (a
+            <var>x</var>
+            <sup>4</sup>+b<var>x</var>
+            <sup>3</sup>+c<var>x</var>
+            <sup>2</sup>+dx+e), gdje x označava vrijeme u satima (0-24). Broj poklona koji se proizvede u nekom
+            intervalu jednak je površini ispod polinoma u tom intervalu (polinomi će od 0 do 24 imati samo nenegativne
+            vrijednosti). Broj poklona zaokružuje se na manji cijeli broj. Ako bi se u intervalu proizvelo 4.3 poklona,
+            vilenjak bi skupio samo 4 potpuno proizvedena.
+          </p>
+          <br />
+          <p className="paragraph">
+            Jedan vilenjak u jednom trenutku može biti samo na jednoj proizvodnoj traci, a da bi se premjestio na drugu
+            traku i pripremio za rad treba mu 6 minuta, to jest 0.1 sat. Također, vilenjaci smiju dijeliti traku, ali
+            tada sakupljaju jednako poklona kao i da je na traci samo jedan.
+          </p>
+          <br />
+          <p className="paragraph">
+            200 vilenjaka sad se treba pametno rasporediti na 1000 proizvodnih traka kako bi maksimizirali broj
+            sakupljenih poklona u danu. Pomozite im u tom izazovu.
+          </p>
+          <Title type="subtitle">Ulazni podaci</Title>
+          <p className="paragraph">
+            1000 redaka sa po 5 realnih brojeva koji predstavljaju koeficijente polinoma, gdje je 1. broj koeficijent uz
+            <var>x</var>
+            <sup>4</sup>. Npr. 1 2 3 4 5 predstavlja <var>x</var>
+            <sup>4</sup>+2<var>x</var>
+            <sup>3</sup>+3<var>x</var>
+            <sup>2</sup>+4x+5
+          </p>
+          <UlazniPodatciButtons filePath="/files/inputs/3/ulaz.txt" title="Preuzmi ulazne podatke" />
+
+          <Title type="subtitle">Izlazni podaci</Title>
+          <p className="paragraph">
+            Vaš zadatak je ispisati 200 redaka koji predstavljaju raspored svakog vilenjaka. Raspored se ispisuje u
+            obliku niza parova brojeva x i y gdje x označava 0-indeksirani broj proizvodne trake, a y vrijeme koje
+            vilenjak provede na njoj. Npr. 0 5 1 4.8 2 14 znači da će vilenjak svoj radni dan započeti na traci 0 i tamo
+            provesti 5 sati, zatim će od 5.1 do 9.9 sati biti na traci 1, a od 10 do kraja dana na traci 2.
+          </p>
+
+          <div className="w-full">
+            <Title type="subtitle">Primjer</Title>
+            <Title type="subtitle2">Ulaz</Title>
+            <p className="paragraph">Kada bismo imali jednog vilenjaka i sljedeće 2 funkcije:</p>
+            <p className="paragraph ml-4">
+              0<var>x</var>
+              <sup>4</sup> + 0.018<var>x</var>
+              <sup>3</sup> - 0.848<var>x</var>
+              <sup>2</sup> + 9.641x + 19.963 (crvena)
+            </p>
+            <p className="paragraph  ml-4">
+              -0.001<var>x</var>
+              <sup>4</sup> + 0.048<var>x</var>
+              <sup>3</sup> - 0.483<var>x</var>
+              <sup>2</sup> + 0.75x + 22 (crvena)
+            </p>
+            <Title type="subtitle2">Izlaz</Title>
+            <p className="paragraph">
+              Vilenjak bi mogao biti na crvenoj prvih 14.8 sati, a onda od 14.9 do 24 (9.1 sat) na zelenoj. Ispis bi u
+              tom slučaju bio:
+            </p>
+            <pre className="paragraph w-[100%] bg-light-red p-2">{`0 14.8 1 9.1`}</pre>
+            <p className="paragraph">Te bi sakupio 650 + 584 = 1234 poklona.</p>
+          </div>
+          <div className="mt-16 flex justify-center">
+            <img src={VilenjaciGraf} alt="Graf rada vilenjaka" className="max-h-72" />
+          </div>
         </ProblemPage>
       ) : (
         <ZadatakComing number={3} />
