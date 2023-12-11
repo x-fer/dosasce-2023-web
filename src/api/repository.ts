@@ -36,6 +36,12 @@ export const addToAllContests = () => {
   } catch (e) {
     console.log('Fail add to contest 2')
   }
+
+  try {
+    addToContestSpecific(3)
+  } catch (e) {
+    console.log('Fail add to contest 2')
+  }
 }
 
 export const checkUserCategories = (emails?: string[]) => {
