@@ -1,4 +1,15 @@
-import { Background, Contact, Footer, Informations, Organisators, Partners, Separator, Timeline } from '@/components'
+import {
+  Background,
+  Contact,
+  Footer,
+  Informations,
+  Organisators,
+  Partners,
+  PartnersLogos,
+  Separator,
+  Timeline,
+} from '@/components'
+import OrganisatorsLogos from '@/components/OrganisatorsLogos'
 
 const Home = () => {
   return (
@@ -42,8 +53,12 @@ const Home = () => {
       <Separator />
 
       <Organisators />
+      <OrganisatorsLogos />
+
+      <Separator />
 
       <Partners />
+      <PartnersLogos />
 
       <Separator />
 

@@ -1,42 +1,22 @@
-import { AmazingaLogo, AxisLogo, FerLogo, OldLockUpLogo } from '.'
-import { eestecLogo } from '.'
-import { XFERLogo } from '.'
-
 const Partners = () => {
   return (
-    <div className="z-20 flex w-full justify-center bg-white p-5 pb-10">
-      <div className="flex flex-col items-center justify-center gap-4 md:w-full ">
-        <div className="ml-12 flex items-center justify-center gap-12">
-          <div className="overflow-hidden">
-            <img className="h-[38px] md:h-[72px]" src={XFERLogo} alt="X.FER-logo" />
-          </div>
+    <div className="flex w-full flex-col items-center justify-center bg-white">
+      <div className="w-full px-8 py-3 text-xl md:w-3/4 md:px-0">
+        <h2 className="pb-5 pt-5 text-4xl font-extrabold leading-8 tracking-wide">PARTNERI</h2>
+        <p className="paragraph pb-5 leading-8 tracking-wide">
+          <b className="font-black">AMAZINGA</b> to su one jako kul stvari i trampolini.
+        </p>
+        <p className="paragraph pb-5  leading-8 tracking-wide">
+          <b className="font-black">The old Lockup </b> scary kuca iz koje pokusavas izac
+        </p>
 
-          <div className="overflow-hidden">
-            <img
-              className="h-[80px] w-[64px] object-cover md:h-[120px] md:w-[120px]"
-              src={eestecLogo}
-              alt="eestec-logo"
-            />
-          </div>
+        <p className="paragraph pb-5 leading-8 tracking-wide">
+          <b className="font-black">Axis </b> firma koja je jebena i dominik ju je sredio
+        </p>
 
-          <div className="overflow-hidden ">
-            <img className="h-[64px] w-[72px] object-cover md:h-[120px] md:w-[130px]" src={FerLogo} alt="fer-logo" />
-          </div>
-        </div>
-
-        <div className="flex items-center  gap-8">
-          <div className="overflow-hidden">
-            <img className="h-[64px]" src={AmazingaLogo} alt="amazinga-logo" />
-          </div>
-
-          <div className="overflow-hidden">
-            <img className="h-[180px]" src={OldLockUpLogo} alt="oldlockup-logo" />
-          </div>
-
-          <div className="overflow-hidden">
-            <img className="h-[60px]" src={AxisLogo} alt="axis-logo" />
-          </div>
-        </div>
+        <p className="paragraph leading-8 tracking-wide">
+          <b className="font-black">Karting arena </b> wuuuu autici
+        </p>
       </div>
     </div>
   )
