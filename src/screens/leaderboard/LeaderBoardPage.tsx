@@ -7,6 +7,9 @@ const LeaderBoardPage = ({ number }: { number: number }) => {
   if (number == 2) {
     isActive = true
   }
+  if (number == 3) {
+    isActive = true
+  }
 
   return <>{isActive ? <LeaderBoardComponent problemNumber={number} /> : <LeaderBoardComing number={number} />}</>
 }
