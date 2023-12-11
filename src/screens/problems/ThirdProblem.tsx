@@ -1,5 +1,6 @@
 import { Title, VilenjaciGraf } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
+import SolutionBox from '@/components/SolutionBox'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
@@ -86,6 +87,18 @@ const ThirdProblem = () => {
           <div className="mt-16 flex justify-center">
             <img src={VilenjaciGraf} alt="Graf rada vilenjaka" className="max-h-72" />
           </div>
+
+          <Title type="subtitle">Rješenje</Title>
+
+          <p className="inline-block pb-2 text-xl">
+            Možete probati i ručno testirati rješenja{' '}
+            <a href="/files/inputs/3/vilenjaci_checker.zip" className="text-red underline" download={true}>
+              ovdje
+            </a>{' '}
+            (unutra su i upute - README.md).
+          </p>
+
+          <SolutionBox number={3} />
         </ProblemPage>
       ) : (
         <ZadatakComing number={3} />
