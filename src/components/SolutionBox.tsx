@@ -75,7 +75,7 @@ const SolutionBox = ({ number }: { number: number }) => {
 
     const base64 = btoa(rjesenjeCode)
     const category = await getCategory()
-    const problemID = getProblemID(category as string, 1)
+    const problemID = getProblemID(category as string, 3)
 
     if (!base64) {
       setMessage('')
