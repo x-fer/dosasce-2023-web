@@ -12,8 +12,8 @@ const Partners = () => {
           <b className="font-black">The old Lockup-u</b> i njihovim kućama strave!
         </p>
         <p className="paragraph pb-5 leading-8 tracking-wide">
-          Ekipa iz <b className="font-black">Axis-a</b> svakodnevno rješava aktualne tehnološke probleme kako bi
-          optimizirali poslovni svijet, istražite ih ako ste željni izazova!
+          Ekipa iz <b className="font-black">Axis-a</b> svakodnevno razvija inovativna mrežna rješenja za video nadzor
+          čime poboljšavaju sigurnost i optimizraju poslovni svijet. Istražite ih ako ste željni izazova!
         </p>
         <p className="paragraph leading-8 tracking-wide">
           Strastvenim adrenalinskim ovisnicima preporučujemo <b className="font-black">Karting arenu</b> gdje možete
