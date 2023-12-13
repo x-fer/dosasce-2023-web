@@ -105,14 +105,14 @@ const ThirdProblem = () => {
           <Title type="subtitle">Rješenje</Title>
 
           <p className="inline-block pb-2 text-xl">
-            Možete probati i ručno testirati rješenja{' '}
+            Slanje rješenja trenutno ne radi, ali možete ih probati ručno testirati{' '}
             <a href="/files/inputs/3/vilenjaci_checker.zip" className="text-red underline" download={true}>
               ovdje
             </a>{' '}
             (unutra su i upute - README.md).
           </p>
 
-          <SolutionBox number={3} />
+          {/*<SolutionBox number={3} />*/}
         </ProblemPage>
       ) : (
         <ZadatakComing number={3} />
