@@ -30,6 +30,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
     'zvonimir.haramustek@finance.hr',
     'zvonimir.haramustek@stemgames.hr',
     'zvonimir3000@gmail.com',
+    'nikola.kusen@gmail.com',
   ]
 
   const radioButtonData = [
