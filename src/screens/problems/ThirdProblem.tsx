@@ -64,10 +64,12 @@ const ThirdProblem = () => {
 
           <Title type="subtitle">Izlazni podaci</Title>
           <p className="paragraph">
-            Vaš zadatak je ispisati 200 redaka koji predstavljaju raspored svakog vilenjaka. Raspored se ispisuje u
-            obliku niza parova brojeva x i y gdje x označava 0-indeksirani broj proizvodne trake, a y vrijeme koje
-            vilenjak provede na njoj. Npr. 0 5 1 4.8 2 14 znači da će vilenjak svoj radni dan započeti na traci 0 i tamo
-            provesti 5 sati, zatim će od 5.1 do 9.9 sati biti na traci 1, a od 10 do kraja dana na traci 2.
+            Za svakog od 200 vilenjaka potrebno je ispisati koliko je puta promijenio traku (broj S) i potom S+1 redaka.
+            U svakom od tih S+1 redaka su po dva broja x i y. x je 0-indeksirani broj proizvodne trake, a y vrijeme koje
+            vilenjak provede na njoj. Npr.{' '}
+            <pre className="paragraph w-[100%] bg-light-red p-2">{'2\n0 5\n1 4.8\n2 14'}</pre> znači da će vilenjak dva
+            puta promijeniti traku tako da svoj radni dan započne na traci 0 i tamo provede 5 sati, zatim će od 5.1 do
+            9.9 sati biti na traci 1, a od 10 do kraja dana na traci 2.
           </p>
 
           <div className="w-full">
@@ -95,7 +97,7 @@ const ThirdProblem = () => {
               Vilenjak bi mogao biti na crvenoj prvih 14.8 sati, a onda od 14.9 do 24 (9.1 sat) na zelenoj. Ispis bi u
               tom slučaju bio:
             </p>
-            <pre className="paragraph w-[100%] bg-light-red p-2">{`0 14.8 1 9.1`}</pre>
+            <pre className="paragraph w-[100%] bg-light-red p-2">{`2\n0 14.8\n1 9.1`}</pre>
             <p className="paragraph">Te bi sakupio 650 + 584 = 1234 poklona.</p>
           </div>
           <div className="mt-16 flex justify-center">
