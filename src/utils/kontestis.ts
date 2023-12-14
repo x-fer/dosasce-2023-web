@@ -13,7 +13,12 @@ export const PROBLEMS_ID: Record<number, Record<number | string, string>> = {
     2: '255393177287004160', //preddiplom
     3: '255393435983286272', //diplom
   },
-  3: {},
+  3: {
+    id: '257811008901353472', //contest id zad 2 -testing
+    1: '257811863650177024', //srednja
+    2: '257812021737689088', //preddiplom
+    3: '257812119481749504', //diplom
+  },
 }
 
 export const INVITE_CODE = '01b0bd17df48c577'

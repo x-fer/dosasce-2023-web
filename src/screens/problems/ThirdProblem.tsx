@@ -1,6 +1,6 @@
 import { Title, VilenjaciGraf, Vilenjaci } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
-//import SolutionBox from '@/components/SolutionBox'
+import SolutionBox from '@/components/SolutionBox'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
@@ -97,7 +97,7 @@ const ThirdProblem = () => {
               Vilenjak bi mogao biti na crvenoj prvih 14.8 sati, a onda od 14.9 do 24 (9.1 sat) na zelenoj. Ispis bi u
               tom slučaju bio:
             </p>
-            <pre className="paragraph w-[100%] bg-light-red p-2">{`2\n0 14.8\n1 9.1`}</pre>
+            <pre className="paragraph w-[100%] bg-light-red p-2">{`1\n0 14.8\n1 9.1`}</pre>
             <p className="paragraph">Te bi sakupio 650 + 584 = 1234 poklona.</p>
           </div>
           <div className="mt-16 flex justify-center">
@@ -107,14 +107,14 @@ const ThirdProblem = () => {
           <Title type="subtitle">Rješenje</Title>
 
           <p className="inline-block pb-2 text-xl">
-            Slanje rješenja trenutno ne radi, ali možete ih probati ručno testirati{' '}
+            Možete probati i ručno testirati rješenja{' '}
             <a href="/files/inputs/3/vilenjaci_checker.zip" className="text-red underline" download={true}>
               ovdje
             </a>{' '}
             (unutra su i upute - README.md).
           </p>
 
-          {/*<SolutionBox number={3} />*/}
+          <SolutionBox number={3} />
         </ProblemPage>
       ) : (
         <ZadatakComing number={3} />
