@@ -1,6 +1,6 @@
 import { Title, VilenjaciGraf, Vilenjaci } from '@/components'
 import ProblemPage from '@/components/ProblemPage'
-import SolutionBox from '@/components/SolutionBox'
+import SolutionBox2 from '@/components/SolutionBox2'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
 // import { useZadActive } from '@/utils/dates'
@@ -114,7 +114,7 @@ const ThirdProblem = () => {
             (unutra su i upute - README.md).
           </p>
 
-          <SolutionBox number={3} />
+          <SolutionBox2 number={3} />
         </ProblemPage>
       ) : (
         <ZadatakComing number={3} />
