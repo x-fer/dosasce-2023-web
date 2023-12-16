@@ -24,24 +24,26 @@ export const addToContestSpecific = (number: number) => {
   })
 }
 
-export const addToAllContests = () => {
+export const addToAllContests = async () => {
   try {
-    addToContestSpecific(1)
+    await addToContestSpecific(1)
   } catch (e) {
     console.log('Fail add to contest 1')
   }
 
   try {
-    addToContestSpecific(2)
+    await addToContestSpecific(2)
   } catch (e) {
     console.log('Fail add to contest 2')
   }
 
   try {
-    addToContestSpecific(3)
+    await addToContestSpecific(3)
   } catch (e) {
     console.log('Fail add to contest 2')
   }
+
+  return Promise.resolve()
 }
 
 export const checkUserCategories = (emails?: string[]) => {
