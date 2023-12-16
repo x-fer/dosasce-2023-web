@@ -5,7 +5,7 @@ import { INVITE_CODE, getContestID, getInviteCode } from '@/utils/kontestis'
 export const addToContest = () => {
   return fetch(R.joinContest(), {
     method: 'POST',
-    headers: JSON_HEADER,
+    headers: JSON_HEADER(),
     body: JSON.stringify({
       join_code: INVITE_CODE,
     }),
@@ -17,31 +17,33 @@ export const addToContestSpecific = (number: number) => {
 
   return fetch(R.joinContest(), {
     method: 'POST',
-    headers: JSON_HEADER,
+    headers: JSON_HEADER(),
     body: JSON.stringify({
       join_code: inv_code,
     }),
   })
 }
 
-export const addToAllContests = () => {
+export const addToAllContests = async () => {
   try {
-    addToContestSpecific(1)
+    await addToContestSpecific(1)
   } catch (e) {
     console.log('Fail add to contest 1')
   }
 
   try {
-    addToContestSpecific(2)
+    await addToContestSpecific(2)
   } catch (e) {
     console.log('Fail add to contest 2')
   }
 
   try {
-    addToContestSpecific(3)
+    await addToContestSpecific(3)
   } catch (e) {
     console.log('Fail add to contest 2')
   }
+
+  return Promise.resolve()
 }
 
 export const checkUserCategories = (emails?: string[]) => {
@@ -64,7 +66,7 @@ export const submitSolution = (problemId: string, code: string) => {
   // console.log('submitSolution', problemId, code.substring(0, 100))
   return fetch(R.submissionOfSolution(problemId), {
     method: 'POST',
-    headers: JSON_HEADER,
+    headers: JSON_HEADER(),
     body: JSON.stringify({
       language: 'output-only',
       code: code,
@@ -77,7 +79,7 @@ export type possibleProgrammingLanguages = 'python' | 'c' | 'cpp' | 'go' | 'rust
 export const submitSolution2 = (problemId: string, code: string, language: string) => {
   return fetch(R.submissionOfSolution(problemId), {
     method: 'POST',
-    headers: JSON_HEADER,
+    headers: JSON_HEADER(),
     body: JSON.stringify({
       language: language,
       code: code,
@@ -88,6 +90,6 @@ export const submitSolution2 = (problemId: string, code: string, language: strin
 export const getLeaderboard = (problemNumber: number) => {
   return fetch(R.leaderboard(getContestID(problemNumber)), {
     method: 'GET',
-    headers: JSON_HEADER,
+    headers: JSON_HEADER(),
   })
 }

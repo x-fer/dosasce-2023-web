@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useContext } from 'react'
 import UserDropdown from './UserDropdown'
 import { addToAllContests } from '@/api/repository'
 import LeaderboardDropdownIcon from '@/screens/leaderboard/LeaderboardDropdownIcon'
+import { logger } from '@/utils/logger'
 
 type HeaderType = {
   setToken: Dispatch<SetStateAction<string>>
@@ -39,7 +40,11 @@ const Header = ({ setToken, setIsLoggedIn }: HeaderType) => {
           return config
         })
       })
-      .then(() => addToAllContests())
+      .then(() => {
+        logger('adding to all contests...')
+        logger('token: ', localStorage.getItem('SavedLoginToken'))
+        addToAllContests()
+      })
   }
 
   return (
