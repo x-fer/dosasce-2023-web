@@ -15,7 +15,7 @@ const Testcase = () => {
       .then(text => {
         fetch(`https://api.kontestis.ac/api/problem/${ids[0]}/cluster/${ids[1]}/testcase/${ids[2]}`, {
           method: 'PATCH',
-          headers: JSON_HEADER,
+          headers: JSON_HEADER(),
           body: JSON.stringify({
             input: text,
           }),

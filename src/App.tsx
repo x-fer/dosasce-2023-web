@@ -10,6 +10,7 @@ import Testcase from './screens/Testcase'
 import Uzrast from './screens/Uzrast'
 import About from './components/Informations'
 import { checkUserCategories } from './api/repository'
+import { logger } from './utils/logger'
 
 export type UserType = {
   name: string
@@ -46,17 +47,17 @@ function App() {
   const [categoryData, setCategoryData] = useState<Record<string, string> | undefined>(undefined)
 
   useEffect(() => {
-    console.log('token: ', token)
+    logger('token: ', token)
   }, [token])
 
   useEffect(() => {
-    console.log('user: ', user)
+    logger('user: ', user)
 
     if (!categoryData?.[user?.email || '']) {
       checkUserCategories(['none'])
         .then(res => res.json())
         .then(userCategoryData => {
-          console.log('checkUserCategories response: ', userCategoryData)
+          logger('checkUserCategories response: ', userCategoryData)
           setCategoryData(userCategoryData)
         })
     }
@@ -69,7 +70,7 @@ function App() {
       checkUserCategories(['none'])
         .then(res => res.json())
         .then(userCategoryData => {
-          console.log('checkUserCategories response: ', userCategoryData)
+          logger('checkUserCategories response: ', userCategoryData)
           setCategoryData(userCategoryData)
 
           extractUser(pureToken)
