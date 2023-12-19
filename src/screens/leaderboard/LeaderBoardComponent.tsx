@@ -6,6 +6,7 @@ import ProblemPage from '@/components/ProblemPage'
 import RadioButton from '@/components/RadioButton'
 import { checkUserCategories, getLeaderboard } from '@/api/repository'
 import { getProblemID } from '@/utils/kontestis'
+import { logger } from '@/utils/logger'
 
 const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
   const [activeLeaderboard, setactiveLeaderboard] = useState<number>(0)
@@ -114,6 +115,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
           }))
       })
 
+      logger(newLeaderboardWithCategories)
       setLeaderboardWithCategories(newLeaderboardWithCategories)
     }
   }, [userCategoryData, leaderboardData])
