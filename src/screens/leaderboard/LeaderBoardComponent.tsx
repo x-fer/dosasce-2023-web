@@ -110,7 +110,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
           })
           .map((el: any) => ({
             ...el,
-            points: el.points[problemId],
+            points: el.points[problemId] ?? 0,
           }))
       })
 
