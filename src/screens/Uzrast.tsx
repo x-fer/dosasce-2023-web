@@ -1,4 +1,4 @@
-import { addToContest, submitUserCategory } from '@/api/repository'
+import { addToAllContests, submitUserCategory } from '@/api/repository'
 import ProblemPage from '@/components/ProblemPage'
 import { useContext, useState } from 'react'
 import { UserContext, UserType } from '@/App'
@@ -20,7 +20,7 @@ const Uzrast = () => {
         if (data.category) {
           if (setUser) setUser({ ...user, category: data.category as string, hasSetCategory: true } as UserType)
           if (setCategoryData) setCategoryData({ ...categoryData, [user!.email]: data.category })
-          addToContest().then(() => navigate('/'))
+          addToAllContests().then(() => navigate('/'))
         }
       })
   }

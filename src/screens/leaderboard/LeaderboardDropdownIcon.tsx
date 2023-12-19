@@ -11,12 +11,15 @@ const LeaderboardDropdownIcon = () => {
         <p className="mb-1 hidden underline sm:block">rang-lista</p>
       </button>
       {isOpen && (
-        <div className="absolute right-0 top-12 flex h-14 w-32 cursor-pointer flex-col items-center justify-center rounded-b-xl bg-red py-4 pb-6 text-white">
+        <div className="h-18 absolute right-0 top-12 flex w-32 cursor-pointer flex-col items-center justify-center rounded-b-xl bg-red py-4 pb-6 text-white">
           <a href="/leaderboard/1">
             <p className="w-ful hover:underline">1. Zadatak</p>
           </a>
           <a href="/leaderboard/2">
             <p className="w-full hover:underline">2. Zadatak</p>
+          </a>
+          <a href="/leaderboard/3">
+            <p className="w-full hover:underline">3. Zadatak</p>
           </a>
         </div>
       )}

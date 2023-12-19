@@ -30,6 +30,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
     'zvonimir.haramustek@finance.hr',
     'zvonimir.haramustek@stemgames.hr',
     'zvonimir3000@gmail.com',
+    'nikola.kusen@gmail.com',
   ]
 
   const radioButtonData = [
@@ -63,9 +64,6 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
 
       setLeaderboardData(
         leaderboardData
-          .filter((el: any) => {
-            return Object.keys(el.score ?? {}).length > 0
-          })
           .filter((el: any) => {
             return !LEADERBOARD_BLACKLIST.includes(el.email)
           })
