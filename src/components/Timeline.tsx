@@ -59,7 +59,7 @@ const TimelineCard = (props: TimelineCardProps) => {
 
             <p className="paragraph text-2xl">
               {props.endDate ? 'do ' : ''}
-              {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'numeric' })}
+              {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'numeric' })} 19h, A202
             </p>
           </>
         )}
