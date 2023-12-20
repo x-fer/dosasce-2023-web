@@ -40,7 +40,7 @@ export const addToAllContests = async () => {
   try {
     await addToContestSpecific(3)
   } catch (e) {
-    console.log('Fail add to contest 2')
+    console.log('Fail add to contest 3')
   }
 
   return Promise.resolve()

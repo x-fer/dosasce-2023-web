@@ -18,7 +18,6 @@ export const onRequestPost = async context => {
     return Response.json({ error: 'email, category, and currentData are required' }, { status: 400 })
 
   const currentStateId = await context.env.USER_CATEGORY.get('current_state')
-  // console.log('currentStateId: ', currentStateId)
   logMessage.currentStateId = currentStateId
 
   let currentData = null
@@ -50,8 +49,6 @@ export const onRequestPost = async context => {
     logMessage.newStateId = stateId
     logMessage.newState = newState
   }
-
-  console.log(logMessage)
 
   const res = {
     email,

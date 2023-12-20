@@ -39,17 +39,14 @@ export const onRequestGet = async context => {
       categoryData,
       res,
     }
-    console.log(logMessage)
 
     return Response.json(res)
   } else {
     const allEmails = await context.env.USER_CATEGORY_OLD.list()
-    // console.log('allEmails: ', allEmails)
 
     const categoryData = {}
     for (const email of allEmails.keys) {
       const category = await context.env.USER_CATEGORY_OLD.get(email.name)
-      // console.log('loop: ', email.name, category)
 
       categoryData[email.name] = category
     }
@@ -76,7 +73,6 @@ export const onRequestGet = async context => {
       allEmails,
       res,
     }
-    console.log(logMessage)
     return Response.json(res)
   }
 }

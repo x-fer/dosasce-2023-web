@@ -11,8 +11,6 @@ export const onRequestGet = async context => {
   for (const key of allStateIds.keys) {
     const id = key.name
 
-    console.log(id)
-
     if (id === 'current_state') continue
     const categoryDataString = await context.env.USER_CATEGORY.get(id)
 
@@ -21,8 +19,6 @@ export const onRequestGet = async context => {
 
       ret[id] = Object.entries(categoryData).length
     } catch (error) {
-      console.log('id: ', id)
-
       ret[id] = 'error'
     }
   }

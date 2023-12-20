@@ -93,13 +93,9 @@ function App() {
                 setIsLoggedIn(true)
               }
             })
-            .catch(err => {
-              console.log('extractUser error: ', err)
-            })
+            .catch(() => {})
         })
-        .catch(err => {
-          console.log('checkUserCategories error: ', err)
-        })
+        .catch(() => {})
     }
   }, [token])
 

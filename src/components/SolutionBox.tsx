@@ -102,7 +102,6 @@ const SolutionBox = ({ number }: { number: number }) => {
       submitSolution(problemID, base64)
         .then(res => res.json())
         .then(res => {
-          console.log(res)
           if (res.status === 'OK' || res.status === 200 || res.status === 201) {
             setBodovi('0')
             setMessage('Rješenje poslano, pogledaj stanje na rang listi! Ivan ti šalje <3')
@@ -115,8 +114,7 @@ const SolutionBox = ({ number }: { number: number }) => {
             )
           }
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
           setMessage('')
           setErrorMessage(
             'Greška prilikom slanja rješenja, molimo pokušaj ponovno! Ako se problem nastavi kontaktiraj nas na dosasce@xfer.hr'
