@@ -3,13 +3,7 @@ import LeaderBoardComing from './LeaderBoardComing'
 import LeaderBoardComponent from './LeaderBoardComponent'
 
 const LeaderBoardPage = ({ number }: { number: number }) => {
-  let isActive = useZadActive(number)
-  if (number == 2) {
-    isActive = true
-  }
-  if (number == 3) {
-    isActive = true
-  }
+  const isActive = useZadActive(number)
 
   return <>{isActive ? <LeaderBoardComponent problemNumber={number} /> : <LeaderBoardComing number={number} />}</>
 }

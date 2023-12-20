@@ -1,7 +1,7 @@
 import { cn } from '@/utils/utils'
 import { Mistletoe, Presents, Snowman, Trees } from '.'
 import { useNavigate } from 'react-router-dom'
-import { zad1, zad2, zad3, dodjela, useZadActive } from '@/utils/dates'
+import { zad1, zad2, zad3, dodjela, useZadActive, useZadFinished } from '@/utils/dates'
 
 type TimelineCardProps = {
   name: string
@@ -15,6 +15,7 @@ type TimelineCardProps = {
 const TimelineCard = (props: TimelineCardProps) => {
   // const isLive = props.startDate && props.endDate && new Date() >= props.startDate && new Date() <= props.endDate
   const isLive = useZadActive(props.number ?? 0)
+  const isFinished = useZadFinished()
   const navigate = useNavigate()
 
   return (
@@ -47,9 +48,13 @@ const TimelineCard = (props: TimelineCardProps) => {
         <h1 className="mb-2 text-5xl">{props.name}</h1>
 
         {isLive ? (
-          <p className="paragraph flex items-center text-2xl text-red underline">
-            Otvoren do {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'long' })}!
-          </p>
+          isFinished ? (
+            <p className="paragraph flex items-center text-2xl text-red underline">Pregledaj zadatak</p>
+          ) : (
+            <p className="paragraph flex items-center text-2xl text-red underline">
+              Otvoren do {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'long' })}!
+            </p>
+          )
         ) : (
           <>
             <p className="paragraph text-2xl">

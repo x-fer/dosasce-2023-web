@@ -120,6 +120,12 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
     }
   }, [userCategoryData, leaderboardData])
 
+  let data = []
+  if (leaderboardWithCategories?.length) {
+    data = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points))
+    console.log('data', data)
+  }
+
   return (
     <ProblemPage>
       <div className="p-5">
