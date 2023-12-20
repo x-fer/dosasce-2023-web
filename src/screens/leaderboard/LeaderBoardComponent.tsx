@@ -152,7 +152,7 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
             //         </div>
             //       ))) || <div className="text-left">Nema podataka</div>
             //   )
-            data.map((event: any, idx: any) => (
+            data[activeLeaderboard].map((event: any, idx: any) => (
               <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
                 <div className="mr-3 inline">{idx + 1}</div>
                 <div className="inline">{event.nickname}</div>
