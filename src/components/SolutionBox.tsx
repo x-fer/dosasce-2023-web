@@ -1,6 +1,6 @@
 import { UserContext } from '@/App'
 import { submitSolution } from '@/api/repository'
-import { getZadatakDescription } from '@/utils/dates'
+import { getZadatakDescription, useZadFinished } from '@/utils/dates'
 import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
 import { useContext, useState } from 'react'
@@ -128,6 +128,8 @@ const SolutionBox = ({ number }: { number: number }) => {
     }
   }
 
+  const isZadFinished = useZadFinished()
+
   return (
     <div className="w-[100%]">
       <div className="relative">
@@ -173,7 +175,7 @@ const SolutionBox = ({ number }: { number: number }) => {
                 'cursor-not-allowed border-red bg-white text-red'
             )}
             onClick={provjeriRjesenje}
-            disabled={rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid}
+            disabled={rjesenje.length === 0 || isSending || !isLoggedIn || !isOutputValid || isZadFinished}
           >
             Pošalji rješenje
           </button>

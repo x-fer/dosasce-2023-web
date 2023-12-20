@@ -1,5 +1,6 @@
 import { UserContext } from '@/App'
 import { submitSolution2 } from '@/api/repository'
+import { useZadFinished } from '@/utils/dates'
 import { getProblemID } from '@/utils/kontestis'
 import { cn } from '@/utils/utils'
 import { useContext, useEffect, useState } from 'react'
@@ -137,6 +138,8 @@ const FileUploadForm = () => {
     })
   }
 
+  const isZadFinished = useZadFinished()
+
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="max-w-sm">
@@ -186,7 +189,7 @@ const FileUploadForm = () => {
             'disabled:cursor-not-allowed disabled:bg-white disabled:text-red'
           )}
           onClick={event => handleSubmit(event)}
-          disabled={!selectedOption || !selectedFile || isSending || !isLoggedIn || error.length > 0}
+          disabled={!selectedOption || !selectedFile || isSending || !isLoggedIn || error.length > 0 || isZadFinished}
         >
           Pošalji rješenje
         </button>
