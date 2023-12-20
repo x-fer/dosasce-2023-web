@@ -39,7 +39,7 @@ export const useZadActive = (number: number): boolean => {
   const now = new Date()
   const zad = getZad(number)
 
-  return now.getTime() >= zad.startDate.getTime()
+  return now.getTime() >= zad.startDate.getTime() && now.getTime() <= dodjela.startDate.getTime()
 }
 
 export const getZadatakDescription = (number: number): string => {

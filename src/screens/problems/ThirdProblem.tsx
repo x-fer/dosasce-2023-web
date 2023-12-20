@@ -3,11 +3,11 @@ import ProblemPage from '@/components/ProblemPage'
 import SolutionBox2 from '@/components/SolutionBox2'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
-// import { useZadActive } from '@/utils/dates'
+import { useZadActive } from '@/utils/dates'
 
 const ThirdProblem = () => {
-  // const isZadActive = useZadActive(3)
-  const isZadActive = true
+  const isZadActive = useZadActive(3)
+
   const vilenjaci = (
     <div className="h-72 rounded-t-md">
       <img src={Vilenjaci} alt="Vilenjaci" className="h-full max-h-full w-full max-w-full rounded-t-md object-cover" />

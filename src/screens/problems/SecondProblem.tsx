@@ -3,17 +3,16 @@ import FileUploadForm from '@/components/FileUploadForm'
 import ProblemPage from '@/components/ProblemPage'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
-// import { useZadActive } from '@/utils/dates'
+import { useZadActive } from '@/utils/dates'
 
 const SecondProblem = () => {
-  // const isZadActive = useZadActive(2)
   const pisma = (
     <div className="h-72 rounded-t-md">
       <img src={Pisma} alt="Pisma" className="h-full max-h-full w-full max-w-full rounded-t-md object-cover" />
     </div>
   )
 
-  const isZadActive = true
+  const isZadActive = useZadActive(2)
 
   return (
     <>

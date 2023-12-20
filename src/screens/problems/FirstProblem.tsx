@@ -3,7 +3,7 @@ import ProblemPage from '@/components/ProblemPage'
 import SolutionBox from '@/components/SolutionBox'
 import UlazniPodatciButtons from '@/components/UlazniPodatciButtons'
 import ZadatakComing from '@/components/ZadatakComing'
-// import { useZadActive } from '@/utils/dates'
+import { useZadActive } from '@/utils/dates'
 
 const FirstProblem = () => {
   const sarme = (
@@ -12,9 +12,7 @@ const FirstProblem = () => {
     </div>
   )
 
-  // const isZadActive = useZadActive(1)
-  const isZadActive = true
-
+  const isZadActive = useZadActive(1)
   return (
     <>
       {isZadActive ? (
