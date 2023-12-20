@@ -8,6 +8,8 @@ import { checkUserCategories, getLeaderboard } from '@/api/repository'
 import { getProblemID } from '@/utils/kontestis'
 import { logger } from '@/utils/logger'
 
+import finalLeaderbaord from './FinalLeaderboard.json'
+
 const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
   const [activeLeaderboard, setactiveLeaderboard] = useState<number>(0)
 
@@ -120,11 +122,13 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
     }
   }, [userCategoryData, leaderboardData])
 
-  let data = []
-  if (leaderboardWithCategories?.length) {
-    data = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points))
-    console.log('data', data)
-  }
+  // let data = []
+  // if (leaderboardWithCategories?.length) {
+  //   data = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points))
+  //   console.log('data', data)
+  // }
+
+  const data = finalLeaderbaord[problemNumber as unknown as keyof typeof finalLeaderbaord]
 
   return (
     <ProblemPage>
@@ -135,17 +139,26 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
           {isLoading ? (
             <div className="text-left">Učitavam rang listu...</div>
           ) : (
-            (leaderboardWithCategories?.length &&
-              leaderboardWithCategories[activeLeaderboard]?.length &&
-              leaderboardWithCategories[activeLeaderboard]
-                .sort((a: any, b: any) => b.points - a.points)
-                .map((event: any, idx: any) => (
-                  <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
-                    <div className="mr-3 inline">{idx + 1}</div>
-                    <div className="inline">{event.nickname}</div>
-                    <div className="float-right inline ">{event.points} </div>
-                  </div>
-                ))) || <div className="text-left">Nema podataka</div>
+            // (
+            //   (leaderboardWithCategories?.length &&
+            //     leaderboardWithCategories[activeLeaderboard]?.length &&
+            //     leaderboardWithCategories[activeLeaderboard]
+            //       .sort((a: any, b: any) => b.points - a.points)
+            //       .map((event: any, idx: any) => (
+            //         <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
+            //           <div className="mr-3 inline">{idx + 1}</div>
+            //           <div className="inline">{event.nickname}</div>
+            //           <div className="float-right inline ">{event.points} </div>
+            //         </div>
+            //       ))) || <div className="text-left">Nema podataka</div>
+            //   )
+            data.map((event: any, idx: any) => (
+              <div className="border-2 border-slate-300 bg-white p-5" key={event.nickname + '-' + idx}>
+                <div className="mr-3 inline">{idx + 1}</div>
+                <div className="inline">{event.nickname}</div>
+                <div className="float-right inline ">{event.points} </div>
+              </div>
+            ))
           )}
         </div>
       </div>
