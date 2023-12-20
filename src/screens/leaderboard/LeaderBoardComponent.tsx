@@ -124,11 +124,11 @@ const LeaderBoardComponent = ({ problemNumber }: { problemNumber: number }) => {
 
   const data = finalLeaderbaord[problemNumber as unknown as keyof typeof finalLeaderbaord]
 
-  let printData = []
-  if (leaderboardWithCategories?.length) {
-    printData = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points)) //   data = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points))
-    console.log('data', printData)
-  }
+  // let printData = []
+  // if (leaderboardWithCategories?.length) {
+  //   printData = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points)) //   data = leaderboardWithCategories.map((el: any) => el.sort((a: any, b: any) => b.points - a.points))
+  //   console.log('data', printData)
+  // }
 
   return (
     <ProblemPage>

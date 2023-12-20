@@ -1397,14 +1397,19 @@
   "2": [
     [
       {
+        "nickname": "Petar Sruk",
+        "email": "petar.sruk@gmail.com",
+        "points": 75105
+      },
+      {
+        "nickname": "antun weber",
+        "email": "antun.weber@gmail.com",
+        "points": 70729
+      },
+      {
         "nickname": "Ivo Veverec",
         "email": "ivo.veverec8@gmail.com",
         "points": 69866
-      },
-      {
-        "nickname": "Petar Sruk",
-        "email": "petar.sruk@gmail.com",
-        "points": 63590
       },
       {
         "nickname": "Marko Vukadin",
@@ -1472,11 +1477,6 @@
         "points": 0
       },
       {
-        "nickname": "antun weber",
-        "email": "antun.weber@gmail.com",
-        "points": 0
-      },
-      {
         "nickname": "Elizabeta Stojak",
         "email": "beta.stojak@gmail.com",
         "points": 0
@@ -1538,7 +1538,7 @@
       {
         "nickname": "Petar Sruk",
         "email": "petar.sruk@gmail.com",
-        "points": 63590
+        "points": 75105
       },
       {
         "nickname": "Marko Vukadin",
@@ -1588,6 +1588,11 @@
     ],
     [
       {
+        "nickname": "antun weber",
+        "email": "antun.weber@gmail.com",
+        "points": 70729
+      },
+      {
         "nickname": "Ivo Veverec",
         "email": "ivo.veverec8@gmail.com",
         "points": 69866
@@ -1605,17 +1610,22 @@
       {
         "nickname": "Pavao Jerebić",
         "email": "pavao.jerebic@gmail.com",
-        "points": 0
-      },
-      {
-        "nickname": "antun weber",
-        "email": "antun.weber@gmail.com",
         "points": 0
       }
     ]
   ],
   "3": [
     [
+      {
+        "nickname": "Petar Sruk",
+        "email": "petar.sruk@gmail.com",
+        "points": 208871
+      },
+      {
+        "nickname": "antun weber",
+        "email": "antun.weber@gmail.com",
+        "points": 208446
+      },
       {
         "nickname": "Dado Skrgic",
         "email": "dadoskrgic@gmail.com",
@@ -1624,22 +1634,12 @@
       {
         "nickname": "Ivo Veverec",
         "email": "ivo.veverec8@gmail.com",
-        "points": 207900
+        "points": 207909
       },
       {
         "nickname": "Ivo Tisanic",
         "email": "ivotisanic@gmail.com",
         "points": 206495
-      },
-      {
-        "nickname": "Petar Sruk",
-        "email": "petar.sruk@gmail.com",
-        "points": 204748
-      },
-      {
-        "nickname": "antun weber",
-        "email": "antun.weber@gmail.com",
-        "points": 204204
       },
       {
         "nickname": "RoKo Domovic",
@@ -1662,6 +1662,11 @@
         "points": 0
       },
       {
+        "nickname": "plenki andrija",
+        "email": "craig.viralnuke@gmail.com",
+        "points": 0
+      },
+      {
         "nickname": "Nikša Opanović",
         "email": "opanovic.niksa@gmail.com",
         "points": 0
@@ -1709,6 +1714,11 @@
         "points": 206495
       },
       {
+        "nickname": "plenki andrija",
+        "email": "craig.viralnuke@gmail.com",
+        "points": 0
+      },
+      {
         "nickname": "Nikša Opanović",
         "email": "opanovic.niksa@gmail.com",
         "points": 0
@@ -1731,14 +1741,14 @@
     ],
     [
       {
+        "nickname": "Petar Sruk",
+        "email": "petar.sruk@gmail.com",
+        "points": 208871
+      },
+      {
         "nickname": "Dado Skrgic",
         "email": "dadoskrgic@gmail.com",
         "points": 208380
-      },
-      {
-        "nickname": "Petar Sruk",
-        "email": "petar.sruk@gmail.com",
-        "points": 204748
       },
       {
         "nickname": "RoKo Domovic",
@@ -1768,14 +1778,14 @@
     ],
     [
       {
-        "nickname": "Ivo Veverec",
-        "email": "ivo.veverec8@gmail.com",
-        "points": 207900
-      },
-      {
         "nickname": "antun weber",
         "email": "antun.weber@gmail.com",
-        "points": 204204
+        "points": 208446
+      },
+      {
+        "nickname": "Ivo Veverec",
+        "email": "ivo.veverec8@gmail.com",
+        "points": 207909
       },
       {
         "nickname": "Tiny Dancer",
