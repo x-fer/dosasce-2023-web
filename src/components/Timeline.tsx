@@ -49,7 +49,13 @@ const TimelineCard = (props: TimelineCardProps) => {
 
         {isLive ? (
           isFinished ? (
-            <p className="paragraph flex items-center text-2xl text-red underline">Pregledaj zadatak</p>
+            props.startDate && !props.endDate ? (
+              <p className="paragraph flex items-center justify-center text-center text-2xl text-black">
+                FER, Unska ul. 3, dvorana A202, 19:15h
+              </p>
+            ) : (
+              <p className="paragraph flex items-center text-2xl text-red underline">Pregledaj zadatak</p>
+            )
           ) : (
             <p className="paragraph flex items-center text-2xl text-red underline">
               Otvoren do {props.endDate?.toLocaleDateString('hr', { day: 'numeric', month: 'long' })}!
