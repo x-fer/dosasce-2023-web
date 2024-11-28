@@ -1,0 +1,4 @@
+kv_namespaces = [
+    { binding = "USER_CATEGORY", id = "29549dca4ed24aba9a5f2d1c49790825" },
+    { binding = "USER_CATEGORY_OLD", id = "1995bc922f264023b607f91af3984c94"}
+]
